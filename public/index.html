@@ -16,9 +16,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <style>
 /* Layout: warehouse ledger — sticky brand bar, sheet tabs like box labels, dense numeric rows, side/bottom editor drawer */
 :root{
@@ -180,24 +177,10 @@ label.f input,label.f select,label.f textarea{border:1px solid var(--line);backg
 <script>
 (function(){
 "use strict";
-// =====================================================================
-//  CONFIGURACIÓN — pega aquí los datos de tu proyecto de Firebase
-//  (Consola de Firebase → Configuración del proyecto → Tus apps → Web)
-// =====================================================================
-const FIREBASE_CONFIG = {
-  apiKey: "PEGA_AQUI_TU_API_KEY",
-  authDomain: "TU-PROYECTO.firebaseapp.com",
-  databaseURL: "https://TU-PROYECTO-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "TU-PROYECTO",
-  appId: "PEGA_AQUI_TU_APP_ID"
-};
-// Usuario editor que creas en Firebase → Authentication (correo + contraseña).
-// En la app solo se pide la contraseña.
-const EDITOR_EMAIL = "almacen@azulenaccion.org";
-// =====================================================================
-
 // ---------- state ----------
-let db=null, auth=null, canWrite=false, loaded=false;
+let canWrite=false, loaded=false, ver="", online=true;
+const KEY_LS="editkey";
+let editKey=localGet(KEY_LS)||"";
 let sheets={};           // id -> data
 let cur=localGet("tab")||"qx";
 let filter="all", query="";
@@ -267,24 +250,29 @@ function shortages(){
 }
 
 // ---------- writes (one at a time per doc) ----------
-function flatten(obj,prefix,out){
-  out=out||{};
-  Object.entries(obj).forEach(([k,v])=>{
-    const p=prefix?prefix+"/"+k:k;
-    if(v&&typeof v==="object"&&!Array.isArray(v)&&Object.keys(v).length) flatten(v,p,out); else out[p]=v;
+const isObj=v=>v&&typeof v==="object"&&!Array.isArray(v);
+function deepMerge(t,p){ Object.entries(p).forEach(([k,v])=>{ if(isObj(v)&&isObj(t[k])) deepMerge(t[k],v); else t[k]=isObj(v)?deepMerge({},v):v; }); return t; }
+let wq=Promise.resolve();
+function send(ops){
+  const p=wq.then(async()=>{
+    const r=await fetch("/api/write",{method:"POST",headers:{"content-type":"application/json","x-edit-key":editKey},body:JSON.stringify({ops})});
+    if(r.status===401){ setEditor(false); toast("La contraseña ya no es válida. Vuelve a entrar"); openLogin(); throw new Error("401"); }
+    if(!r.ok){ const j=await r.json().catch(()=>({})); throw new Error(j.error||"Error "+r.status); }
+    return r.json();
   });
-  return out;
+  wq=p.catch(()=>{});
+  return p;
 }
 function write(sid,patch,done){
-  if(!db||!canWrite){toast("Pulsa «Entrar para editar» para hacer cambios");openLogin();return Promise.resolve(false);}
-  const ref=db.ref("sheets/"+sid);
-  const p=(queues[sid]||Promise.resolve()).then(()=>ref.update(flatten(patch))).then(()=>{done&&done();return true;}).catch(e=>{
-    if(e&&/permission/i.test(e.code||e.message||"")){toast("Sin permiso para guardar. Vuelve a entrar como editor");}
-    else toast("No se pudo guardar. Revisa la conexión y vuelve a intentarlo");
-    return false;
+  if(!canWrite){toast("Pulsa «Entrar para editar» para hacer cambios");openLogin();return Promise.resolve(false);}
+  if(sheets[sid]){ sheets[sid]=deepMerge(JSON.parse(JSON.stringify(sheets[sid])),patch); scheduleRender(); }
+  return send([{sid,patch}]).then(()=>{done&&done();refresh();return true;}).catch(e=>{
+    if(e.message!=="401") toast("No se pudo guardar: "+e.message);
+    refresh(true); return false;
   });
-  queues[sid]=p; return p;
 }
+let rt=null; function scheduleRender(){ clearTimeout(rt); rt=setTimeout(()=>{ const ed=isEditing(); if(!ed) render(); else renderTabs(); if(openRow) refreshDrawerNumbers(); },0); }
+function isEditing(){ return document.activeElement&&["note","a_n","a_e","a_d","a_q","target","l_pw","q"].includes(document.activeElement.id)&&document.activeElement.id!=="q"; }
 function patchRow(sid,id,fields){const f=Object.assign({},fields,{t:Date.now()}); return write(sid,{rows:{[id]:f}});}
 const newId=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 
@@ -300,8 +288,7 @@ function render(){
   renderTabs();
   const m=$("#main");
   if(!Object.keys(sheets).length){ m.innerHTML= !loaded ? `<div class="empty">Cargando el almacén…</div>`
-      : canWrite ? `<div class="empty">El almacén está vacío.<br><br><button class="btn primary" data-act="seed">Cargar los datos del Excel (NECESIDADES SENEGAL ´26)</button><br><br>o pulsa «+ Hoja» para empezar desde cero.</div>`
-      : `<div class="empty">El almacén está vacío. Entra como editor para cargar los datos iniciales.</div>`; return;}
+      : `<div class="empty">No hay hojas.${canWrite?" Pulsa «+ Hoja» para crear la primera.":""}</div>`; return;}
   if(cur==="__falta") return renderFalta(m);
   if(!sheets[cur]) cur=sheetList()[0].id;
   const sh=sheets[cur]; const rows=computed(cur); const inv=sh.kind==="inv";
@@ -496,7 +483,7 @@ async function createSheet(){
       if(kind==="inv"){ c.e=zero?"":(r.e??r.q??""); c.d=r.d||""; } else { c.q=zero?"":(r.q??r.e??""); }
       data.rows[r.id]=c; }); }
   const id=newId("h");
-  try{ await db.ref("sheets/"+id).set(data); cur=id; localSet("tab",id); closeLayer(); toast("Hoja creada"); render(); }
+  try{ await send([{sid:id,set:data}]); sheets[id]=data; cur=id; localSet("tab",id); closeLayer(); toast("Hoja creada"); render(); }
   catch(e){ toast("No se pudo crear la hoja"); }
 }
 
@@ -569,8 +556,7 @@ document.addEventListener("click",e=>{
   if(a==="close") return closeLayer();
   if(a==="login") return canWrite? openLogout() : openLogin();
   if(a==="dologin") return doLogin();
-  if(a==="logout"){ auth.signOut().then(()=>{closeLayer();toast("Has salido del modo editor");}); return; }
-  if(a==="seed") return seed();
+  if(a==="logout"){ setEditor(false); closeLayer(); toast("Has salido del modo editor"); return; }
   if(a==="qadd") return quickApply(1);
   if(a==="qsub") return quickApply(-1);
   if(a==="save") return saveRow();
@@ -589,7 +575,7 @@ document.addEventListener("click",e=>{
       if($("#c_nl")){p.nameLabel=$("#c_nl").value.trim()||"Artículo"; p.qtyLabel=$("#c_ql").value.trim()||"Cantidad";}
       write(cur,p).then(ok=>{if(ok){toast("Hoja actualizada");closeLayer();}}); return; }
   if(a==="sheetdel"){ $("#delzone").innerHTML=`<span class="confirm">Se borrarán todos sus artículos. <button class="btn danger solid" data-act="sheetdelyes">Sí, borrar hoja</button><button class="btn" data-act="close">Cancelar</button></span>`; return; }
-  if(a==="sheetdelyes"){ db.ref("sheets/"+cur).remove().then(()=>{toast("Hoja borrada");closeLayer();delete sheets[cur];cur=(sheetList()[0]||{}).id||"";render();},()=>toast("No se pudo borrar la hoja")); return; }
+  if(a==="sheetdelyes"){ send([{sid:cur,del:true}]).then(()=>{toast("Hoja borrada");closeLayer();delete sheets[cur];cur=(sheetList()[0]||{}).id||"";render();refresh();},()=>toast("No se pudo borrar la hoja")); return; }
   if(t.dataset.row){ openDrawer(t.dataset.sid||cur,t.dataset.row,false); return; }
 });
 document.addEventListener("input",e=>{
@@ -642,46 +628,49 @@ function openLogout(){
    <div class="dbody"><p style="margin:0">Estás editando. Los cambios se guardan al momento y los ve todo el equipo.</p>
    <div class="dfoot"><button class="btn" data-act="logout">Salir del modo editor</button></div></div></aside>`;
 }
-function doLogin(){
-  const pw=$("#l_pw").value; if(!pw) return;
-  auth.signInWithEmailAndPassword(EDITOR_EMAIL,pw).then(()=>{closeLayer();toast("Modo editor activado");})
-   .catch(e=>{ $("#l_err").innerHTML=`<span class="err">${/network/i.test(e.code||"")?"Sin conexión. Inténtalo de nuevo.":"Contraseña incorrecta."}</span>`; });
+function setEditor(on,key){
+  canWrite=!!on; editKey=on?(key||editKey):"";
+  try{ if(on) localStorage.setItem("alm_"+KEY_LS,editKey); else localStorage.removeItem("alm_"+KEY_LS);}catch(e){}
+  const w=$("#who"); w.textContent=canWrite?"✓ Editando":"Entrar para editar"; w.className="who"+(canWrite?" on":"");
+  if(openRow) closeLayer();
+  render();
 }
-async function seed(){
+async function doLogin(){
+  const pw=$("#l_pw").value; if(!pw) return;
+  $("#l_err").innerHTML="Comprobando…";
   try{
-    const r=await fetch("datos-iniciales.json",{cache:"no-store"}); const j=await r.json();
-    await db.ref("sheets").set(j.sheets); toast("Datos del Excel cargados");
-  }catch(e){ toast("No se pudieron cargar los datos iniciales"); }
+    const r=await fetch("/api/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({password:pw})});
+    if(r.ok){ setEditor(true,pw); closeLayer(); toast("Modo editor activado"); return; }
+    const j=await r.json().catch(()=>({}));
+    $("#l_err").innerHTML=`<span class="err">${esc(j.error||"No se pudo entrar")}</span>`;
+  }catch(e){ $("#l_err").innerHTML=`<span class="err">Sin conexión. Inténtalo de nuevo.</span>`; }
+}
+
+// ---------- sync (consulta periódica) ----------
+let busy=false;
+async function refresh(force){
+  if(busy&&!force) return; busy=true;
+  try{
+    const r=await fetch("/api/data"+(ver&&!force?"?v="+encodeURIComponent(ver):""),{cache:"no-store"});
+    if(!r.ok) throw new Error(r.status);
+    const j=await r.json(); online=true; ver=j.v;
+    if(!j.same){ sheets=j.sheets||{}; loaded=true; scheduleRender(); }
+    else if(!loaded){ loaded=true; scheduleRender(); }
+  }catch(e){ online=false; if(!loaded) $("#main").innerHTML=`<div class="empty">No se pueden cargar los datos. Revisa la conexión y recarga la página.</div>`; }
+  finally{ busy=false; const s=$("#sync"); s.className="sync"+(online?" live":""); s.innerHTML="<b></b>"+(online?"Al día":"Sin conexión"); }
 }
 
 // ---------- boot ----------
 render();
-(function boot(){
-  if(typeof firebase==="undefined"){ $("#main").innerHTML=`<div class="empty">No se pudo cargar. Revisa la conexión a internet y recarga.</div>`; return; }
-  if(/PEGA_AQUI/.test(FIREBASE_CONFIG.apiKey)){
-    $("#sync").innerHTML="<b></b>Sin configurar"; $("#who").hidden=true;
-    $("#main").innerHTML=`<div class="setup"><h2 style="margin-top:0;font-family:var(--display);text-transform:uppercase">Falta conectar Firebase</h2>
-      <p>Abre <code>index.html</code>, busca <code>FIREBASE_CONFIG</code> y pega los datos de tu proyecto. Los pasos están en <code>LEEME.md</code>.</p></div>`;
-    return;
+(async function boot(){
+  if(editKey){
+    try{ const r=await fetch("/api/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({password:editKey})}); setEditor(r.ok); }
+    catch(e){ canWrite=true; $("#who").textContent="✓ Editando"; $("#who").className="who on"; }
   }
-  firebase.initializeApp(FIREBASE_CONFIG);
-  db=firebase.database(); auth=firebase.auth();
-  auth.onAuthStateChanged(u=>{
-    canWrite=!!u;
-    const w=$("#who"); w.textContent=canWrite?"✓ Editando":"Entrar para editar"; w.className="who"+(canWrite?" on":"");
-    if(openRow) closeLayer();
-    render();
-  });
-  db.ref(".info/connected").on("value",s=>{
-    const on=s.val()===true; $("#sync").className="sync"+(on?" live":"");
-    $("#sync").innerHTML="<b></b>"+(on?"En vivo":"Sin conexión");
-  });
-  db.ref("sheets").on("value",snap=>{
-    sheets=snap.val()||{}; loaded=true;
-    const editing=document.activeElement&&["note","a_n","a_e","a_d","a_q","target","l_pw"].includes(document.activeElement.id);
-    if(!editing) render(); else renderTabs();
-    if(openRow) refreshDrawerNumbers();
-  }, err=>{ $("#main").innerHTML=`<div class="empty">No se pueden leer los datos. Revisa las reglas de la base de datos (LEEME.md, paso 3).</div>`; });
+  await refresh(true);
+  setInterval(()=>{ if(document.visibilityState==="visible") refresh(); },6000);
+  document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible") refresh(); });
+  window.addEventListener("online",()=>refresh(true));
 })();
 })();
 </script>
