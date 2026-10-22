@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Almacén Senegal</title>
+<meta name="description" content="Almacén de material de Azul en Acción para Senegal: existencias, necesidades y lo que falta.">
+<meta name="theme-color" content="#1b86a8">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Almacén">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<style>
+/* Layout: warehouse ledger — sticky brand bar, sheet tabs like box labels, dense numeric rows, side/bottom editor drawer */
+:root{
+  --bg:#f3f6f7; --surface:#ffffff; --sunk:#e8eef0; --line:#d5dfe2;
+  --fg:#1b2a30; --muted:#5d7079; --accent:#1b86a8; --accent-ink:#ffffff; --accent-soft:#dcf0f6;
+  --bad:#c2412d; --bad-soft:#fbe5e0; --ok:#2f7d4f; --ok-soft:#e0f2e7; --warn:#9a6a00;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --shadow:0 10px 30px rgba(20,50,60,.18);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f171a; --surface:#162126; --sunk:#1c2a30; --line:#2a3a41;
+  --fg:#e3eef1; --muted:#93a9b1; --accent:#4fb6d6; --accent-ink:#06222c; --accent-soft:#173843;
+  --bad:#f08470; --bad-soft:#3a1f1a; --ok:#6cc792; --ok-soft:#173225; --warn:#e0b14a;
+  --shadow:0 10px 30px rgba(0,0,0,.5); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f171a; --surface:#162126; --sunk:#1c2a30; --line:#2a3a41;
+  --fg:#e3eef1; --muted:#93a9b1; --accent:#4fb6d6; --accent-ink:#06222c; --accent-soft:#173843;
+  --bad:#f08470; --bad-soft:#3a1f1a; --ok:#6cc792; --ok-soft:#173225; --warn:#e0b14a;
+  --shadow:0 10px 30px rgba(0,0,0,.5); color-scheme:dark}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;-webkit-text-size-adjust:100%}
+img{max-width:100%}
+[hidden]{display:none!important}
+.brand .right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.who{white-space:nowrap;border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:3px 10px;font-size:12px;color:var(--fg)}
+.who.on{border-color:var(--ok);color:var(--ok)}
+.setup{max-width:640px;margin:24px auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;line-height:1.55}
+.setup code{background:var(--sunk);padding:1px 5px;border-radius:4px}
+html,body{background:var(--bg);color:var(--fg)}
+body{font-family:var(--body);font-size:15px;line-height:1.4}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:1100px;margin:0 auto}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px 4px}
+.brand h1{margin:0;font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.brand small{display:block;font-family:var(--display);font-weight:600;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-size:13px}
+.sync{font-size:12px;color:var(--muted);white-space:nowrap}
+.sync b{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--muted);margin-right:6px;vertical-align:middle}
+.sync.live b{background:var(--ok)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-block:8px 10px;scrollbar-width:thin}
+.tab{flex:none;border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:6px 11px;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.tab.special{border-style:dashed}
+.tab .cnt{font-family:var(--body);font-size:11px;font-weight:700;margin-left:6px;padding:1px 6px;border-radius:9px;background:var(--bad);color:#fff}
+
+main{padding-block:16px 120px}
+.sheethead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
+.sheethead h2{margin:0;font-family:var(--display);font-size:30px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.05;text-wrap:balance}
+.sheethead p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.stats{display:flex;gap:8px;flex-wrap:wrap}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;min-width:84px}
+.stat b{display:block;font-family:var(--display);font-size:22px;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.stat.bad b{color:var(--bad)} .stat.ok b{color:var(--ok)}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+.search{flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:0 10px}
+.search input{border:0;background:transparent;padding:9px 0;flex:1;min-width:0;outline:none}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:transparent;padding:8px 10px;font-size:13px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--fg);font-weight:700}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 12px;font-size:14px;display:inline-flex;align-items:center;gap:6px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.btn.danger{color:var(--bad);border-color:var(--bad)}
+.btn.danger.solid{background:var(--bad);color:#fff}
+.btn:disabled{opacity:.5;cursor:default}
+.scale{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--muted)}
+.scale input{width:76px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);font-variant-numeric:tabular-nums}
+.scale .on{color:var(--warn);font-weight:700}
+
+.addbar{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px}
+.addbar summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);list-style:none}
+.addbar summary::-webkit-details-marker{display:none}
+.addgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr auto;gap:8px;margin-top:10px;align-items:end}
+@media (max-width:760px){.addgrid{grid-template-columns:1fr 1fr}.addgrid .wide{grid-column:1/-1}}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted);min-width:0}
+label.f input,label.f select,label.f textarea{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:8px 9px;font-size:15px;color:var(--fg);min-width:0;width:100%}
+.calc{font-size:12px;color:var(--muted);min-height:16px;font-variant-numeric:tabular-nums}
+.calc.err{color:var(--bad)}
+
+.ledger{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.lrow{display:grid;grid-template-columns:minmax(0,1fr) 70px 70px 96px 34px;gap:8px;align-items:center;padding:7px 10px;border-top:1px solid var(--line)}
+.list .lrow{grid-template-columns:minmax(0,1fr) 120px 34px}
+.list.qf .lrow{grid-template-columns:80px minmax(0,1fr) 34px}
+.lrow.head{border-top:0;background:var(--sunk);font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);position:sticky;top:0}
+.lrow.item{cursor:pointer}
+.lrow.item:hover{background:var(--bg)}
+.lrow.item.flash{animation:fl 1.2s ease}
+@keyframes fl{from{background:var(--accent-soft)}to{background:transparent}}
+.lrow.group{background:var(--sunk);cursor:pointer}
+.lrow.group .nm{font-family:var(--display);font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.03em}
+.nm{min-width:0;overflow-wrap:anywhere}
+.nm small{display:block;color:var(--muted);font-size:12px}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.num .x{display:block;font-size:10px;color:var(--muted)}
+.qty{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.chip{justify-self:end;font-size:12px;font-weight:700;padding:3px 8px;border-radius:12px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.chip.bad{background:var(--bad-soft);color:var(--bad)}
+.chip.ok{background:var(--ok-soft);color:var(--ok)}
+.chip.none{color:var(--muted);font-weight:400}
+.plus{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--bg);font-size:18px;line-height:1;padding:0;color:var(--accent)}
+.empty{padding:28px 16px;text-align:center;color:var(--muted)}
+@media (max-width:520px){
+  .lrow{grid-template-columns:minmax(0,1fr) 52px 52px 74px 30px;gap:6px;padding:7px 8px;font-size:14px}
+  .list .lrow{grid-template-columns:minmax(0,1fr) 90px 30px}
+  .chip{padding:3px 6px;font-size:11px}
+}
+.notes{margin-top:16px}
+.notes h3,.sec h3{font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;font-size:17px;margin:0 0 6px}
+.notes textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:10px;resize:vertical}
+.hint{font-size:12px;color:var(--muted)}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(10,25,30,.35);z-index:40}
+.drawer{position:fixed;z-index:41;background:var(--surface);box-shadow:var(--shadow);display:flex;flex-direction:column;
+  right:0;top:0;bottom:0;width:min(420px,100%);padding:max(16px,env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) max(18px,env(safe-area-inset-bottom,0px)) 18px;overflow-y:auto}
+@media (max-width:640px){.drawer{top:auto;left:0;width:100%;max-height:88%;border-radius:16px 16px 0 0;padding-left:max(16px,env(safe-area-inset-left,0px))}}
+.drawer .dh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.drawer h3{margin:0;font-family:var(--display);font-size:24px;text-transform:uppercase;line-height:1.05}
+.close{border:0;background:var(--sunk);border-radius:50%;width:34px;height:34px;font-size:18px;flex:none}
+.dbody{display:flex;flex-direction:column;gap:14px;margin-top:14px}
+.big{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.big div{background:var(--bg);border-radius:8px;padding:8px;text-align:center}
+.big b{display:block;font-family:var(--display);font-size:26px;line-height:1.05;font-variant-numeric:tabular-nums}
+.big span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.big .bad b{color:var(--bad)} .big .ok b{color:var(--ok)}
+.quick{background:var(--accent-soft);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.quick .row{display:flex;gap:8px}
+.quick input{flex:1;min-width:0;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:9px;font-size:16px;font-variant-numeric:tabular-nums}
+.chk{display:flex;align-items:center;gap:8px;font-size:14px}
+.dfoot{display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;margin-top:6px}
+.confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:9px 16px;border-radius:20px;font-size:14px;z-index:60;max-width:90%}
+.ro{margin-top:10px;background:var(--accent-soft);border-radius:8px;padding:8px 12px;font-size:13px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div><small>Azul en Acción</small><h1>Almacén Senegal ´26</h1></div>
+      <div class="right"><div class="sync" id="sync"><b></b>Conectando…</div><button class="who" id="who" data-act="login">Entrar para editar</button></div>
+    </div>
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Hojas"></nav>
+  </div>
+</header>
+<main class="wrap" id="main">
+  <div class="empty" id="boot">Cargando el almacén…</div>
+</main>
+<div id="layer"></div>
+
+<script>
+(function(){
+"use strict";
+// =====================================================================
+//  CONFIGURACIÓN — pega aquí los datos de tu proyecto de Firebase
+//  (Consola de Firebase → Configuración del proyecto → Tus apps → Web)
+// =====================================================================
+const FIREBASE_CONFIG = {
+  apiKey: "PEGA_AQUI_TU_API_KEY",
+  authDomain: "TU-PROYECTO.firebaseapp.com",
+  databaseURL: "https://TU-PROYECTO-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "TU-PROYECTO",
+  appId: "PEGA_AQUI_TU_APP_ID"
+};
+// Usuario editor que creas en Firebase → Authentication (correo + contraseña).
+// En la app solo se pide la contraseña.
+const EDITOR_EMAIL = "almacen@azulenaccion.org";
+// =====================================================================
+
+// ---------- state ----------
+let db=null, auth=null, canWrite=false, loaded=false;
+let sheets={};           // id -> data
+let cur=localGet("tab")||"qx";
+let filter="all", query="";
+let openRow=null;        // {sid,id} or {sid,id:null,group:...}
+const queues={};
+
+function localGet(k){try{return localStorage.getItem("alm_"+k)}catch(e){return null}}
+function localSet(k,v){try{localStorage.setItem("alm_"+k,v)}catch(e){}}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>n==null||isNaN(n)?"—":(Math.round(n*100)/100).toLocaleString("es-ES");
+
+// ---------- calculator: + - * / ( ) with comma or dot decimals ----------
+function evalExpr(src){
+  if(src==null) return null;
+  let s=String(src).trim().replace(/^=/,"").replace(/\s+/g,"").replace(/,/g,".").replace(/[x×]/gi,"*").replace(/÷/g,"/");
+  if(s==="") return null;
+  let i=0;
+  function num(){const m=/^\d*\.?\d+/.exec(s.slice(i)); if(!m) throw 0; i+=m[0].length; return parseFloat(m[0]);}
+  function atom(){ if(s[i]==="("){i++;const v=add(); if(s[i]!==")") throw 0; i++; return v;} if(s[i]==="-"){i++;return -atom();} if(s[i]==="+"){i++;return atom();} return num(); }
+  function mul(){let v=atom(); while(s[i]==="*"||s[i]==="/"){const o=s[i++]; const r=atom(); v=o==="*"?v*r:v/r;} return v;}
+  function add(){let v=mul(); while(s[i]==="+"||s[i]==="-"){const o=s[i++]; const r=mul(); v=o==="+"?v+r:v-r;} return v;}
+  try{const v=add(); if(i!==s.length||!isFinite(v)) return NaN; return v;}catch(e){return NaN}
+}
+const isExpr=s=>/[+\-*/x×÷()]/.test(String(s||"").replace(/^[-=]/,""));
+function calcLabel(src){
+  const v=evalExpr(src);
+  if(v===null) return "";
+  if(isNaN(v)) return "<span class='err'>No entiendo el cálculo. Usa números y + − × ÷</span>";
+  return isExpr(src)? esc(String(src).replace(/^=/,"").replace(/\*/g,"×"))+" = <b>"+fmt(v)+"</b>" : "= <b>"+fmt(v)+"</b>";
+}
+
+// ---------- model helpers ----------
+function rowsOf(sid){
+  const sh=sheets[sid]; if(!sh||!sh.rows) return [];
+  return Object.entries(sh.rows).filter(([,r])=>r&&!r.x&&r.n!=null).map(([id,r])=>Object.assign({id},r)).sort((a,b)=>(a.o||0)-(b.o||0));
+}
+function scaleOf(sh){const b=+sh.base||0,t=+sh.target||0; return (b>0&&t>0&&t!==b)?t/b:1;}
+function needOf(sh,r){const d=evalExpr(r.d); if(d==null||isNaN(d)) return d; const k=scaleOf(sh); return k===1?d:Math.ceil(d*k);}
+// compute rows with groups for inventory sheets
+function computed(sid){
+  const sh=sheets[sid]; const rows=rowsOf(sid); let g=null;
+  rows.forEach(r=>{
+    r.ev=evalExpr(r.e); r.nv=sh.kind==="inv"?needOf(sh,r):null;
+    if(r.g){g=r; r.kids=[]; return;}
+    r.parent=g?g.id:null; if(g) g.kids.push(r);
+  });
+  rows.forEach(r=>{
+    if(sh.kind!=="inv"){return;}
+    if(r.g){
+      const sum=r.kids.reduce((a,k)=>a+(k.ev&&!isNaN(k.ev)?k.ev:0),0);
+      r.sum=sum + (r.ev&&!isNaN(r.ev)?r.ev:0);
+      r.falta=(r.nv!=null&&!isNaN(r.nv))? r.sum-r.nv : null;
+    } else {
+      r.falta=(r.nv!=null&&!isNaN(r.nv))? (r.ev&&!isNaN(r.ev)?r.ev:0)-r.nv : null;
+    }
+  });
+  return rows;
+}
+function sheetList(){return Object.entries(sheets).map(([id,s])=>Object.assign({id},s)).sort((a,b)=>(a.pos||0)-(b.pos||0));}
+function shortages(){
+  const out=[];
+  sheetList().filter(s=>s.kind==="inv").forEach(s=>{
+    computed(s.id).forEach(r=>{ if(r.falta!=null&&r.falta<0) out.push({sid:s.id,sheet:s.title,r}); });
+  });
+  return out;
+}
+
+// ---------- writes (one at a time per doc) ----------
+function flatten(obj,prefix,out){
+  out=out||{};
+  Object.entries(obj).forEach(([k,v])=>{
+    const p=prefix?prefix+"/"+k:k;
+    if(v&&typeof v==="object"&&!Array.isArray(v)&&Object.keys(v).length) flatten(v,p,out); else out[p]=v;
+  });
+  return out;
+}
+function write(sid,patch,done){
+  if(!db||!canWrite){toast("Pulsa «Entrar para editar» para hacer cambios");openLogin();return Promise.resolve(false);}
+  const ref=db.ref("sheets/"+sid);
+  const p=(queues[sid]||Promise.resolve()).then(()=>ref.update(flatten(patch))).then(()=>{done&&done();return true;}).catch(e=>{
+    if(e&&/permission/i.test(e.code||e.message||"")){toast("Sin permiso para guardar. Vuelve a entrar como editor");}
+    else toast("No se pudo guardar. Revisa la conexión y vuelve a intentarlo");
+    return false;
+  });
+  queues[sid]=p; return p;
+}
+function patchRow(sid,id,fields){const f=Object.assign({},fields,{t:Date.now()}); return write(sid,{rows:{[id]:f}});}
+const newId=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+
+// ---------- rendering ----------
+function renderTabs(){
+  const sl=sheetList(); const nShort=shortages().length;
+  let h=sl.map(s=>`<button class="tab" role="tab" aria-selected="${s.id===cur}" data-tab="${esc(s.id)}">${esc(s.title)}</button>`).join("");
+  h+=`<button class="tab special" role="tab" aria-selected="${cur==="__falta"}" data-tab="__falta">Qué falta${nShort?`<span class="cnt">${nShort}</span>`:""}</button>`;
+  if(canWrite) h+=`<button class="tab special" data-act="newsheet" aria-label="Añadir hoja">+ Hoja</button>`;
+  $("#tabs").innerHTML=h;
+}
+function render(){
+  renderTabs();
+  const m=$("#main");
+  if(!Object.keys(sheets).length){ m.innerHTML= !loaded ? `<div class="empty">Cargando el almacén…</div>`
+      : canWrite ? `<div class="empty">El almacén está vacío.<br><br><button class="btn primary" data-act="seed">Cargar los datos del Excel (NECESIDADES SENEGAL ´26)</button><br><br>o pulsa «+ Hoja» para empezar desde cero.</div>`
+      : `<div class="empty">El almacén está vacío. Entra como editor para cargar los datos iniciales.</div>`; return;}
+  if(cur==="__falta") return renderFalta(m);
+  if(!sheets[cur]) cur=sheetList()[0].id;
+  const sh=sheets[cur]; const rows=computed(cur); const inv=sh.kind==="inv";
+  const items=rows.filter(r=>!r.g);
+  const nBad=rows.filter(r=>r.falta!=null&&r.falta<0).length;
+  const nOk=items.filter(r=>r.falta!=null&&r.falta>=0).length;
+  const k=scaleOf(sh);
+  const groups=rows.filter(r=>r.g);
+  let h=`<section class="sheethead"><div><h2>${esc(sh.title)}</h2>${sh.sub?`<p>${esc(sh.sub)}</p>`:""}</div>
+    <div class="stats"><div class="stat"><b>${items.length}</b><span>Artículos</span></div>
+    ${inv?`<div class="stat bad"><b>${nBad}</b><span>Faltan</span></div><div class="stat ok"><b>${nOk}</b><span>Cubiertos</span></div>`:""}</div></section>`;
+  if(!canWrite) h+=`<div class="ro">Modo consulta. Para editar pulsa <b>Entrar para editar</b> arriba.</div>`;
+  h+=`<div class="toolbar"><label class="search"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Buscar artículo o nota…" value="${esc(query)}" aria-label="Buscar"></label>`;
+  if(inv) h+=`<div class="seg" role="group" aria-label="Filtro">${[["all","Todos"],["bad","Faltan"],["ok","Cubiertos"],["nd","Sin necesidad"]].map(([v,l])=>`<button data-filter="${v}" aria-pressed="${filter===v}">${l}</button>`).join("")}</div>`;
+  h+=`<button class="btn" data-act="export">⇩ Excel</button>${canWrite?`<button class="btn" data-act="sheetcfg" aria-label="Ajustes de la hoja">⚙</button>`:""}</div>`;
+  if(inv&&+sh.base>0) h+=`<div class="scale"><span>Necesidades calculadas para <b>${fmt(+sh.base)}</b> cirugías. Calcular para</span>
+      <input id="target" type="number" min="1" inputmode="numeric" value="${esc(sh.target||sh.base)}" ${canWrite?"":"disabled"} aria-label="Cirugías previstas"><span>cirugías</span>
+      ${k!==1?`<span class="on">· necesidades ×${fmt(k)} (redondeado hacia arriba)</span> <button class="btn" data-act="resetscale">Volver a ${fmt(+sh.base)}</button>`:""}</div>`;
+  if(canWrite) h+=addBar(sh,groups);
+  // rows
+  const q=query.trim().toLowerCase();
+  const match=r=>{
+    if(q && !((r.n||"").toLowerCase().includes(q)||(r.m||"").toLowerCase().includes(q)||(r.q||"").toLowerCase().includes(q))) return false;
+    if(!inv||filter==="all") return true;
+    if(filter==="bad") return r.falta!=null&&r.falta<0;
+    if(filter==="ok") return r.falta!=null&&r.falta>=0;
+    if(filter==="nd") return r.falta==null;
+    return true;
+  };
+  const vis=[];
+  rows.forEach(r=>{
+    if(r.g){ const anyKid=r.kids.some(match); if(match(r)||anyKid||(!q&&filter==="all")) vis.push(r); }
+    else if(match(r)) vis.push(r);
+  });
+  const qf=!!sh.qtyFirst;
+  h+=`<div class="ledger ${inv?"":"list"} ${qf?"qf":""}">`;
+  if(inv) h+=`<div class="lrow head"><span>Artículo</span><span class="num">Exist.</span><span class="num">Necesid.</span><span class="num">Falta</span><span></span></div>`;
+  else h+= qf?`<div class="lrow head"><span>${esc(sh.qtyLabel||"Cantidad")}</span><span>${esc(sh.nameLabel||"Artículo")}</span><span></span></div>`
+             :`<div class="lrow head"><span>${esc(sh.nameLabel||"Artículo")}</span><span>${esc(sh.qtyLabel||"Cantidad")}</span><span></span></div>`;
+  if(!vis.length) h+=`<div class="empty">${rows.length?"Nada coincide con la búsqueda o el filtro.":"Hoja vacía. Añade el primer artículo arriba."}</div>`;
+  vis.forEach(r=>{ h+= inv? invRow(r) : listRow(sh,r); });
+  h+=`</div>`;
+  h+=`<section class="notes"><h3>Apuntes de la hoja</h3><textarea id="note" placeholder="Escribe aquí lo que hay que pedir, recordar o calcular…" ${canWrite?"":"readonly"}>${esc(sh.note||"")}</textarea><div class="hint">Se guarda al salir del cuadro. Lo ve todo el equipo.</div></section>`;
+  const keepFocus=document.activeElement&&document.activeElement.id; const selS=document.activeElement&&document.activeElement.selectionStart;
+  m.innerHTML=h;
+  if(keepFocus==="q"){const el=$("#q"); el.focus(); try{el.setSelectionRange(selS,selS)}catch(e){}}
+}
+function addBar(sh,groups){
+  const inv=sh.kind==="inv";
+  const open=localGet("addopen")==="1";
+  return `<details class="addbar" id="addbar" ${open?"open":""}><summary>+ Añadir artículo</summary>
+   <form class="addgrid" id="addform" autocomplete="off">
+     <label class="f wide">${esc(inv?"Artículo":(sh.nameLabel||"Artículo"))}<input id="a_n" required placeholder="Ej. JERINGAS 5"></label>
+     ${inv?`<label class="f">Existencias<input id="a_e" inputmode="text" placeholder="Ej. 120+30"><span class="calc" id="a_ec"></span></label>
+     <label class="f">Necesidades<input id="a_d" inputmode="text" placeholder="Ej. 400"><span class="calc" id="a_dc"></span></label>`
+     :`<label class="f">${esc(sh.qtyLabel||"Cantidad")}<input id="a_q" placeholder="Ej. 2 cajas o 10+5"><span class="calc" id="a_qc"></span></label><span></span>`}
+     ${groups.length?`<label class="f">Sección<select id="a_g"><option value="">Al final</option>${groups.map(g=>`<option value="${esc(g.id)}">${esc(g.n)}</option>`).join("")}</select></label>`:`<span></span>`}
+     <button class="btn primary" type="submit">Añadir</button>
+   </form></details>`;
+}
+function chip(f){
+  if(f==null) return `<span class="chip none">—</span>`;
+  if(f<0) return `<span class="chip bad">Faltan ${fmt(-f)}</span>`;
+  return `<span class="chip ok">${f===0?"Justo":"+"+fmt(f)}</span>`;
+}
+function invRow(r){
+  if(r.g){
+    return `<div class="lrow group" data-row="${esc(r.id)}"><span class="nm">${esc(r.n)}${r.m?`<small>${esc(r.m)}</small>`:""}</span>
+      <span class="num">${r.kids.length?fmt(r.sum):""}</span><span class="num">${r.nv!=null?fmt(r.nv):""}</span>${r.nv!=null?chip(r.falta):"<span></span>"}<span></span></div>`;
+  }
+  return `<div class="lrow item" data-row="${esc(r.id)}"><span class="nm">${esc(r.n)}${r.m?`<small>${esc(r.m)}</small>`:""}</span>
+    <span class="num">${r.ev==null?"":isNaN(r.ev)?"<span title='Cálculo no válido'>?</span>":fmt(r.ev)}${isExpr(r.e)?`<span class="x">calc.</span>`:""}</span>
+    <span class="num">${r.nv==null?"":isNaN(r.nv)?"?":fmt(r.nv)}</span>${chip(r.falta)}
+    ${canWrite?`<button class="plus" data-quick="${esc(r.id)}" aria-label="Sumar o restar existencias de ${esc(r.n)}">±</button>`:"<span></span>"}</div>`;
+}
+function listRow(sh,r){
+  const v=evalExpr(r.q); const q= (v!=null&&!isNaN(v)&&isExpr(r.q))? `${fmt(v)} <span class="hint">(${esc(r.q)})</span>` : esc(r.q||"");
+  const nm=`<span class="nm">${esc(r.n)}${r.m?`<small>${esc(r.m)}</small>`:""}</span>`;
+  const cls=r.g?"group":"item";
+  if(r.g) return `<div class="lrow group" data-row="${esc(r.id)}">${sh.qtyFirst?"<span></span>"+nm:nm+"<span></span>"}<span></span></div>`;
+  return `<div class="lrow ${cls}" data-row="${esc(r.id)}">${sh.qtyFirst?`<span class="qty">${q}</span>${nm}`:`${nm}<span class="qty">${q}</span>`}<span></span></div>`;
+}
+function renderFalta(m){
+  const list=shortages();
+  let h=`<section class="sheethead"><div><h2>Qué falta</h2><p>Artículos de las hojas de inventario donde las existencias no cubren las necesidades.</p></div>
+    <div class="stats"><div class="stat bad"><b>${list.length}</b><span>Por pedir</span></div></div></section>
+    <div class="toolbar"><button class="btn primary" data-act="copyfalta">Copiar lista</button><button class="btn" data-act="exportfalta">⇩ Excel</button></div>`;
+  h+=`<div class="ledger"><div class="lrow head"><span>Artículo</span><span class="num">Exist.</span><span class="num">Necesid.</span><span class="num">Falta</span><span></span></div>`;
+  if(!list.length) h+=`<div class="empty">No falta nada según los datos actuales.</div>`;
+  let last="";
+  list.forEach(({sid,sheet,r})=>{
+    if(sheet!==last){h+=`<div class="lrow group"><span class="nm">${esc(sheet)}</span><span></span><span></span><span></span><span></span></div>`; last=sheet;}
+    h+=`<div class="lrow item" data-row="${esc(r.id)}" data-sid="${esc(sid)}"><span class="nm">${esc(r.n)}${r.g?`<small>Sección completa</small>`:""}</span><span class="num">${fmt(r.g?r.sum:(r.ev||0))}</span><span class="num">${fmt(r.nv)}</span>${chip(r.falta)}<span></span></div>`;
+  });
+  m.innerHTML=h+`</div>`;
+}
+
+// ---------- drawer (edit row) ----------
+function openDrawer(sid,id,focusQuick){
+  openRow={sid,id}; drawRow(focusQuick);
+}
+function drawRow(focusQuick){
+  const {sid,id}=openRow; const sh=sheets[sid]; const rows=computed(sid); const r=rows.find(x=>x.id===id);
+  if(!r){closeLayer();return;}
+  const inv=sh.kind==="inv"; const ro=!canWrite?"readonly":"";
+  let h=`<div class="scrim" data-act="close"></div><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dtitle">
+    <div class="dh"><div><div class="hint">${esc(sh.title)}${r.g?" · sección":""}</div><h3 id="dtitle">${esc(r.n)}</h3></div><button class="close" data-act="close" aria-label="Cerrar">✕</button></div>
+    <div class="dbody">`;
+  if(inv){
+    const ex=r.g?r.sum:r.ev;
+    h+=`<div class="big" id="bigs"><div><b>${fmt(ex)}</b><span>Existencias</span></div><div><b>${fmt(r.nv)}</b><span>Necesidades</span></div>
+      <div class="${r.falta==null?"":r.falta<0?"bad":"ok"}"><b>${r.falta==null?"—":fmt(r.falta)}</b><span>${r.falta!=null&&r.falta<0?"Faltan":"Falta"}</span></div></div>`;
+    if(!r.g&&canWrite) h+=`<div class="quick"><label for="d_quick" class="hint" style="color:var(--fg)"><b>Entrada o salida rápida</b> — escribe una cantidad o un cálculo (ej. 2×50)</label>
+      <div class="row"><input id="d_quick" inputmode="decimal" placeholder="Cantidad"><button class="btn primary" data-act="qadd">+ Sumar</button><button class="btn" data-act="qsub">− Restar</button></div>
+      <span class="calc" id="d_quickc"></span></div>`;
+  }
+  h+=`<label class="f">Nombre<input id="d_n" value="${esc(r.n)}" ${ro}></label>`;
+  if(inv){
+    if(!r.g) h+=`<label class="f">Existencias (puedes escribir cálculos: 348+194)<input id="d_e" value="${esc(r.e||"")}" ${ro}><span class="calc" id="d_ec">${calcLabel(r.e)}</span></label>`;
+    else h+=`<p class="hint" style="margin:0">Las existencias de la sección son la suma de sus ${r.kids.length} artículos.</p>`;
+    h+=`<label class="f">Necesidades ${scaleOf(sh)!==1?`(para ${fmt(+sh.base)} cirugías)`:""}<input id="d_d" value="${esc(r.d||"")}" ${ro}><span class="calc" id="d_dc">${calcLabel(r.d)}</span></label>`;
+  } else {
+    h+=`<label class="f">${esc(sh.qtyLabel||"Cantidad")}<input id="d_q" value="${esc(r.q||"")}" ${ro}><span class="calc" id="d_qc">${calcLabel(r.q)}</span></label>`;
+  }
+  h+=`<label class="f">Notas (caducidad, ubicación, marca…)<input id="d_m" value="${esc(r.m||"")}" ${ro}></label>`;
+  if(canWrite) h+=`<label class="chk"><input type="checkbox" id="d_g" ${r.g?"checked":""}> Es un título de sección</label>`;
+  if(r.t) h+=`<div class="hint">Última modificación: ${new Date(r.t).toLocaleString("es-ES",{dateStyle:"short",timeStyle:"short"})}</div>`;
+  if(canWrite) h+=`<div class="dfoot"><button class="btn primary" data-act="save">Guardar cambios</button><span id="delzone"><button class="btn danger" data-act="del">Borrar</button></span></div>`;
+  h+=`</div></aside>`;
+  $("#layer").innerHTML=h;
+  const f=focusQuick?$("#d_quick"):null; if(f) f.focus();
+}
+function refreshDrawerNumbers(){
+  if(!openRow||!$("#bigs")) return;
+  const {sid,id}=openRow; const sh=sheets[sid]; const r=computed(sid).find(x=>x.id===id); if(!r) return closeLayer();
+  const ex=r.g?r.sum:r.ev;
+  $("#bigs").innerHTML=`<div><b>${fmt(ex)}</b><span>Existencias</span></div><div><b>${fmt(r.nv)}</b><span>Necesidades</span></div>
+      <div class="${r.falta==null?"":r.falta<0?"bad":"ok"}"><b>${r.falta==null?"—":fmt(r.falta)}</b><span>${r.falta!=null&&r.falta<0?"Faltan":"Falta"}</span></div>`;
+  const de=$("#d_e"); if(de&&document.activeElement!==de&&de.dataset.dirty!=="1"){de.value=r.e||""; $("#d_ec").innerHTML=calcLabel(r.e);}
+}
+function closeLayer(){openRow=null; $("#layer").innerHTML="";}
+
+function quickApply(sign){
+  const inp=$("#d_quick"); const v=evalExpr(inp.value);
+  if(v==null||isNaN(v)||v===0){ $("#d_quickc").innerHTML="<span class='err'>Escribe una cantidad válida</span>"; return; }
+  const {sid,id}=openRow; const r=sheets[sid].rows[id];
+  const add=String(inp.value).trim().replace(/^[+=]/,"").replace(/,/g,".").replace(/[x×]/gi,"*");
+  const part=isExpr(add)?"("+add+")":add;
+  let e=(r.e||"").trim().replace(/^=/,"");
+  e = e===""||e==="0" ? (sign<0?"-"+part:part) : e+(sign<0?"-":"+")+part;
+  patchRow(sid,id,{e}).then(ok=>{ if(ok){ toast((sign<0?"Restado ":"Sumado ")+fmt(v)+" a "+r.n); inp.value=""; $("#d_quickc").innerHTML=""; const de=$("#d_e"); if(de){de.value=e; de.dataset.dirty="0"; $("#d_ec").innerHTML=calcLabel(e);} }});
+}
+function saveRow(){
+  const {sid,id}=openRow; const sh=sheets[sid]; const r=sheets[sid].rows[id];
+  const n=$("#d_n").value.trim(); if(!n){toast("El nombre no puede quedar vacío");return;}
+  const f={n,m:$("#d_m").value.trim(),g:$("#d_g")?$("#d_g").checked:!!r.g};
+  for(const [k,el] of [["e","#d_e"],["d","#d_d"],["q","#d_q"]]){ const x=$(el); if(x){ const v=x.value.trim(); if(k!=="q"&&v&&isNaN(evalExpr(v))){toast("Revisa el cálculo: "+v);x.focus();return;} f[k]=v; } }
+  patchRow(sid,id,f).then(ok=>{if(ok){toast("Guardado");closeLayer();}});
+}
+
+// ---------- sheet config / new sheet ----------
+function sheetCfg(){
+  const sh=sheets[cur]; const inv=sh.kind==="inv";
+  $("#layer").innerHTML=`<div class="scrim" data-act="close"></div><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="cfgt">
+   <div class="dh"><h3 id="cfgt">Ajustes de la hoja</h3><button class="close" data-act="close" aria-label="Cerrar">✕</button></div>
+   <div class="dbody">
+    <label class="f">Nombre de la pestaña<input id="c_t" value="${esc(sh.title)}"></label>
+    <label class="f">Descripción<input id="c_s" value="${esc(sh.sub||"")}"></label>
+    ${inv?`<label class="f">Las necesidades están calculadas para (nº de cirugías)<input id="c_b" type="number" min="0" value="${esc(sh.base||"")}"></label>`
+        :`<label class="f">Título de la columna principal<input id="c_nl" value="${esc(sh.nameLabel||"Artículo")}"></label><label class="f">Título de la columna de cantidad<input id="c_ql" value="${esc(sh.qtyLabel||"Cantidad")}"></label>`}
+    <div class="dfoot"><button class="btn primary" data-act="cfgsave">Guardar</button><span id="delzone"><button class="btn danger" data-act="sheetdel">Borrar hoja</button></span></div>
+   </div></aside>`;
+}
+function newSheet(){
+  $("#layer").innerHTML=`<div class="scrim" data-act="close"></div><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="nst">
+   <div class="dh"><h3 id="nst">Nueva hoja</h3><button class="close" data-act="close" aria-label="Cerrar">✕</button></div>
+   <div class="dbody">
+    <label class="f">Nombre<input id="n_t" placeholder="Ej. Quirófano ´26"></label>
+    <label class="f">Tipo<select id="n_k"><option value="inv">Inventario (existencias, necesidades y falta)</option><option value="list">Lista simple (artículo y cantidad)</option></select></label>
+    <label class="f">Copiar artículos de otra hoja (opcional)<select id="n_c"><option value="">No, empezar vacía</option>${sheetList().map(s=>`<option value="${esc(s.id)}">${esc(s.title)}</option>`).join("")}</select></label>
+    <label class="chk"><input type="checkbox" id="n_z" checked> Al copiar, dejar existencias a cero (para un inventario nuevo)</label>
+    <div class="dfoot"><button class="btn primary" data-act="nscreate">Crear hoja</button></div>
+   </div></aside>`;
+}
+async function createSheet(){
+  const title=$("#n_t").value.trim(); if(!title){toast("Ponle un nombre a la hoja");return;}
+  const kind=$("#n_k").value; const from=$("#n_c").value; const zero=$("#n_z").checked;
+  const pos=Math.max(0,...sheetList().map(s=>s.pos||0))+1;
+  const data={title,sub:"",kind,pos,note:"",rows:{}};
+  if(kind==="inv"){data.base=350;data.target=350;} else {data.nameLabel="Artículo";data.qtyLabel="Cantidad";}
+  if(from){ rowsOf(from).forEach(r=>{ const c={n:r.n,o:r.o}; if(r.g)c.g=true; if(r.m)c.m=r.m;
+      if(kind==="inv"){ c.e=zero?"":(r.e??r.q??""); c.d=r.d||""; } else { c.q=zero?"":(r.q??r.e??""); }
+      data.rows[r.id]=c; }); }
+  const id=newId("h");
+  try{ await db.ref("sheets/"+id).set(data); cur=id; localSet("tab",id); closeLayer(); toast("Hoja creada"); render(); }
+  catch(e){ toast("No se pudo crear la hoja"); }
+}
+
+// ---------- export ----------
+function buildWorkbook(onlyFalta){
+  const wb=XLSX.utils.book_new();
+  const addFalta=()=>{
+    const aoa=[["QUÉ FALTA"],[],["HOJA","ARTÍCULO","EXISTENCIAS","NECESIDADES","FALTAN"]];
+    shortages().forEach(({sheet,r})=>aoa.push([sheet,r.n,r.g?r.sum:(r.ev||0),r.nv,-r.falta]));
+    const ws=XLSX.utils.aoa_to_sheet(aoa); ws["!cols"]=[{wch:20},{wch:44},{wch:12},{wch:12},{wch:10}];
+    XLSX.utils.book_append_sheet(wb,ws,"QUÉ FALTA");
+  };
+  if(onlyFalta){addFalta();return wb;}
+  sheetList().forEach(sh=>{
+    const rows=computed(sh.id); let ws;
+    if(sh.kind==="inv"){
+      const k=scaleOf(sh);
+      const aoa=[[sh.title.toUpperCase()],[sh.sub||""],[],[], ["ARTÍCULO","EXISTENCIAS",k!==1?`NECESIDADES (${sh.target} CIRUGÍAS)`:"NECESIDADES","FALTA","NOTAS"]];
+      ws=XLSX.utils.aoa_to_sheet(aoa);
+      rows.forEach((r,i)=>{
+        const R=6+i;
+        const cell=(c,v)=>{ if(v!==undefined&&v!==null&&v!=="") ws[c+R]=v; };
+        cell("A",{t:"s",v:r.n});
+        if(!r.g){
+          if(r.ev!=null&&!isNaN(r.ev)) cell("B", isExpr(r.e)?{t:"n",v:r.ev,f:String(r.e).replace(/^=/,"").replace(/,/g,".")}:{t:"n",v:r.ev});
+          if(r.nv!=null&&!isNaN(r.nv)) cell("C",{t:"n",v:r.nv});
+          cell("D",{t:"n",v:r.falta==null?(r.ev||0):r.falta,f:`B${R}-C${R}`});
+        } else if(r.nv!=null&&!isNaN(r.nv)){ cell("B",{t:"n",v:r.sum}); cell("C",{t:"n",v:r.nv}); cell("D",{t:"n",v:r.falta}); }
+        if(r.m) cell("E",{t:"s",v:r.m});
+      });
+      ws["!ref"]=`A1:E${Math.max(6,5+rows.length)}`; ws["!cols"]=[{wch:46},{wch:13},{wch:14},{wch:10},{wch:24}];
+    } else {
+      const head=sh.qtyFirst?[sh.qtyLabel||"CANTIDAD",sh.nameLabel||"ARTÍCULO","NOTAS"]:[sh.nameLabel||"ARTÍCULO",sh.qtyLabel||"CANTIDAD","NOTAS"];
+      const aoa=[[sh.title.toUpperCase()],[sh.sub||""],[],head.map(x=>x.toUpperCase())];
+      rows.forEach(r=>{ const v=evalExpr(r.q); const q=(v!=null&&!isNaN(v))?v:(r.q||""); aoa.push(sh.qtyFirst?[q,r.n,r.m||""]:[r.n,q,r.m||""]); });
+      if(sh.note) aoa.push([],["APUNTES: "+sh.note]);
+      ws=XLSX.utils.aoa_to_sheet(aoa); ws["!cols"]=sh.qtyFirst?[{wch:10},{wch:60},{wch:24}]:[{wch:46},{wch:16},{wch:24}];
+    }
+    XLSX.utils.book_append_sheet(wb,ws,sh.title.replace(/[\\\/\?\*\[\]:]/g," ").slice(0,31));
+  });
+  addFalta();
+  return wb;
+}
+async function exportXlsx(onlyFalta){
+  if(typeof XLSX==="undefined"){toast("No se pudo cargar el exportador de Excel");return;}
+  const d=new Date().toISOString().slice(0,10);
+  const data=XLSX.write(buildWorkbook(onlyFalta),{type:"array",bookType:"xlsx"});
+  const blob=new Blob([data],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download=(onlyFalta?"QUE_FALTA_SENEGAL_":"NECESIDADES_SENEGAL_")+d+".xlsx";
+  document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},4000);
+}
+function copyFalta(){
+  let last="", t="QUÉ FALTA – Almacén Senegal\n";
+  shortages().forEach(({sheet,r})=>{ if(sheet!==last){t+="\n"+sheet.toUpperCase()+"\n";last=sheet;} t+=`• ${r.n}: faltan ${fmt(-r.falta)}\n`; });
+  navigator.clipboard.writeText(t).then(()=>toast("Lista copiada"),()=>toast("No se pudo copiar; usa Exportar a Excel"));
+}
+
+// ---------- toast ----------
+let tt=null;
+function toast(msg){ let el=$("#toast"); if(!el){el=document.createElement("div");el.id="toast";el.className="toast";el.setAttribute("role","status");document.body.appendChild(el);} el.textContent=msg; el.hidden=false; clearTimeout(tt); tt=setTimeout(()=>el.hidden=true,2600); }
+
+// ---------- events ----------
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-tab],[data-act],[data-filter],[data-quick],[data-row]"); if(!t) return;
+  if(t.dataset.tab){cur=t.dataset.tab; localSet("tab",cur); query=""; filter="all"; render(); window.scrollTo({top:0}); return;}
+  if(t.dataset.filter){filter=t.dataset.filter; render(); return;}
+  if(t.dataset.quick){e.stopPropagation(); openDrawer(cur,t.dataset.quick,true); return;}
+  const a=t.dataset.act;
+  if(a==="close") return closeLayer();
+  if(a==="login") return canWrite? openLogout() : openLogin();
+  if(a==="dologin") return doLogin();
+  if(a==="logout"){ auth.signOut().then(()=>{closeLayer();toast("Has salido del modo editor");}); return; }
+  if(a==="seed") return seed();
+  if(a==="qadd") return quickApply(1);
+  if(a==="qsub") return quickApply(-1);
+  if(a==="save") return saveRow();
+  if(a==="del"){ $("#delzone").innerHTML=`<span class="confirm">¿Borrar este artículo? <button class="btn danger solid" data-act="delyes">Sí, borrar</button><button class="btn" data-act="delno">No</button></span>`; return; }
+  if(a==="delno"){ $("#delzone").innerHTML=`<button class="btn danger" data-act="del">Borrar</button>`; return; }
+  if(a==="delyes"){ const {sid,id}=openRow; patchRow(sid,id,{x:true}).then(ok=>{if(ok){toast("Artículo borrado");closeLayer();}}); return; }
+  if(a==="export") return exportXlsx(false);
+  if(a==="exportfalta") return exportXlsx(true);
+  if(a==="copyfalta") return copyFalta();
+  if(a==="resetscale") return write(cur,{target:+sheets[cur].base});
+  if(a==="sheetcfg") return sheetCfg();
+  if(a==="newsheet") return newSheet();
+  if(a==="nscreate") return createSheet();
+  if(a==="cfgsave"){ const p={title:$("#c_t").value.trim()||sheets[cur].title,sub:$("#c_s").value.trim()};
+      if($("#c_b")){const b=+$("#c_b").value||0; p.base=b; if(!sheets[cur].target||sheets[cur].target===sheets[cur].base) p.target=b;}
+      if($("#c_nl")){p.nameLabel=$("#c_nl").value.trim()||"Artículo"; p.qtyLabel=$("#c_ql").value.trim()||"Cantidad";}
+      write(cur,p).then(ok=>{if(ok){toast("Hoja actualizada");closeLayer();}}); return; }
+  if(a==="sheetdel"){ $("#delzone").innerHTML=`<span class="confirm">Se borrarán todos sus artículos. <button class="btn danger solid" data-act="sheetdelyes">Sí, borrar hoja</button><button class="btn" data-act="close">Cancelar</button></span>`; return; }
+  if(a==="sheetdelyes"){ db.ref("sheets/"+cur).remove().then(()=>{toast("Hoja borrada");closeLayer();delete sheets[cur];cur=(sheetList()[0]||{}).id||"";render();},()=>toast("No se pudo borrar la hoja")); return; }
+  if(t.dataset.row){ openDrawer(t.dataset.sid||cur,t.dataset.row,false); return; }
+});
+document.addEventListener("input",e=>{
+  const id=e.target.id;
+  if(id==="q"){query=e.target.value; render(); return;}
+  const map={a_e:"a_ec",a_d:"a_dc",a_q:"a_qc",d_e:"d_ec",d_d:"d_dc",d_q:"d_qc",d_quick:"d_quickc"};
+  if(map[id]){ const out=$("#"+map[id]); if(out) out.innerHTML=calcLabel(e.target.value); if(id==="d_e") e.target.dataset.dirty="1"; }
+});
+document.addEventListener("change",e=>{
+  if(e.target.id==="target"){ const v=Math.max(1,Math.round(+e.target.value||0)); write(cur,{target:v}); }
+});
+document.addEventListener("toggle",e=>{ if(e.target.id==="addbar") localSet("addopen",e.target.open?"1":"0"); },true);
+document.addEventListener("focusout",e=>{
+  if(e.target.id==="note"){ const v=e.target.value; if(v!==(sheets[cur].note||"")) write(cur,{note:v}).then(ok=>ok&&toast("Apuntes guardados")); }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&$("#layer").innerHTML) closeLayer();
+  if(e.key==="Enter"&&e.target.id==="d_quick"){e.preventDefault();quickApply(1);}
+  if(e.key==="Enter"&&e.target.id==="l_pw"){e.preventDefault();doLogin();}
+});
+document.addEventListener("submit",e=>{
+  if(e.target.id!=="addform") return; e.preventDefault();
+  const sh=sheets[cur]; const n=$("#a_n").value.trim(); if(!n) return;
+  const f={n};
+  if(sh.kind==="inv"){ f.e=$("#a_e").value.trim(); f.d=$("#a_d").value.trim();
+    if((f.e&&isNaN(evalExpr(f.e)))||(f.d&&isNaN(evalExpr(f.d)))){toast("Revisa el cálculo antes de añadir");return;} }
+  else f.q=$("#a_q").value.trim();
+  const rows=rowsOf(cur); const gsel=$("#a_g")?$("#a_g").value:"";
+  let o;
+  if(gsel){ const gi=rows.findIndex(r=>r.id===gsel); let j=gi+1; while(j<rows.length&&!rows[j].g) j++;
+    const prev=rows[j-1], next=rows[j]; o= next? (prev.o+next.o)/2 : prev.o+1; }
+  else o=(rows.length?rows[rows.length-1].o:0)+1;
+  f.o=o; const id=newId("n");
+  patchRow(cur,id,f).then(ok=>{ if(ok){ toast("Añadido: "+n); e.target.reset(); ["a_ec","a_dc","a_qc"].forEach(k=>{const x=$("#"+k); if(x) x.innerHTML="";}); $("#a_n").focus();
+    setTimeout(()=>{const el=document.querySelector(`[data-row="${id}"]`); if(el){el.classList.add("flash"); el.scrollIntoView({block:"center",behavior:"smooth"});}},250);} });
+});
+
+// ---------- login ----------
+function openLogin(){
+  $("#layer").innerHTML=`<div class="scrim" data-act="close"></div><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="lt">
+   <div class="dh"><h3 id="lt">Entrar para editar</h3><button class="close" data-act="close" aria-label="Cerrar">✕</button></div>
+   <div class="dbody"><p class="hint" style="margin:0">Cualquiera con el enlace puede consultar el almacén. Para cambiar datos hace falta la contraseña del equipo.</p>
+   <label class="f">Contraseña<input id="l_pw" type="password" autocomplete="current-password"></label><span class="calc" id="l_err"></span>
+   <div class="dfoot"><button class="btn primary" data-act="dologin">Entrar</button></div></div></aside>`;
+  setTimeout(()=>{const p=$("#l_pw"); if(p) p.focus();},50);
+}
+function openLogout(){
+  $("#layer").innerHTML=`<div class="scrim" data-act="close"></div><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="lo">
+   <div class="dh"><h3 id="lo">Modo editor</h3><button class="close" data-act="close" aria-label="Cerrar">✕</button></div>
+   <div class="dbody"><p style="margin:0">Estás editando. Los cambios se guardan al momento y los ve todo el equipo.</p>
+   <div class="dfoot"><button class="btn" data-act="logout">Salir del modo editor</button></div></div></aside>`;
+}
+function doLogin(){
+  const pw=$("#l_pw").value; if(!pw) return;
+  auth.signInWithEmailAndPassword(EDITOR_EMAIL,pw).then(()=>{closeLayer();toast("Modo editor activado");})
+   .catch(e=>{ $("#l_err").innerHTML=`<span class="err">${/network/i.test(e.code||"")?"Sin conexión. Inténtalo de nuevo.":"Contraseña incorrecta."}</span>`; });
+}
+async function seed(){
+  try{
+    const r=await fetch("datos-iniciales.json",{cache:"no-store"}); const j=await r.json();
+    await db.ref("sheets").set(j.sheets); toast("Datos del Excel cargados");
+  }catch(e){ toast("No se pudieron cargar los datos iniciales"); }
+}
+
+// ---------- boot ----------
+render();
+(function boot(){
+  if(typeof firebase==="undefined"){ $("#main").innerHTML=`<div class="empty">No se pudo cargar. Revisa la conexión a internet y recarga.</div>`; return; }
+  if(/PEGA_AQUI/.test(FIREBASE_CONFIG.apiKey)){
+    $("#sync").innerHTML="<b></b>Sin configurar"; $("#who").hidden=true;
+    $("#main").innerHTML=`<div class="setup"><h2 style="margin-top:0;font-family:var(--display);text-transform:uppercase">Falta conectar Firebase</h2>
+      <p>Abre <code>index.html</code>, busca <code>FIREBASE_CONFIG</code> y pega los datos de tu proyecto. Los pasos están en <code>LEEME.md</code>.</p></div>`;
+    return;
+  }
+  firebase.initializeApp(FIREBASE_CONFIG);
+  db=firebase.database(); auth=firebase.auth();
+  auth.onAuthStateChanged(u=>{
+    canWrite=!!u;
+    const w=$("#who"); w.textContent=canWrite?"✓ Editando":"Entrar para editar"; w.className="who"+(canWrite?" on":"");
+    if(openRow) closeLayer();
+    render();
+  });
+  db.ref(".info/connected").on("value",s=>{
+    const on=s.val()===true; $("#sync").className="sync"+(on?" live":"");
+    $("#sync").innerHTML="<b></b>"+(on?"En vivo":"Sin conexión");
+  });
+  db.ref("sheets").on("value",snap=>{
+    sheets=snap.val()||{}; loaded=true;
+    const editing=document.activeElement&&["note","a_n","a_e","a_d","a_q","target","l_pw"].includes(document.activeElement.id);
+    if(!editing) render(); else renderTabs();
+    if(openRow) refreshDrawerNumbers();
+  }, err=>{ $("#main").innerHTML=`<div class="empty">No se pueden leer los datos. Revisa las reglas de la base de datos (LEEME.md, paso 3).</div>`; });
+})();
+})();
+</script>
+<script>
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}
+</script>
+</body>
+</html>

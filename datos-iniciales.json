@@ -1,0 +1,5213 @@
+{
+ "sheets": {
+  "anestesia": {
+   "title": "Anestesia ´24",
+   "sub": "Inventario Sandiará ´24 · por baúles",
+   "kind": "inv",
+   "pos": 3,
+   "base": 350,
+   "target": 350,
+   "note": "",
+   "rows": {
+    "r001": {
+     "n": "BAÚL 9; VÍA AÉREA",
+     "e": "",
+     "d": "",
+     "o": 1,
+     "g": true
+    },
+    "r002": {
+     "n": "SET CRICO EMERGENCIA",
+     "e": "1",
+     "d": "",
+     "o": 2
+    },
+    "r003": {
+     "n": "VENTIMASK NIÑO",
+     "e": "9",
+     "d": "",
+     "o": 3
+    },
+    "r004": {
+     "n": "VENTIMASK ADULTO",
+     "e": "7",
+     "d": "",
+     "o": 4
+    },
+    "r005": {
+     "n": "NEBULIZADORES",
+     "e": "2",
+     "d": "",
+     "o": 5
+    },
+    "r006": {
+     "n": "ALARGADERA O2",
+     "e": "10",
+     "d": "",
+     "o": 6
+    },
+    "r007": {
+     "n": "LARINGOSCOPIO",
+     "e": "3",
+     "d": "",
+     "o": 7,
+     "m": "FALTAN PILAS"
+    },
+    "r008": {
+     "n": "PALAS LARINGO MILLER 0",
+     "e": "1",
+     "d": "",
+     "o": 8
+    },
+    "r009": {
+     "n": "PALAS LARINGO MILLER 2",
+     "e": "1",
+     "d": "",
+     "o": 9
+    },
+    "r010": {
+     "n": "PALAS LARINGO MacINTOSH 2",
+     "e": "1",
+     "d": "",
+     "o": 10
+    },
+    "r011": {
+     "n": "PALAS LARINGO MacINTOSH 3",
+     "e": "3",
+     "d": "",
+     "o": 11
+    },
+    "r012": {
+     "n": "PALAS LARINGO MacINTOSH 4",
+     "e": "2",
+     "d": "",
+     "o": 12
+    },
+    "r013": {
+     "n": "AMBÚ NEONATO",
+     "e": "5",
+     "d": "",
+     "o": 13
+    },
+    "r014": {
+     "n": "AMBÚ PEDIÁTRICO",
+     "e": "4",
+     "d": "",
+     "o": 14
+    },
+    "r015": {
+     "n": "AMBÚ ADULTO",
+     "e": "1",
+     "d": "",
+     "o": 15
+    },
+    "r016": {
+     "n": "MAPLESON C 1L",
+     "e": "1",
+     "d": "",
+     "o": 16
+    },
+    "r017": {
+     "n": "MAPLESON C 2L",
+     "e": "2",
+     "d": "",
+     "o": 17
+    },
+    "r018": {
+     "n": "MAPLESON F",
+     "e": "3",
+     "d": "",
+     "o": 18
+    },
+    "r019": {
+     "n": "TUBULADURAS RESPIRADOR 1 L",
+     "e": "1",
+     "d": "",
+     "o": 19
+    },
+    "r020": {
+     "n": "TUBULADURAS RESPIRADOR 2 L",
+     "e": "4",
+     "d": "",
+     "o": 20
+    },
+    "r021": {
+     "n": "FILTROS RESPIRADOR NEONATO",
+     "e": "7",
+     "d": "",
+     "o": 21
+    },
+    "r022": {
+     "n": "FILTROS RESPIRADOR PEDIÁTRICO",
+     "e": "7",
+     "d": "",
+     "o": 22
+    },
+    "r023": {
+     "n": "FILTROS RESPIRADOR ADULTO",
+     "e": "4",
+     "d": "",
+     "o": 23
+    },
+    "r024": {
+     "n": "AIRTRACK",
+     "e": "9",
+     "d": "",
+     "o": 24
+    },
+    "r025": {
+     "n": "MASCARILLA FACIAL ADULTO ROJO",
+     "e": "2",
+     "d": "",
+     "o": 25
+    },
+    "r026": {
+     "n": "MASCARILLA FACIAL ADULTO AZUL",
+     "e": "32",
+     "d": "",
+     "o": 26
+    },
+    "r027": {
+     "n": "MASCARILLA FACIAL ADULTO PATILL",
+     "e": "1",
+     "d": "",
+     "o": 27
+    },
+    "r028": {
+     "n": "MASCARILLA FACIAL INFANTIL Nº2 ROSAS",
+     "e": "7",
+     "d": "",
+     "o": 28
+    },
+    "r029": {
+     "n": "MASCARILLA FACIAL INFANTIL Nº3 VERDES",
+     "e": "5",
+     "d": "",
+     "o": 29
+    },
+    "r030": {
+     "n": "MASCARILLA FACIAL RN",
+     "e": "2",
+     "d": "",
+     "o": 30
+    },
+    "r031": {
+     "n": "GUEDEL NEONATO AZUL+ ROSA",
+     "e": "22",
+     "d": "",
+     "o": 31
+    },
+    "r032": {
+     "n": "GUEDEL PEDIÁTRICO GRIS",
+     "e": "17",
+     "d": "",
+     "o": 32
+    },
+    "r033": {
+     "n": "GUEDEL PEDIÁTRICO BLANCO",
+     "e": "16",
+     "d": "",
+     "o": 33
+    },
+    "r034": {
+     "n": "GUEDEL PEDIÁTRICO VIOLETA",
+     "e": "2",
+     "d": "",
+     "o": 34
+    },
+    "r035": {
+     "n": "GUEDEL PEDIÁTRICO AMARILLO",
+     "e": "2",
+     "d": "",
+     "o": 35
+    },
+    "r036": {
+     "n": "GUEDEL ADULTO VERDE",
+     "e": "14",
+     "d": "",
+     "o": 36
+    },
+    "r037": {
+     "n": "GUEDEL ADULTO Nº4 ROJO",
+     "e": "3",
+     "d": "",
+     "o": 37
+    },
+    "r038": {
+     "n": "GUEDEL ADULTO Nº5 LILA",
+     "e": "2",
+     "d": "",
+     "o": 38
+    },
+    "r039": {
+     "n": "GUEDEL ADULTO Nº6 VERDE",
+     "e": "1",
+     "d": "",
+     "o": 39
+    },
+    "r040": {
+     "n": "GAFAS NASALES ADULTO",
+     "e": "3",
+     "d": "",
+     "o": 40
+    },
+    "r041": {
+     "n": "GAFAS NASALES ADULTO CON CAPNÓGRAFO",
+     "e": "5",
+     "d": "",
+     "o": 41
+    },
+    "r042": {
+     "n": "GAFAS NASALES INFANTIL",
+     "e": "10",
+     "d": "",
+     "o": 42
+    },
+    "r043": {
+     "n": "GAFAS NASALES INFANTIL CON CAPNÓGRAFO",
+     "e": "7",
+     "d": "",
+     "o": 43
+    },
+    "r044": {
+     "n": "TUBOS ENDOTRAQUEALES Nº 2 SIN BALÓN",
+     "e": "1",
+     "d": "",
+     "o": 44
+    },
+    "r045": {
+     "n": "TUBOS ENDOTRAQUEALES 3 CON BALÓN",
+     "e": "1",
+     "d": "",
+     "o": 45
+    },
+    "r046": {
+     "n": "TUBOS ENDOTRAQUEALES 4 CON BALÓN",
+     "e": "2",
+     "d": "",
+     "o": 46
+    },
+    "r047": {
+     "n": "TUBOS ENDOTRAQUEALES 4.5 CON BALÓN",
+     "e": "3",
+     "d": "",
+     "o": 47
+    },
+    "r048": {
+     "n": "TUBOS ENDOTRAQUEALES 5 CON BALÓN ANILLADO",
+     "e": "3",
+     "d": "",
+     "o": 48
+    },
+    "r049": {
+     "n": "TUBOS ENDOTRAQUEALES 5 CON BALÓN ANILLADO",
+     "e": "2",
+     "d": "",
+     "o": 49
+    },
+    "r050": {
+     "n": "TUBOS ENDOTRAQUEALES 5,5 SIN BALÓN",
+     "e": "2",
+     "d": "",
+     "o": 50
+    },
+    "r051": {
+     "n": "TUBOS ENDOTRAQUEALES 5.5 CON BALÓN",
+     "e": "2",
+     "d": "",
+     "o": 51
+    },
+    "r052": {
+     "n": "TUBOS ENDOTRAQUEALES 6 CON BALÓN",
+     "e": "2",
+     "d": "",
+     "o": 52
+    },
+    "r053": {
+     "n": "TUBOS ENDOTRAQUEALES 6 SIN BALÓN",
+     "e": "1",
+     "d": "",
+     "o": 53
+    },
+    "r054": {
+     "n": "TUBOS ENDOTRAQUEALES 6.5 CON BALÓN",
+     "e": "2",
+     "d": "",
+     "o": 54
+    },
+    "r055": {
+     "n": "TUBOS ENDOTRAQUEALES 6.5 SIN BALÓN",
+     "e": "1",
+     "d": "",
+     "o": 55
+    },
+    "r056": {
+     "n": "TUBOS ENDOTRAQUEALES 7 CON BALÓN",
+     "e": "5",
+     "d": "",
+     "o": 56
+    },
+    "r057": {
+     "n": "TUBOS ENDOTRAQUEALES 7.5 CON BALÓN",
+     "e": "7",
+     "d": "",
+     "o": 57
+    },
+    "r058": {
+     "n": "TUBOS ENDOTRAQUEALES 8 CON BALÓN",
+     "e": "3",
+     "d": "",
+     "o": 58
+    },
+    "r059": {
+     "n": "TUBOS ENDOTRAQUEALES 9 CON BALÓN",
+     "e": "1",
+     "d": "",
+     "o": 59
+    },
+    "r060": {
+     "n": "TUBOS ENDOTRAQUEALES 9.5 CON BALÓN",
+     "e": "2",
+     "d": "",
+     "o": 60
+    },
+    "r061": {
+     "n": "FIADOR TUBO ADULTO",
+     "e": "1",
+     "d": "",
+     "o": 61
+    },
+    "r062": {
+     "n": "MASCARILLAS LARÍNGEAS 1.5",
+     "e": "2",
+     "d": "",
+     "o": 62
+    },
+    "r063": {
+     "n": "MASCARILLAS LARÍNGEAS 2",
+     "e": "3",
+     "d": "",
+     "o": 63
+    },
+    "r064": {
+     "n": "MASCARILLAS LARÍNGEAS 2.5",
+     "e": "8",
+     "d": "",
+     "o": 64
+    },
+    "r065": {
+     "n": "MASCARILLAS LARÍNGEAS 3",
+     "e": "3",
+     "d": "",
+     "o": 65
+    },
+    "r066": {
+     "n": "MASCARILLAS LARÍNGEAS 4",
+     "e": "3",
+     "d": "",
+     "o": 66
+    },
+    "r067": {
+     "n": "MASCARILLAS LARÍNGEAS 5",
+     "e": "2",
+     "d": "",
+     "o": 67
+    },
+    "r068": {
+     "n": "MASCARILLAS LARÍNGEAS IGEL 3",
+     "e": "4",
+     "d": "",
+     "o": 68
+    },
+    "r069": {
+     "n": "MASCARILLAS LARÍNGEAS IGEL 4",
+     "e": "2",
+     "d": "",
+     "o": 69
+    },
+    "r070": {
+     "n": "MASCARILLAS LARÍNGEAS FASTRACH 1",
+     "e": "1",
+     "d": "",
+     "o": 70
+    },
+    "r071": {
+     "n": "MASCARILLAS LARÍNGEAS FASTRACH 3",
+     "e": "2",
+     "d": "",
+     "o": 71
+    },
+    "r072": {
+     "n": "MASCARILLAS LARÍNGEAS FASTRACH 4",
+     "e": "1",
+     "d": "",
+     "o": 72
+    },
+    "r073": {
+     "n": "MASCARILLAS LARÍNGEAS FASTRACH 5",
+     "e": "1",
+     "d": "",
+     "o": 73
+    },
+    "r074": {
+     "n": "BAÚL 10; MEDICACIÓN ANESTESIA",
+     "e": "",
+     "d": "",
+     "o": 74,
+     "g": true
+    },
+    "r075": {
+     "n": "ATROPINA",
+     "e": "8",
+     "d": "",
+     "o": 75
+    },
+    "r076": {
+     "n": "PROPOFOL",
+     "e": "30",
+     "d": "",
+     "o": 76
+    },
+    "r077": {
+     "n": "ADRENALINA PRECARGADA",
+     "e": "28",
+     "d": "",
+     "o": 77
+    },
+    "r078": {
+     "n": "ADRENALINA IV",
+     "e": "10",
+     "d": "",
+     "o": 78
+    },
+    "r079": {
+     "n": "TRANDATE",
+     "e": "10",
+     "d": "",
+     "o": 79
+    },
+    "r080": {
+     "n": "SULFATO MAGNESIO",
+     "e": "15",
+     "d": "",
+     "o": 80
+    },
+    "r081": {
+     "n": "PARACETAMOL IV",
+     "e": "4",
+     "d": "",
+     "o": 81
+    },
+    "r082": {
+     "n": "PARACETAMOL VO 1 GR",
+     "e": "10",
+     "d": "",
+     "o": 82
+    },
+    "r083": {
+     "n": "IBUPROFENO IV",
+     "e": "2",
+     "d": "",
+     "o": 83
+    },
+    "r084": {
+     "n": "KETAMINA",
+     "e": "9",
+     "d": "",
+     "o": 84
+    },
+    "r085": {
+     "n": "VENTOLIN",
+     "e": "3",
+     "d": "",
+     "o": 85
+    },
+    "r086": {
+     "n": "ATROVENT",
+     "e": "1",
+     "d": "",
+     "o": 86
+    },
+    "r087": {
+     "n": "PREDNISONA 30 MG VO",
+     "e": "120",
+     "d": "",
+     "o": 87
+    },
+    "r088": {
+     "n": "FENTANILO",
+     "e": "7",
+     "d": "",
+     "o": 88
+    },
+    "r089": {
+     "n": "BICARBONATO",
+     "e": "1",
+     "d": "",
+     "o": 89
+    },
+    "r090": {
+     "n": "HEPARINA SÓDICA",
+     "e": "1",
+     "d": "",
+     "o": 90
+    },
+    "r091": {
+     "n": "ONDANSETRÓN",
+     "e": "32",
+     "d": "",
+     "o": 91
+    },
+    "r092": {
+     "n": "NOLOTIL IV",
+     "e": "10",
+     "d": "",
+     "o": 92
+    },
+    "r093": {
+     "n": "BRIDION",
+     "e": "7",
+     "d": "",
+     "o": 93
+    },
+    "r094": {
+     "n": "MANITOL 10 % 250 ML",
+     "e": "3",
+     "d": "",
+     "o": 94
+    },
+    "r095": {
+     "n": "METILPREDNISOLONA 125MG IV",
+     "e": "8",
+     "d": "",
+     "o": 95
+    },
+    "r096": {
+     "n": "HALOPERIDOL",
+     "e": "1",
+     "d": "",
+     "o": 96
+    },
+    "r097": {
+     "n": "NALOXONA",
+     "e": "4",
+     "d": "",
+     "o": 97
+    },
+    "r098": {
+     "n": "PRIMPERAN IV",
+     "e": "22",
+     "d": "",
+     "o": 98
+    },
+    "r099": {
+     "n": "BUSCAPINA IV",
+     "e": "5",
+     "d": "",
+     "o": 99
+    },
+    "r100": {
+     "n": "ANESTESICOS LOCALES",
+     "e": "",
+     "d": "",
+     "o": 100,
+     "g": true
+    },
+    "r101": {
+     "n": "MEPIVACAÍA 2%",
+     "e": "16",
+     "d": "",
+     "o": 101
+    },
+    "r102": {
+     "n": "LIDOCAÍNA 2%",
+     "e": "93+80+90",
+     "d": "",
+     "o": 102,
+     "m": "CAD 25/26/27"
+    },
+    "r103": {
+     "n": "LIDOCAÍNA 5 %",
+     "e": "22",
+     "d": "",
+     "o": 103
+    },
+    "r104": {
+     "n": "ROPIVACAÍNA 0,2%",
+     "e": "1",
+     "d": "",
+     "o": 104
+    },
+    "r105": {
+     "n": "ROPIVACAÍNA 0,75%",
+     "e": "149",
+     "d": "",
+     "o": 105
+    },
+    "r106": {
+     "n": "BUPIVACAÍNA 0.75%",
+     "e": "150",
+     "d": "",
+     "o": 106
+    },
+    "r107": {
+     "n": "HIALURONIDASA",
+     "e": "24",
+     "d": "",
+     "o": 107,
+     "m": "150? O 1500?"
+    },
+    "r108": {
+     "n": "PESO",
+     "e": "",
+     "d": "",
+     "o": 108
+    },
+    "r109": {
+     "n": "TERMÓMETRO",
+     "e": "",
+     "d": "",
+     "o": 109
+    },
+    "r110": {
+     "n": "BAÚL 11; HEMODINÁMICA",
+     "e": "",
+     "d": "",
+     "o": 110,
+     "g": true
+    },
+    "r111": {
+     "n": "PULSI PEGATINAS",
+     "e": "3",
+     "d": "",
+     "o": 111
+    },
+    "r112": {
+     "n": "PULSI PORTÁTIL",
+     "e": "8",
+     "d": "",
+     "o": 112
+    },
+    "r113": {
+     "n": "PULSI TRANSPORTE",
+     "e": "1",
+     "d": "",
+     "o": 113
+    },
+    "r114": {
+     "n": "CAUDALÍMETRO",
+     "e": "1",
+     "d": "",
+     "o": 114
+    },
+    "r115": {
+     "n": "SONDA ASPIRACIÓN AZUL F8",
+     "e": "4",
+     "d": "",
+     "o": 115
+    },
+    "r116": {
+     "n": "SONDA ASPIRACIÓN VERDE CLARO 6 F",
+     "e": "4",
+     "d": "",
+     "o": 116
+    },
+    "r117": {
+     "n": "SONDA ASPIRACIÓN NEGRA 10 F",
+     "e": "16",
+     "d": "",
+     "o": 117
+    },
+    "r118": {
+     "n": "SONDA ASPIRACIÓN BLANCA 12 F",
+     "e": "7",
+     "d": "",
+     "o": 118
+    },
+    "r119": {
+     "n": "SONDA ASPIRACIÓN VERDE OSCURO 14F",
+     "e": "8",
+     "d": "",
+     "o": 119
+    },
+    "r120": {
+     "n": "SONDA ASPIRACIÓN NARANJA 16F",
+     "e": "9",
+     "d": "",
+     "o": 120
+    },
+    "r121": {
+     "n": "SONDA ASPIRACIÓN ROJA 18F",
+     "e": "10",
+     "d": "",
+     "o": 121
+    },
+    "r122": {
+     "n": "YANKAUER",
+     "e": "2",
+     "d": "",
+     "o": 122
+    },
+    "r123": {
+     "n": "SONDAS NASOGÁSTRICAS",
+     "e": "7",
+     "d": "",
+     "o": 123
+    },
+    "r124": {
+     "n": "DESFIBRILADOR",
+     "e": "1",
+     "d": "",
+     "o": 124
+    },
+    "r125": {
+     "n": "ELECTRODOS",
+     "e": "150+42",
+     "d": "",
+     "o": 125
+    },
+    "r126": {
+     "n": "FOGARTY",
+     "e": "2",
+     "d": "",
+     "o": 126
+    },
+    "r127": {
+     "n": "GEL CONDUCTOR",
+     "e": "1",
+     "d": "",
+     "o": 127
+    },
+    "r128": {
+     "n": "FONENDO",
+     "e": "1",
+     "d": "",
+     "o": 128
+    },
+    "r129": {
+     "n": "ALMOHADA",
+     "e": "1",
+     "d": "",
+     "o": 129
+    },
+    "r130": {
+     "n": "DONUT",
+     "e": "2",
+     "d": "",
+     "o": 130
+    },
+    "r131": {
+     "n": "ASPIRADOR",
+     "e": "1",
+     "d": "",
+     "o": 131
+    },
+    "r132": {
+     "n": "ALARGADERA ASPIRACIÓN",
+     "e": "1",
+     "d": "",
+     "o": 132
+    },
+    "r133": {
+     "n": "PIEZA CONEXIÓN ASPIRADOR",
+     "e": "11",
+     "d": "",
+     "o": 133
+    },
+    "r134": {
+     "n": "AGUJAS BLOQUEO 35MM",
+     "e": "1",
+     "d": "",
+     "o": 134
+    },
+    "r135": {
+     "n": "AGUJAS BLOQUEO 50MM",
+     "e": "7",
+     "d": "",
+     "o": 135
+    },
+    "r136": {
+     "n": "AGUJAS BLOQUEO 80MM",
+     "e": "16",
+     "d": "",
+     "o": 136
+    },
+    "r137": {
+     "n": "AGUJAS BLOQUEO 100 MM",
+     "e": "4",
+     "d": "",
+     "o": 137
+    },
+    "r138": {
+     "n": "AGUJAS BLOQUEO 150MM",
+     "e": "7",
+     "d": "",
+     "o": 138
+    },
+    "r139": {
+     "n": "ALARGADERAS VÍA",
+     "e": "5",
+     "d": "",
+     "o": 139
+    },
+    "r140": {
+     "n": "LATIGUILLOS",
+     "e": "33",
+     "d": "",
+     "o": 140
+    },
+    "r141": {
+     "n": "SISTEMAS SUERO",
+     "e": "88",
+     "d": "",
+     "o": 141
+    },
+    "r142": {
+     "n": "DOSIFLOW",
+     "e": "13",
+     "d": "",
+     "o": 142
+    },
+    "r143": {
+     "n": "SISTEMAS SUERO PEDIÁTRICO",
+     "e": "13",
+     "d": "",
+     "o": 143
+    },
+    "r144": {
+     "n": "LLAVES TRES PASOS",
+     "e": "24",
+     "d": "",
+     "o": 144
+    },
+    "r145": {
+     "n": "TAPONES ROJOS",
+     "e": "26",
+     "d": "",
+     "o": 145
+    },
+    "r146": {
+     "n": "TAPONES HEPARINIZADOS",
+     "e": "9",
+     "d": "",
+     "o": 146
+    },
+    "r147": {
+     "n": "ABOCATH 26 G",
+     "e": "3",
+     "d": "",
+     "o": 147
+    },
+    "r148": {
+     "n": "ABOCATH 24 G",
+     "e": "27",
+     "d": "",
+     "o": 148
+    },
+    "r149": {
+     "n": "ABOCATH 22 G",
+     "e": "58",
+     "d": "",
+     "o": 149
+    },
+    "r150": {
+     "n": "ABOCATH 20 G",
+     "e": "18",
+     "d": "",
+     "o": 150
+    },
+    "r151": {
+     "n": "ABOCATH 18 G",
+     "e": "35",
+     "d": "",
+     "o": 151
+    },
+    "r152": {
+     "n": "COMPRESORES",
+     "e": "19",
+     "d": "",
+     "o": 152
+    },
+    "r153": {
+     "n": "APÓSITO VÍA ADULTO",
+     "e": "105",
+     "d": "",
+     "o": 153
+    },
+    "r154": {
+     "n": "APÓSITO VÍA INFANTIL",
+     "e": "13",
+     "d": "",
+     "o": 154
+    },
+    "r155": {
+     "n": "FÉRULA VÍA",
+     "e": "4",
+     "d": "",
+     "o": 155
+    },
+    "r156": {
+     "n": "AGUJA CARGA",
+     "e": "242",
+     "d": "",
+     "o": 156
+    },
+    "r157": {
+     "n": "SSF 100 ML",
+     "e": "9",
+     "d": "",
+     "o": 157
+    },
+    "r158": {
+     "n": "SSF 10 ML",
+     "e": "20",
+     "d": "",
+     "o": 158
+    },
+    "r159": {
+     "n": "AGUJAS PERIBULBARES 27G X 22 MM",
+     "e": "160",
+     "d": "",
+     "o": 159
+    },
+    "r160": {
+     "n": "AGUJAS PERIBULBARES 25 G X 22 MM",
+     "e": "120+27",
+     "d": "",
+     "o": 160
+    },
+    "r161": {
+     "n": "AGUJAS PERIBULBARES 25 GX 25 MM",
+     "e": "20",
+     "d": "",
+     "o": 161
+    },
+    "r162": {
+     "n": "AGUJAS PERIBULBARES25 G X 32 MM",
+     "e": "110+6",
+     "d": "",
+     "o": 162
+    },
+    "r163": {
+     "n": "AGUJAS RETROBULBARES 25G X 38 MM",
+     "e": "140+10+8+72+5",
+     "d": "",
+     "o": 163
+    },
+    "r164": {
+     "n": "BALÓN HONNAN",
+     "e": "6",
+     "d": "",
+     "o": 164
+    },
+    "r165": {
+     "n": "AGUJAS RAQUIS 25G",
+     "e": "4",
+     "d": "",
+     "o": 165
+    }
+   }
+  },
+  "cajas": {
+   "title": "Cajas almacén",
+   "sub": "Cajas del almacén de Sandiará ´24",
+   "kind": "list",
+   "pos": 5,
+   "nameLabel": "Contenido",
+   "qtyLabel": "Caja nº",
+   "qtyFirst": true,
+   "note": "Cajas 1-20 grandes · Cajas 21-30 pequeñas",
+   "rows": {
+    "r001": {
+     "n": "ESTERILIZACIÓN",
+     "q": "1",
+     "o": 1
+    },
+    "r002": {
+     "n": "PREMEDICACIÓN(PACO MURCIA)+SUTURA+QX",
+     "q": "2",
+     "o": 2
+    },
+    "r003": {
+     "n": "CARTUCHOS QX",
+     "q": "3",
+     "o": 3
+    },
+    "r004": {
+     "n": "CUCHILLETES QX",
+     "q": "4",
+     "o": 4
+    },
+    "r005": {
+     "n": "QX",
+     "q": "5",
+     "o": 5
+    },
+    "r006": {
+     "n": "LÁMPARA DE HENDIDURA BUENAS",
+     "q": "6",
+     "o": 6
+    },
+    "r007": {
+     "n": "AGUJAS",
+     "q": "7",
+     "o": 7
+    },
+    "r008": {
+     "n": "EQUIPOS DE OFTALMOLOGÍA PORTATILES Y DE MANO + ALARGADERAS Y OTROS.   AUTO+KFR",
+     "q": "8",
+     "o": 8
+    },
+    "r009": {
+     "n": "ANESTESIA VÍA AÉREA",
+     "q": "9",
+     "o": 9
+    },
+    "r010": {
+     "n": "ANESTESIA MEDICACIÓN ANESTESIA",
+     "q": "10",
+     "o": 10
+    },
+    "r011": {
+     "n": "ANESTESIA HEMODINÁMICA",
+     "q": "11",
+     "o": 11
+    },
+    "r012": {
+     "n": "JERINGAS",
+     "q": "12",
+     "o": 12
+    },
+    "r013": {
+     "n": "BATAS/GORROS",
+     "q": "13",
+     "o": 13
+    },
+    "r014": {
+     "n": "CASSETE SOVERING+I/A+POPURRI CONSULTA. AUTO PORTATIL + BINOCULAR ANTÍGUO",
+     "q": "14",
+     "o": 14
+    },
+    "r015": {
+     "n": "COLIRIOS",
+     "q": "15",
+     "o": 15
+    },
+    "r016": {
+     "n": "SELLADORA",
+     "q": "16",
+     "o": 16
+    },
+    "r017": {
+     "n": "KERATÓMETRO PORTÁTIL +OFTALMOSCOPIO VIEJO+ BIÓMETRO VIEJO+BINOCULAR ENCHUF.  AUTO + K",
+     "q": "17",
+     "o": 17
+    },
+    "r018": {
+     "n": "PEDALES Y CABEZALES MICROSCOPIO",
+     "q": "18",
+     "o": 18
+    },
+    "r019": {
+     "n": "GUANTES",
+     "q": "19",
+     "o": 19
+    },
+    "r020": {
+     "n": "PAÑOS PEQUEÑOS+GORROS+I/A+INYECTORES AST",
+     "q": "20",
+     "o": 20
+    },
+    "r021": {
+     "n": "POPURRÍ",
+     "q": "21",
+     "o": 21
+    },
+    "r022": {
+     "n": "????",
+     "q": "22",
+     "o": 22
+    },
+    "r023": {
+     "n": "CACHARROS",
+     "q": "23",
+     "o": 23
+    },
+    "r024": {
+     "n": "GASAS ESTÉRILES",
+     "q": "24",
+     "o": 24
+    },
+    "r025": {
+     "n": "ESTERILIZACIÓN MALE. BOTES + ALARGADERAS",
+     "q": "25",
+     "o": 25
+    },
+    "r026": {
+     "n": "CABEZA Y PEDAL DE MICRO + ESTABILIZADOR",
+     "q": "26",
+     "o": 26
+    },
+    "r027": {
+     "n": "JUAN ANTONIO",
+     "q": "27",
+     "o": 27
+    },
+    "r028": {
+     "n": "POPURRÍ",
+     "q": "28",
+     "o": 28
+    },
+    "r029": {
+     "n": "JUAN ANTONIO",
+     "q": "29",
+     "o": 29
+    },
+    "r030": {
+     "n": "QX     PTAS + CAPUCHONES INFINITY Y AMO",
+     "q": "30",
+     "o": 30
+    }
+   }
+  },
+  "comida": {
+   "title": "Caja rosa comida",
+   "sub": "Contenedor rosa de comida y enseres",
+   "kind": "list",
+   "pos": 7,
+   "nameLabel": "Artículo",
+   "qtyLabel": "Cantidad",
+   "qtyFirst": false,
+   "note": "",
+   "rows": {
+    "r001": {
+     "n": "CAFÉ DESCAFEINAD",
+     "q": "22",
+     "o": 1
+    },
+    "r002": {
+     "n": "CAFÉ",
+     "q": "40",
+     "o": 2
+    },
+    "r003": {
+     "n": "MEJILLONES",
+     "q": "2 LATAS",
+     "o": 3
+    },
+    "r004": {
+     "n": "PATÉ",
+     "q": "4 LATAS",
+     "o": 4
+    },
+    "r005": {
+     "n": "TOMATE ENTERO",
+     "q": "1 LATA 1 KG",
+     "o": 5
+    },
+    "r006": {
+     "n": "ATÚN",
+     "q": "6 LATAS",
+     "o": 6
+    },
+    "r007": {
+     "n": "VARIANTES",
+     "q": "1 LATA 1 KG",
+     "o": 7
+    },
+    "r008": {
+     "n": "ACEITUNAS RELLENAS",
+     "q": "1 BOTE",
+     "o": 8
+    },
+    "r009": {
+     "n": "CAFÉ MARCILLA",
+     "q": "10 CÁPSULAS",
+     "o": 9
+    },
+    "r010": {
+     "n": "LÁMPARA CON BOMBILLA",
+     "q": "1",
+     "o": 10
+    },
+    "r011": {
+     "n": "REGLETA",
+     "q": "2",
+     "o": 11
+    },
+    "r012": {
+     "n": "GANCHOS ADHESIVOS",
+     "q": "2",
+     "o": 12
+    },
+    "r013": {
+     "n": "INSECTICIDA",
+     "q": "2",
+     "o": 13
+    },
+    "r014": {
+     "n": "PASTA DE DIENTES",
+     "q": "1",
+     "o": 14
+    },
+    "r015": {
+     "n": "TOALLA DE BAÑO",
+     "q": "1",
+     "o": 15
+    },
+    "r016": {
+     "n": "DETERGENTE CONCEMTRADO",
+     "q": "1 PEQUEÑO",
+     "o": 16
+    },
+    "r017": {
+     "n": "MECHEROS",
+     "q": "4",
+     "o": 17
+    },
+    "r018": {
+     "n": "ENCHUFE MOSQUITOS",
+     "q": "2",
+     "o": 18
+    },
+    "r019": {
+     "n": "AZUL CISTERNA",
+     "q": "4",
+     "o": 19
+    },
+    "r020": {
+     "n": "DESODORANTE SPRAY",
+     "q": "1",
+     "o": 20
+    },
+    "r021": {
+     "n": "ESPONJA",
+     "q": "1",
+     "o": 21
+    },
+    "r022": {
+     "n": "PROTECTOR SOLAR",
+     "q": "1",
+     "o": 22
+    }
+   }
+  },
+  "consulta": {
+   "title": "Consulta ´25",
+   "sub": "Inventario Sandiará ´25 · Necesidades para 350 cirugías",
+   "kind": "inv",
+   "pos": 2,
+   "base": 350,
+   "target": 350,
+   "note": "",
+   "rows": {
+    "r001": {
+     "n": "Coli. ANTIBIOTICO &",
+     "e": "",
+     "d": "350",
+     "o": 1,
+     "g": true
+    },
+    "r002": {
+     "n": "Cloranfenicol",
+     "e": "",
+     "d": "",
+     "o": 2
+    },
+    "r003": {
+     "n": "Exocin",
+     "e": "",
+     "d": "",
+     "o": 3
+    },
+    "r004": {
+     "n": "Gentamicina",
+     "e": "",
+     "d": "",
+     "o": 4
+    },
+    "r005": {
+     "n": "Oftacilox",
+     "e": "",
+     "d": "",
+     "o": 5
+    },
+    "r006": {
+     "n": "Oftalmowell",
+     "e": "",
+     "d": "",
+     "o": 6
+    },
+    "r007": {
+     "n": "Tobrabact",
+     "e": "",
+     "d": "",
+     "o": 7
+    },
+    "r008": {
+     "n": "Tobrex",
+     "e": "17",
+     "d": "",
+     "o": 8
+    },
+    "r009": {
+     "n": "Ursitan",
+     "e": "",
+     "d": "",
+     "o": 9
+    },
+    "r010": {
+     "n": "Vigamox",
+     "e": "19",
+     "d": "20",
+     "o": 10
+    },
+    "r011": {
+     "n": "Azydrop",
+     "e": "",
+     "d": "200",
+     "o": 11
+    },
+    "r012": {
+     "n": "oculaflox monodosis",
+     "e": "",
+     "d": "",
+     "o": 12
+    },
+    "r013": {
+     "n": "Coli. Corticoides",
+     "e": "",
+     "d": "350",
+     "o": 13,
+     "g": true
+    },
+    "r014": {
+     "n": "Dexametasona &",
+     "e": "8+85",
+     "d": "155",
+     "o": 14
+    },
+    "r015": {
+     "n": "Pred forte",
+     "e": "",
+     "d": "",
+     "o": 15
+    },
+    "r016": {
+     "n": "Maxidex",
+     "e": "",
+     "d": "",
+     "o": 16
+    },
+    "r017": {
+     "n": "Dexafree",
+     "e": "1280",
+     "d": "20",
+     "o": 17
+    },
+    "r018": {
+     "n": "Isoptoflucon/FML &",
+     "e": "",
+     "d": "234",
+     "o": 18
+    },
+    "r019": {
+     "n": "Coli.Combina.C+A",
+     "e": "",
+     "d": "550",
+     "o": 19,
+     "g": true
+    },
+    "r020": {
+     "n": "Tobradex &",
+     "e": "1",
+     "d": "541",
+     "o": 20
+    },
+    "r021": {
+     "n": "Gentadexa",
+     "e": "1",
+     "d": "",
+     "o": 21
+    },
+    "r022": {
+     "n": "MAXITROL",
+     "e": "",
+     "d": "",
+     "o": 22
+    },
+    "r023": {
+     "n": "NETDEX MONODOSIS",
+     "e": "",
+     "d": "",
+     "o": 23
+    },
+    "r024": {
+     "n": "Ducressa",
+     "e": "",
+     "d": "",
+     "o": 24
+    },
+    "r025": {
+     "n": "Pomadas",
+     "e": "",
+     "d": "350",
+     "o": 25,
+     "g": true
+    },
+    "r026": {
+     "n": "Antiedema",
+     "e": "35",
+     "d": "150",
+     "o": 26
+    },
+    "r027": {
+     "n": "De Icol &",
+     "e": "10",
+     "d": "113",
+     "o": 27
+    },
+    "r028": {
+     "n": "Edenight",
+     "e": "",
+     "d": "",
+     "o": 28
+    },
+    "r029": {
+     "n": "Dexametasona &",
+     "e": "1+25",
+     "d": "275",
+     "o": 29
+    },
+    "r030": {
+     "n": "Terracortrill &",
+     "e": "",
+     "d": "46",
+     "o": 30
+    },
+    "r031": {
+     "n": "Tobradex",
+     "e": "2+79",
+     "d": "",
+     "o": 31
+    },
+    "r032": {
+     "n": "Cloranfenicol",
+     "e": "",
+     "d": "",
+     "o": 32
+    },
+    "r033": {
+     "n": "Eritromicina",
+     "e": "20",
+     "d": "",
+     "o": 33
+    },
+    "r034": {
+     "n": "Gentamicina",
+     "e": "",
+     "d": "",
+     "o": 34
+    },
+    "r035": {
+     "n": "Hidrocortisona",
+     "e": "4",
+     "d": "",
+     "o": 35
+    },
+    "r036": {
+     "n": "Oftacilox",
+     "e": "",
+     "d": "",
+     "o": 36
+    },
+    "r037": {
+     "n": "Prednisona Neomi.",
+     "e": "10",
+     "d": "",
+     "o": 37
+    },
+    "r038": {
+     "n": "Terramicina",
+     "e": "10",
+     "d": "",
+     "o": 38
+    },
+    "r039": {
+     "n": "Tobrex",
+     "e": "10",
+     "d": "",
+     "o": 39
+    },
+    "r040": {
+     "n": "Oftalmowell",
+     "e": "",
+     "d": "",
+     "o": 40
+    },
+    "r041": {
+     "n": "AQUORAL LUBRI NOCHE",
+     "e": "",
+     "d": "",
+     "o": 41
+    },
+    "r042": {
+     "n": "AINES",
+     "e": "",
+     "d": "400",
+     "o": 42,
+     "g": true
+    },
+    "r043": {
+     "n": "Acular",
+     "e": "",
+     "d": "",
+     "o": 43
+    },
+    "r044": {
+     "n": "Dicloabak",
+     "e": "",
+     "d": "",
+     "o": 44
+    },
+    "r045": {
+     "n": "Diclofenaco Lepori &",
+     "e": "6",
+     "d": "532",
+     "o": 45
+    },
+    "r046": {
+     "n": "DICLOFENACO UNIDOSIS",
+     "e": "",
+     "d": "",
+     "o": 46
+    },
+    "r047": {
+     "n": "Voltaren Colirio",
+     "e": "",
+     "d": "",
+     "o": 47
+    },
+    "r048": {
+     "n": "Yelox",
+     "e": "",
+     "d": "",
+     "o": 48
+    },
+    "r049": {
+     "n": "Hipotensores",
+     "e": "",
+     "d": "300",
+     "o": 49,
+     "g": true
+    },
+    "r050": {
+     "n": "Alfadine",
+     "e": "",
+     "d": "",
+     "o": 50
+    },
+    "r051": {
+     "n": "Alphagan",
+     "e": "",
+     "d": "",
+     "o": 51
+    },
+    "r052": {
+     "n": "Arteoptic",
+     "e": "",
+     "d": "",
+     "o": 52
+    },
+    "r053": {
+     "n": "Azarga o Cosopt &",
+     "e": "",
+     "d": "195",
+     "o": 53
+    },
+    "r054": {
+     "n": "Azopt, trusopt &",
+     "e": "",
+     "d": "106",
+     "o": 54
+    },
+    "r055": {
+     "n": "Combigan",
+     "e": "",
+     "d": "",
+     "o": 55
+    },
+    "r056": {
+     "n": "Cosopt",
+     "e": "",
+     "d": "",
+     "o": 56
+    },
+    "r057": {
+     "n": "Cusimolol 0,5, timoftol, timabak &",
+     "e": "",
+     "d": "133",
+     "o": 57
+    },
+    "r058": {
+     "n": "Duokopt",
+     "e": "",
+     "d": "",
+     "o": 58
+    },
+    "r059": {
+     "n": "Duotrav",
+     "e": "",
+     "d": "",
+     "o": 59
+    },
+    "r060": {
+     "n": "Elebloc",
+     "e": "",
+     "d": "",
+     "o": 60
+    },
+    "r061": {
+     "n": "Ganfort",
+     "e": "",
+     "d": "",
+     "o": 61
+    },
+    "r062": {
+     "n": "Latanoprost",
+     "e": "",
+     "d": "",
+     "o": 62
+    },
+    "r063": {
+     "n": "Lopimax",
+     "e": "",
+     "d": "",
+     "o": 63
+    },
+    "r064": {
+     "n": "Lumigan",
+     "e": "",
+     "d": "",
+     "o": 64
+    },
+    "r065": {
+     "n": "Monoprost",
+     "e": "",
+     "d": "",
+     "o": 65
+    },
+    "r066": {
+     "n": "Monoprost unidosis",
+     "e": "",
+     "d": "",
+     "o": 66
+    },
+    "r067": {
+     "n": "Saflutan",
+     "e": "",
+     "d": "",
+     "o": 67
+    },
+    "r068": {
+     "n": "Simbrinza",
+     "e": "",
+     "d": "",
+     "o": 68
+    },
+    "r069": {
+     "n": "Timabak",
+     "e": "",
+     "d": "",
+     "o": 69
+    },
+    "r070": {
+     "n": "TIMOFTOL",
+     "e": "",
+     "d": "",
+     "o": 70
+    },
+    "r071": {
+     "n": "Trusopt",
+     "e": "",
+     "d": "",
+     "o": 71
+    },
+    "r072": {
+     "n": "timolol unidosis",
+     "e": "",
+     "d": "",
+     "o": 72
+    },
+    "r073": {
+     "n": "Xalacon",
+     "e": "",
+     "d": "",
+     "o": 73
+    },
+    "r074": {
+     "n": "BRIMUERA 2 ML",
+     "e": "",
+     "d": "",
+     "o": 74
+    },
+    "r075": {
+     "n": "Coli.Midriaticos",
+     "e": "",
+     "d": "",
+     "o": 75,
+     "g": true
+    },
+    "r076": {
+     "n": "Atropina 1%",
+     "e": "23",
+     "d": "25",
+     "o": 76
+    },
+    "r077": {
+     "n": "Cicloplegico 1%",
+     "e": "25",
+     "d": "50",
+     "o": 77
+    },
+    "r078": {
+     "n": "Fenilefrina 10%",
+     "e": "",
+     "d": "15",
+     "o": 78
+    },
+    "r079": {
+     "n": "Tropicamida",
+     "e": "5+14",
+     "d": "40",
+     "o": 79
+    },
+    "r080": {
+     "n": "feni minims",
+     "e": "",
+     "d": "",
+     "o": 80
+    },
+    "r081": {
+     "n": "Lágrima",
+     "e": "",
+     "d": "",
+     "o": 81,
+     "g": true
+    },
+    "r082": {
+     "n": "Siccafluid",
+     "e": "",
+     "d": "",
+     "o": 82,
+     "m": "UNIDOSIS"
+    },
+    "r083": {
+     "n": "HYABAK",
+     "e": "",
+     "d": "",
+     "o": 83
+    },
+    "r084": {
+     "n": "Anestésicos",
+     "e": "",
+     "d": "",
+     "o": 84,
+     "g": true
+    },
+    "r085": {
+     "n": "Anestesico Doble",
+     "e": "",
+     "d": "50",
+     "o": 85
+    },
+    "r086": {
+     "n": "Fluotest",
+     "e": "11",
+     "d": "35",
+     "o": 86
+    },
+    "r087": {
+     "n": "Fluoresceína ind. y tiras",
+     "e": "",
+     "d": "",
+     "o": 87
+    },
+    "r088": {
+     "n": "Mepivacaína 2 % 10 ml",
+     "e": "88",
+     "d": "50",
+     "o": 88
+    },
+    "r089": {
+     "n": "MEPIVACAÍNA 1 % 10 ML",
+     "e": "",
+     "d": "20",
+     "o": 89
+    },
+    "r090": {
+     "n": "Lidocaina 2% ampo.",
+     "e": "273+90",
+     "d": "400",
+     "o": 90
+    },
+    "r091": {
+     "n": "lidocaina 5% ampo.",
+     "e": "12+22",
+     "d": "20",
+     "o": 91
+    },
+    "r092": {
+     "n": "Hialuronidasa 1500 U.I",
+     "e": "47",
+     "d": "",
+     "o": 92
+    },
+    "r093": {
+     "n": "Hialuronidasa 150 U.I",
+     "e": "11",
+     "d": "400",
+     "o": 93
+    },
+    "r094": {
+     "n": "BUPIVACAÍNA 7.5",
+     "e": "128",
+     "d": "400",
+     "o": 94
+    },
+    "r095": {
+     "n": "BUPIVACAÍNA 0.5",
+     "e": "44",
+     "d": "",
+     "o": 95
+    },
+    "r096": {
+     "n": "ROPIVACAÍNA 7.5",
+     "e": "148+30",
+     "d": "",
+     "o": 96
+    },
+    "r097": {
+     "n": "BUPIVACAÍNA HIPERBÁRICA",
+     "e": "",
+     "d": "",
+     "o": 97
+    },
+    "r098": {
+     "n": "CORTICOIDES",
+     "e": "",
+     "d": "",
+     "o": 98,
+     "g": true
+    },
+    "r099": {
+     "n": "ACTOCORTINA 100",
+     "e": "1",
+     "d": "20",
+     "o": 99
+    },
+    "r100": {
+     "n": "Celestone IV",
+     "e": "",
+     "d": "20",
+     "o": 100
+    },
+    "r101": {
+     "n": "Dacortin 30 mg.",
+     "e": "",
+     "d": "",
+     "o": 101
+    },
+    "r102": {
+     "n": "DEXAMETASONA 4 MG",
+     "e": "",
+     "d": "20",
+     "o": 102
+    },
+    "r103": {
+     "n": "DEXAMETASONA V.O 8 MG",
+     "e": "",
+     "d": "",
+     "o": 103
+    },
+    "r104": {
+     "n": "DEXAMETASONA 40 MG. V.O",
+     "e": "",
+     "d": "20",
+     "o": 104
+    },
+    "r105": {
+     "n": "PREDNISONA 10 MG VO",
+     "e": "",
+     "d": "",
+     "o": 105
+    },
+    "r106": {
+     "n": "PREDNISONA 30MG. ORAL",
+     "e": "120+35+5",
+     "d": "",
+     "o": 106
+    },
+    "r107": {
+     "n": "SOLUMODERIN 125",
+     "e": "",
+     "d": "",
+     "o": 107
+    },
+    "r108": {
+     "n": "Trigon Depot &",
+     "e": "7+195+9",
+     "d": "300",
+     "o": 108
+    },
+    "r109": {
+     "n": "URBASON 20",
+     "e": "3",
+     "d": "20",
+     "o": 109
+    },
+    "r110": {
+     "n": "URBASON 250",
+     "e": "",
+     "d": "20",
+     "o": 110
+    },
+    "r111": {
+     "n": "URBASON 40",
+     "e": "6",
+     "d": "20",
+     "o": 111
+    },
+    "r112": {
+     "n": "METILPOREDNISOLONA 125 MGIV",
+     "e": "",
+     "d": "",
+     "o": 112
+    },
+    "r113": {
+     "n": "ANTIBIÓTICOS",
+     "e": "",
+     "d": "",
+     "o": 113,
+     "g": true
+    },
+    "r114": {
+     "n": "ACETAZOLAMINA VO",
+     "e": "",
+     "d": "80",
+     "o": 114
+    },
+    "r115": {
+     "n": "AMIKACINA 500MG",
+     "e": "",
+     "d": "4",
+     "o": 115
+    },
+    "r116": {
+     "n": "AMOXICILINA 1GR IV",
+     "e": "",
+     "d": "10",
+     "o": 116
+    },
+    "r117": {
+     "n": "AMOXICILINA 1GR VO",
+     "e": "3",
+     "d": "10",
+     "o": 117
+    },
+    "r118": {
+     "n": "Amoxicilina 750MG VO",
+     "e": "",
+     "d": "",
+     "o": 118
+    },
+    "r119": {
+     "n": "Amoxicilina+Clavulani. VO",
+     "e": "",
+     "d": "10",
+     "o": 119
+    },
+    "r120": {
+     "n": "Augmentine 2GR IV",
+     "e": "",
+     "d": "10",
+     "o": 120
+    },
+    "r121": {
+     "n": "AugmentIne 500 VO",
+     "e": "",
+     "d": "10",
+     "o": 121
+    },
+    "r122": {
+     "n": "AUGMENTINE 875 VO",
+     "e": "",
+     "d": "10",
+     "o": 122
+    },
+    "r123": {
+     "n": "Azitromicia 500 v.o",
+     "e": "700",
+     "d": "225",
+     "o": 123
+    },
+    "r124": {
+     "n": "Azitromicina 250 mg",
+     "e": "",
+     "d": "",
+     "o": 124
+    },
+    "r125": {
+     "n": "Baycip (ciprofloxacino)",
+     "e": "",
+     "d": "10",
+     "o": 125
+    },
+    "r126": {
+     "n": "Cefazolina 1GM",
+     "e": "",
+     "d": "10",
+     "o": 126
+    },
+    "r127": {
+     "n": "Cefazolina 2 gr",
+     "e": "",
+     "d": "",
+     "o": 127
+    },
+    "r128": {
+     "n": "Cefixima 400 mg vo",
+     "e": "",
+     "d": "",
+     "o": 128
+    },
+    "r129": {
+     "n": "CEFTAZIDIMA",
+     "e": "",
+     "d": "10",
+     "o": 129
+    },
+    "r130": {
+     "n": "CEFUROX. PROKAM 50MG",
+     "e": "",
+     "d": "",
+     "o": 130
+    },
+    "r131": {
+     "n": "CEFUROXIMA 750 MG",
+     "e": "",
+     "d": "",
+     "o": 131
+    },
+    "r132": {
+     "n": "CEFUROXIMA INTRACAMERULAR 50MG.",
+     "e": "",
+     "d": "",
+     "o": 132
+    },
+    "r133": {
+     "n": "CEFUROXIMA  1500iv",
+     "e": "7",
+     "d": "20",
+     "o": 133
+    },
+    "r134": {
+     "n": "Cefuroxima oral 250",
+     "e": "",
+     "d": "100",
+     "o": 134
+    },
+    "r135": {
+     "n": "Cefuroxina 500 oral comp",
+     "e": "",
+     "d": "100",
+     "o": 135
+    },
+    "r136": {
+     "n": "CIPROFLOXACINO 500VO",
+     "e": "28",
+     "d": "",
+     "o": 136
+    },
+    "r137": {
+     "n": "CLINDAMICINA 600",
+     "e": "",
+     "d": "4",
+     "o": 137
+    },
+    "r138": {
+     "n": "GENTAMICINA iv",
+     "e": "",
+     "d": "10",
+     "o": 138
+    },
+    "r139": {
+     "n": "METRONIDAZOL",
+     "e": "",
+     "d": "",
+     "o": 139
+    },
+    "r140": {
+     "n": "pantomicina 1gr iv",
+     "e": "",
+     "d": "4",
+     "o": 140
+    },
+    "r141": {
+     "n": "RIFAMPICINA 600MG",
+     "e": "",
+     "d": "",
+     "o": 141
+    },
+    "r142": {
+     "n": "VANCOMICINA iv",
+     "e": "",
+     "d": "10",
+     "o": 142
+    },
+    "r143": {
+     "n": "Otros:",
+     "e": "",
+     "d": "",
+     "o": 143,
+     "g": true
+    },
+    "r144": {
+     "n": "ADIRO VO",
+     "e": "",
+     "d": "",
+     "o": 144
+    },
+    "r145": {
+     "n": "ADRENALINA",
+     "e": "6",
+     "d": "200",
+     "o": 145
+    },
+    "r146": {
+     "n": "AMCHAFIBRIN",
+     "e": "",
+     "d": "",
+     "o": 146
+    },
+    "r147": {
+     "n": "ANECTINE",
+     "e": "",
+     "d": "5",
+     "o": 147
+    },
+    "r148": {
+     "n": "ATROPINA",
+     "e": "22+9",
+     "d": "20",
+     "o": 148
+    },
+    "r149": {
+     "n": "BETATUL",
+     "e": "",
+     "d": "10",
+     "o": 149
+    },
+    "r150": {
+     "n": "BICARBONATO",
+     "e": "",
+     "d": "",
+     "o": 150
+    },
+    "r151": {
+     "n": "BRIDION",
+     "e": "",
+     "d": "6",
+     "o": 151
+    },
+    "r152": {
+     "n": "BUSCAPINA IV",
+     "e": "",
+     "d": "",
+     "o": 152
+    },
+    "r153": {
+     "n": "CAPOTEN",
+     "e": "180+160",
+     "d": "150",
+     "o": 153
+    },
+    "r154": {
+     "n": "CELECREM",
+     "e": "",
+     "d": "1",
+     "o": 154
+    },
+    "r155": {
+     "n": "CLCA",
+     "e": "",
+     "d": "",
+     "o": 155
+    },
+    "r156": {
+     "n": "DIAZEPAN 5MG",
+     "e": "42",
+     "d": "150",
+     "o": 156
+    },
+    "r157": {
+     "n": "DIPROGENTA",
+     "e": "",
+     "d": "1",
+     "o": 157
+    },
+    "r158": {
+     "n": "EDEMOX 250 mg",
+     "e": "32+28+179",
+     "d": "699",
+     "o": 158
+    },
+    "r159": {
+     "n": "ENaNTYUM",
+     "e": "",
+     "d": "",
+     "o": 159
+    },
+    "r160": {
+     "n": "ENaNTYUM vo",
+     "e": "",
+     "d": "",
+     "o": 160
+    },
+    "r161": {
+     "n": "ESMERON",
+     "e": "",
+     "d": "6",
+     "o": 161
+    },
+    "r162": {
+     "n": "FENILEFRINA",
+     "e": "",
+     "d": "",
+     "o": 162
+    },
+    "r163": {
+     "n": "FENILEFRINA INTRACAMERULAR",
+     "e": "",
+     "d": "30",
+     "o": 163
+    },
+    "r164": {
+     "n": "FLUMACENILO",
+     "e": "1",
+     "d": "4",
+     "o": 164
+    },
+    "r165": {
+     "n": "FENTANEST",
+     "e": "",
+     "d": "",
+     "o": 165
+    },
+    "r166": {
+     "n": "FURACIN",
+     "e": "",
+     "d": "1",
+     "o": 166
+    },
+    "r167": {
+     "n": "FYDRANE",
+     "e": "",
+     "d": "",
+     "o": 167
+    },
+    "r168": {
+     "n": "GEL LASER OP-COVER",
+     "e": "",
+     "d": "",
+     "o": 168
+    },
+    "r169": {
+     "n": "HEPARINA 1000 U.I/ml",
+     "e": "",
+     "d": "",
+     "o": 169
+    },
+    "r170": {
+     "n": "HIERRO VO",
+     "e": "",
+     "d": "",
+     "o": 170
+    },
+    "r171": {
+     "n": "IBUPROFENO 20mg jarabe",
+     "e": "",
+     "d": "2",
+     "o": 171
+    },
+    "r172": {
+     "n": "IBUPROFENO 400MG",
+     "e": "",
+     "d": "",
+     "o": 172
+    },
+    "r173": {
+     "n": "IBUPROFENO V.O 600MG",
+     "e": "",
+     "d": "20",
+     "o": 173
+    },
+    "r174": {
+     "n": "IOPIMAX colirio",
+     "e": "",
+     "d": "",
+     "o": 174
+    },
+    "r175": {
+     "n": "KETOLAR",
+     "e": "11",
+     "d": "2",
+     "o": 175
+    },
+    "r176": {
+     "n": "LÁGRIMA",
+     "e": "",
+     "d": "1000",
+     "o": 176
+    },
+    "r177": {
+     "n": "largactil",
+     "e": "",
+     "d": "",
+     "o": 177
+    },
+    "r178": {
+     "n": "LINITUL",
+     "e": "",
+     "d": "10",
+     "o": 178
+    },
+    "r179": {
+     "n": "MANITOL 10% 250 ML",
+     "e": "",
+     "d": "",
+     "o": 179
+    },
+    "r180": {
+     "n": "METAMIZOL iv",
+     "e": "5",
+     "d": "20",
+     "o": 180
+    },
+    "r181": {
+     "n": "MIDAZOLAN",
+     "e": "18+4",
+     "d": "10",
+     "o": 181
+    },
+    "r182": {
+     "n": "MITOMICINA",
+     "e": "",
+     "d": "2",
+     "o": 182
+    },
+    "r183": {
+     "n": "MUPIROCINA",
+     "e": "",
+     "d": "1",
+     "o": 183
+    },
+    "r184": {
+     "n": "NALOXONA",
+     "e": "",
+     "d": "6",
+     "o": 184
+    },
+    "r185": {
+     "n": "NALOXONA",
+     "e": "",
+     "d": "4",
+     "o": 185
+    },
+    "r186": {
+     "n": "NOLOTIL IV",
+     "e": "10",
+     "d": "",
+     "o": 186
+    },
+    "r187": {
+     "n": "NOLOTIL V.O",
+     "e": "",
+     "d": "40",
+     "o": 187
+    },
+    "r188": {
+     "n": "NORADRENALINA",
+     "e": "",
+     "d": "",
+     "o": 188
+    },
+    "r189": {
+     "n": "OCTOCAIN",
+     "e": "",
+     "d": "50",
+     "o": 189
+    },
+    "r190": {
+     "n": "LIDOCAÍNA 2%+ EPINEFRINA (OCTOCAIN)",
+     "e": "29",
+     "d": "",
+     "o": 190
+    },
+    "r191": {
+     "n": "ONDANSETRON 4MG",
+     "e": "31",
+     "d": "10",
+     "o": 191
+    },
+    "r192": {
+     "n": "PANTOPRAZOL 40MG",
+     "e": "",
+     "d": "20",
+     "o": 192
+    },
+    "r193": {
+     "n": "PANTOPRAZOL iv",
+     "e": "2",
+     "d": "",
+     "o": 193
+    },
+    "r194": {
+     "n": "PARACETAMOL 1GR",
+     "e": "",
+     "d": "120",
+     "o": 194
+    },
+    "r195": {
+     "n": "PARACETAMOL 200 MG EFER.",
+     "e": "",
+     "d": "60",
+     "o": 195
+    },
+    "r196": {
+     "n": "PARACETAMOL 30MG JARABE",
+     "e": "",
+     "d": "2",
+     "o": 196
+    },
+    "r197": {
+     "n": "PARACETAMOL 500 V.O",
+     "e": "10",
+     "d": "600",
+     "o": 197
+    },
+    "r198": {
+     "n": "PARACETAMOL 650MG",
+     "e": "",
+     "d": "20",
+     "o": 198
+    },
+    "r199": {
+     "n": "PARACETAMOL 1 GR VO",
+     "e": "50",
+     "d": "",
+     "o": 199
+    },
+    "r200": {
+     "n": "PRIMPERAN",
+     "e": "",
+     "d": "",
+     "o": 200
+    },
+    "r201": {
+     "n": "PILOCARPINA",
+     "e": "",
+     "d": "",
+     "o": 201
+    },
+    "r202": {
+     "n": "POSITON",
+     "e": "",
+     "d": "1",
+     "o": 202
+    },
+    "r203": {
+     "n": "PROPOFOL iv 20ML",
+     "e": "34",
+     "d": "6",
+     "o": 203
+    },
+    "r204": {
+     "n": "RANITIDINA",
+     "e": "",
+     "d": "",
+     "o": 204
+    },
+    "r205": {
+     "n": "SILVEDERMA",
+     "e": "",
+     "d": "1",
+     "o": 205
+    },
+    "r206": {
+     "n": "SULFATO DE MAGNESIO",
+     "e": "10",
+     "d": "",
+     "o": 206
+    },
+    "r207": {
+     "n": "TACHOSIL",
+     "e": "",
+     "d": "2",
+     "o": 207
+    },
+    "r208": {
+     "n": "TIOPENTAL",
+     "e": "",
+     "d": "",
+     "o": 208
+    },
+    "r209": {
+     "n": "TOALLITAS",
+     "e": "4",
+     "d": "",
+     "o": 209
+    },
+    "r210": {
+     "n": "TRAMADOL",
+     "e": "",
+     "d": "",
+     "o": 210
+    },
+    "r211": {
+     "n": "TRANDATE",
+     "e": "10",
+     "d": "",
+     "o": 211
+    },
+    "r212": {
+     "n": "TROMBOCID",
+     "e": "",
+     "d": "1",
+     "o": 212
+    },
+    "r213": {
+     "n": "VASELINA",
+     "e": "",
+     "d": "1",
+     "o": 213
+    },
+    "r214": {
+     "n": "VITAMINAS",
+     "e": "",
+     "d": "1000",
+     "o": 214
+    },
+    "r215": {
+     "n": "VENTOLÍN",
+     "e": "",
+     "d": "",
+     "o": 215
+    },
+    "r216": {
+     "n": "ATROVENT",
+     "e": "",
+     "d": "",
+     "o": 216
+    },
+    "r217": {
+     "n": "EFEDRINA",
+     "e": "",
+     "d": "",
+     "o": 217
+    },
+    "r218": {
+     "n": "FENILEFRINA",
+     "e": "2",
+     "d": "",
+     "o": 218
+    }
+   }
+  },
+  "nec-anestesia": {
+   "title": "Nec. anestesia ´25",
+   "sub": "Necesidades de anestesia para 2025",
+   "kind": "list",
+   "pos": 4,
+   "nameLabel": "Artículo",
+   "qtyLabel": "Cantidad",
+   "qtyFirst": false,
+   "note": "",
+   "rows": {
+    "r001": {
+     "n": "RAQUI 25G",
+     "q": "",
+     "o": 1
+    },
+    "r002": {
+     "n": "PIEZAS CONEXIÓN ASPIRACIÓN",
+     "q": "",
+     "o": 2
+    },
+    "r003": {
+     "n": "AGUJAS BLOQUEO 100 MM",
+     "q": "",
+     "o": 3
+    },
+    "r004": {
+     "n": "LATIGUILLO",
+     "q": "",
+     "o": 4
+    },
+    "r005": {
+     "n": "VÁLVULAS ANTIRREFLUJO",
+     "q": "",
+     "o": 5
+    },
+    "r006": {
+     "n": "ABOCATH 20 G",
+     "q": "",
+     "o": 6
+    },
+    "r007": {
+     "n": "FELILEFRINA IV.",
+     "q": "",
+     "o": 7
+    },
+    "r008": {
+     "n": "EFEDRINA IV",
+     "q": "",
+     "o": 8
+    },
+    "r009": {
+     "n": "ATROPINA IV",
+     "q": "",
+     "o": 9
+    },
+    "r010": {
+     "n": "MIDAZOLAN IV.",
+     "q": "",
+     "o": 10
+    },
+    "r011": {
+     "n": "MORFINA IV.",
+     "q": "",
+     "o": 11
+    },
+    "r012": {
+     "n": "ACTOCORTINA 100 MG. IV",
+     "q": "",
+     "o": 12
+    },
+    "r013": {
+     "n": "GR 33% O 50 %",
+     "q": "",
+     "o": 13
+    },
+    "r014": {
+     "n": "GLUCOMETER",
+     "q": "",
+     "o": 14
+    },
+    "r015": {
+     "n": "HUMIDIFICADOR 02",
+     "q": "",
+     "o": 15
+    },
+    "r016": {
+     "n": "YANKAUER",
+     "q": "",
+     "o": 16
+    },
+    "r017": {
+     "n": "PILAS PULSI Y LARINGO",
+     "q": "",
+     "o": 17
+    },
+    "r018": {
+     "n": "PEGATINAS PULSI",
+     "q": "",
+     "o": 18
+    },
+    "r019": {
+     "n": "VALIUM IV.",
+     "q": "",
+     "o": 19
+    },
+    "r020": {
+     "n": "EMLA",
+     "q": "",
+     "o": 20
+    },
+    "r021": {
+     "n": "CATETER EPIDURAL",
+     "q": "",
+     "o": 21
+    },
+    "r022": {
+     "n": "FIADORES ADULTO Y NIÑOS",
+     "q": "",
+     "o": 22
+    }
+   }
+  },
+  "peticion": {
+   "title": "Petición hospitales",
+   "sub": "Petición oficial a hospitales · Azul en Acción 2022",
+   "kind": "list",
+   "pos": 6,
+   "nameLabel": "Artículo",
+   "qtyLabel": "Cantidad",
+   "qtyFirst": false,
+   "note": "",
+   "rows": {
+    "r001": {
+     "n": "ALMACÉN",
+     "q": "",
+     "o": 1,
+     "g": true
+    },
+    "r002": {
+     "n": "AGUJAS 0,8X25",
+     "q": "1 CAJA",
+     "o": 2
+    },
+    "r003": {
+     "n": "AGUJAS 0,8X40",
+     "q": "1CAJA",
+     "o": 3
+    },
+    "r004": {
+     "n": "AGUJAS INSULINA",
+     "q": "1CAJA",
+     "o": 4
+    },
+    "r005": {
+     "n": "AGUJAS PERIBULBAR",
+     "q": "5CAJAS",
+     "o": 5
+    },
+    "r006": {
+     "n": "AZUL TRIPAN ( VISION BLUE)",
+     "q": "20",
+     "o": 6
+    },
+    "r007": {
+     "n": "BATAS DESECHABLES",
+     "q": "20",
+     "o": 7
+    },
+    "r008": {
+     "n": "BATAS ESTERILES",
+     "q": "20",
+     "o": 8
+    },
+    "r009": {
+     "n": "BETADINE",
+     "q": "2",
+     "o": 9
+    },
+    "r010": {
+     "n": "CALZAS",
+     "q": "100",
+     "o": 10
+    },
+    "r011": {
+     "n": "CÁNULA PULIDORA",
+     "q": "20",
+     "o": 11
+    },
+    "r012": {
+     "n": "CÁNULAS 27G",
+     "q": "20",
+     "o": 12
+    },
+    "r013": {
+     "n": "CÁNULAS 30G",
+     "q": "20",
+     "o": 13
+    },
+    "r014": {
+     "n": "CÁNULAS SUBTENONIANAS",
+     "q": "5",
+     "o": 14
+    },
+    "r015": {
+     "n": "CÁNULAS VECTIS (ASAS)",
+     "q": "10",
+     "o": 15
+    },
+    "r016": {
+     "n": "CAUTERIOS",
+     "q": "5",
+     "o": 16
+    },
+    "r017": {
+     "n": "CEPILLOS QUIRÚRGICOS",
+     "q": "50",
+     "o": 17
+    },
+    "r018": {
+     "n": "CISTITOMOS",
+     "q": "25",
+     "o": 18
+    },
+    "r019": {
+     "n": "CUCHILETE CRESCENT",
+     "q": "12",
+     "o": 19
+    },
+    "r020": {
+     "n": "CUCHILLETE 15º",
+     "q": "12",
+     "o": 20
+    },
+    "r021": {
+     "n": "CUCHILLETE 2'75",
+     "q": "12",
+     "o": 21
+    },
+    "r022": {
+     "n": "CUCHILLETE 30º",
+     "q": "12",
+     "o": 22
+    },
+    "r023": {
+     "n": "CUSTON PACK",
+     "q": "10",
+     "o": 23
+    },
+    "r024": {
+     "n": "ESPARADRAPO PAPEL",
+     "q": "20",
+     "o": 24
+    },
+    "r025": {
+     "n": "GASAS ESTÉRILES",
+     "q": "100",
+     "o": 25
+    },
+    "r026": {
+     "n": "GASAS NO ESTÉRILES PARA CONSULTA",
+     "q": "200",
+     "o": 26
+    },
+    "r027": {
+     "n": "GUANTES XL",
+     "q": "2CAJAS",
+     "o": 27
+    },
+    "r028": {
+     "n": "HEMOSTETAS",
+     "q": "20",
+     "o": 28
+    },
+    "r029": {
+     "n": "JERINGAS 10ML",
+     "q": "20",
+     "o": 29
+    },
+    "r030": {
+     "n": "JERINGAS LUER LOCK 1",
+     "q": "50",
+     "o": 30
+    },
+    "r031": {
+     "n": "JERINGAS LUER LOCK 3",
+     "q": "50",
+     "o": 31
+    },
+    "r032": {
+     "n": "JERINGAS LUER LOCK 5",
+     "q": "50",
+     "o": 32
+    },
+    "r033": {
+     "n": "LENTES TERAPÉUTICAS",
+     "q": "20",
+     "o": 33
+    },
+    "r034": {
+     "n": "PAÑOS FENESTRADOS",
+     "q": "50",
+     "o": 34
+    },
+    "r035": {
+     "n": "PAÑOS PEQUEÑOS",
+     "q": "50",
+     "o": 35
+    },
+    "r036": {
+     "n": "PUNTAS FACO 30º",
+     "q": "25",
+     "o": 36
+    },
+    "r037": {
+     "n": "SINCOE",
+     "q": "5",
+     "o": 37
+    },
+    "r038": {
+     "n": "SISTEMAS DE SUERO",
+     "q": "20",
+     "o": 38
+    },
+    "r039": {
+     "n": "SPRAY DESINFECTANTE",
+     "q": "2",
+     "o": 39
+    },
+    "r040": {
+     "n": "SUERO FISIOLÓGICO 100 ML",
+     "q": "25",
+     "o": 40
+    },
+    "r041": {
+     "n": "SUTURA NYLON 10/0",
+     "q": "2CAJAS",
+     "o": 41
+    },
+    "r042": {
+     "n": "SUTURA SEDA 4/0",
+     "q": "2CAJAS",
+     "o": 42
+    },
+    "r043": {
+     "n": "SUTURA VICRYL 7/0",
+     "q": "2CAJAS",
+     "o": 43
+    },
+    "r044": {
+     "n": "TOALLITAS DESINFECTANTES",
+     "q": "2",
+     "o": 44
+    },
+    "r045": {
+     "n": "VITREOTOMO AMO DESECHABLE",
+     "q": "5",
+     "o": 45
+    },
+    "r046": {
+     "n": "FARMACIA",
+     "q": "",
+     "o": 46,
+     "g": true
+    },
+    "r047": {
+     "n": "ACETILCOLINA",
+     "q": "20",
+     "o": 47
+    },
+    "r048": {
+     "n": "ADRENALINA",
+     "q": "50",
+     "o": 48
+    },
+    "r049": {
+     "n": "CAPOTEN",
+     "q": "25",
+     "o": 49
+    },
+    "r050": {
+     "n": "DIAZEPAM 5MG",
+     "q": "25",
+     "o": 50
+    },
+    "r051": {
+     "n": "EDEMOX 250 mg",
+     "q": "25",
+     "o": 51
+    },
+    "r052": {
+     "n": "FENILEFRINA INTRACAMERULAR",
+     "q": "10",
+     "o": 52
+    },
+    "r053": {
+     "n": "LÁGRIMA ARTIFICIAL",
+     "q": "50",
+     "o": 53
+    },
+    "r054": {
+     "n": "VITAMINAS v.o",
+     "q": "25",
+     "o": 54
+    },
+    "r055": {
+     "n": "BUPIVACAÍNA 7.5",
+     "q": "25",
+     "o": 55
+    },
+    "r056": {
+     "n": "HIALURONIDASA 150 U.I",
+     "q": "25",
+     "o": 56
+    },
+    "r057": {
+     "n": "LIDOCAÍNA 2%",
+     "q": "25",
+     "o": 57
+    },
+    "r058": {
+     "n": "TRIGON DEPOT",
+     "q": "25",
+     "o": 58
+    },
+    "r059": {
+     "n": "AZITROMICINA 500 VO",
+     "q": "2CAJAS",
+     "o": 59
+    },
+    "r060": {
+     "n": "Ceftazidima",
+     "q": "5",
+     "o": 60
+    },
+    "r061": {
+     "n": "CEFUROXIMA 1500 IV",
+     "q": "5",
+     "o": 61
+    },
+    "r062": {
+     "n": "Cefuroxima oral 250",
+     "q": "2CAJAS",
+     "o": 62
+    },
+    "r063": {
+     "n": "Cefuroxima oral 500",
+     "q": "2CAJAS",
+     "o": 63
+    },
+    "r064": {
+     "n": "ANESTÉSICO DOBLE",
+     "q": "20",
+     "o": 64
+    },
+    "r065": {
+     "n": "FLUOTEST",
+     "q": "10",
+     "o": 65
+    },
+    "r066": {
+     "n": "COLIRIO ATROPINA 1%",
+     "q": "5",
+     "o": 66
+    },
+    "r067": {
+     "n": "COLIRIO AZIDROP",
+     "q": "10",
+     "o": 67
+    },
+    "r068": {
+     "n": "COLIRIO CICLOPEJICO 1%",
+     "q": "5",
+     "o": 68
+    },
+    "r069": {
+     "n": "COLIRIO CORTICOIDE+ANTB(TOBRADEX,GENTADEXA)",
+     "q": "10",
+     "o": 69
+    },
+    "r070": {
+     "n": "COLIRIO DEXAFREE",
+     "q": "10",
+     "o": 70
+    },
+    "r071": {
+     "n": "COLIRIO FENILEFRINA 10%",
+     "q": "5",
+     "o": 71
+    },
+    "r072": {
+     "n": "COLIRIOS ANTIBIÓTICOS(EXOCIN,TOBREX..)",
+     "q": "20",
+     "o": 72
+    },
+    "r073": {
+     "n": "COLIRIOS HIPOTENSORES(COSOPT,TRUSOPT,AZARGA,TIMOFTOL)",
+     "q": "25",
+     "o": 73
+    },
+    "r074": {
+     "n": "COLIRIOS ISOPTOFLUCON/FML",
+     "q": "10",
+     "o": 74
+    },
+    "r075": {
+     "n": "POMADA ANTIEDEMA",
+     "q": "10",
+     "o": 75
+    },
+    "r076": {
+     "n": "POMADA DEXAMETASONA",
+     "q": "10",
+     "o": 76
+    },
+    "r077": {
+     "n": "POMADA TOBREX",
+     "q": "10",
+     "o": 77
+    },
+    "r078": {
+     "n": "VISCOLASTICO 1%, BAJA DENSIDAD",
+     "q": "10",
+     "o": 78
+    },
+    "r079": {
+     "n": "VISCOLASTICO 3%, ALTA DENSIDAD",
+     "q": "10",
+     "o": 79
+    }
+   }
+  },
+  "qx": {
+   "title": "Quirófano ´25",
+   "sub": "Inventario Sandiará ´25 · Necesidades para 350 cirugías",
+   "kind": "inv",
+   "pos": 1,
+   "base": 350,
+   "target": 350,
+   "note": "",
+   "rows": {
+    "r001": {
+     "n": "ABOCATH 16",
+     "e": "",
+     "d": "20",
+     "o": 1
+    },
+    "r002": {
+     "n": "ABOCATH 18",
+     "e": "20",
+     "d": "20",
+     "o": 2
+    },
+    "r003": {
+     "n": "ABOCATH 20",
+     "e": "20+10",
+     "d": "20",
+     "o": 3
+    },
+    "r004": {
+     "n": "ABOCATH 22",
+     "e": "",
+     "d": "20",
+     "o": 4
+    },
+    "r005": {
+     "n": "ABOCHTH 24",
+     "e": "",
+     "d": "20",
+     "o": 5
+    },
+    "r006": {
+     "n": "ABOCATH 26",
+     "e": "",
+     "d": "",
+     "o": 6
+    },
+    "r007": {
+     "n": "ACETILCOLINA",
+     "e": "13+15",
+     "d": "150",
+     "o": 7,
+     "m": "46 MIOVISIN"
+    },
+    "r008": {
+     "n": "AGUA DESTILADA 250",
+     "e": "",
+     "d": "",
+     "o": 8
+    },
+    "r009": {
+     "n": "AGUA DESTILADA 500",
+     "e": "90",
+     "d": "",
+     "o": 9
+    },
+    "r010": {
+     "n": "AGUA OXIGENADA",
+     "e": "1+1+2",
+     "d": "2",
+     "o": 10
+    },
+    "r011": {
+     "n": "AGUJA Pta SILICONA(vitrectomía post.)",
+     "e": "",
+     "d": "",
+     "o": 11
+    },
+    "r012": {
+     "n": "AGUJAS CARGAR",
+     "e": "",
+     "d": "500",
+     "o": 12
+    },
+    "r013": {
+     "n": "AGUJAS IM",
+     "e": "",
+     "d": "100",
+     "o": 13
+    },
+    "r014": {
+     "n": "AGUJAS INSULINA",
+     "e": "348+194",
+     "d": "500",
+     "o": 14
+    },
+    "r015": {
+     "n": "AGUJAS INSULINA NARANJAS",
+     "e": "",
+     "d": "",
+     "o": 15
+    },
+    "r016": {
+     "n": "AGUJAS IV",
+     "e": "",
+     "d": "100",
+     "o": 16
+    },
+    "r017": {
+     "n": "AGUJAS PERIBULBAR",
+     "e": "",
+     "d": "400",
+     "o": 17
+    },
+    "r018": {
+     "n": "AGUJAS RAQUI",
+     "e": "",
+     "d": "",
+     "o": 18
+    },
+    "r019": {
+     "n": "AGUJAS RETROBULBARES",
+     "e": "",
+     "d": "",
+     "o": 19
+    },
+    "r020": {
+     "n": "AIRTRAQ",
+     "e": "",
+     "d": "2",
+     "o": 20
+    },
+    "r021": {
+     "n": "ALCOHOL",
+     "e": "1+3",
+     "d": "2",
+     "o": 21
+    },
+    "r022": {
+     "n": "ALFORJAS",
+     "e": "",
+     "d": "10",
+     "o": 22
+    },
+    "r023": {
+     "n": "ALGODÓN DE ROLLO",
+     "e": "1",
+     "d": "1",
+     "o": 23
+    },
+    "r024": {
+     "n": "AMBÚ ADULTO",
+     "e": "",
+     "d": "1",
+     "o": 24
+    },
+    "r025": {
+     "n": "AMBÚ PEDIÁTRICO",
+     "e": "",
+     "d": "1",
+     "o": 25
+    },
+    "r026": {
+     "n": "ANILLOS CAPSULARES T.10",
+     "e": "17",
+     "d": "20",
+     "o": 26,
+     "m": "CAD.2027"
+    },
+    "r027": {
+     "n": "ANILLOS CAPSULARES T.11",
+     "e": "18",
+     "d": "",
+     "o": 27
+    },
+    "r028": {
+     "n": "ANILLOS CAPSULARES T.12",
+     "e": "11",
+     "d": "",
+     "o": 28
+    },
+    "r029": {
+     "n": "APOSITO PEQUEÑO",
+     "e": "",
+     "d": "25",
+     "o": 29
+    },
+    "r030": {
+     "n": "APÓSITO RÍGIDO",
+     "e": "",
+     "d": "53",
+     "o": 30
+    },
+    "r031": {
+     "n": "APOSITO ROLLO",
+     "e": "",
+     "d": "1",
+     "o": 31
+    },
+    "r032": {
+     "n": "APÓSITOS BLANDOS OJO",
+     "e": "",
+     "d": "400",
+     "o": 32
+    },
+    "r033": {
+     "n": "APÓSITOS MEDIANOS",
+     "e": "",
+     "d": "25",
+     "o": 33
+    },
+    "r034": {
+     "n": "APÓSITOS TRANSPARENTES GRANDES",
+     "e": "",
+     "d": "25",
+     "o": 34
+    },
+    "r035": {
+     "n": "APOSITOS TRANSPARENTES NO ESTÉRILES",
+     "e": "",
+     "d": "25",
+     "o": 35,
+     "m": "MUCHOS"
+    },
+    "r036": {
+     "n": "APÓSITOS TRANSPARENTES OJO",
+     "e": "",
+     "d": "400",
+     "o": 36
+    },
+    "r037": {
+     "n": "APÓSITOS VIA",
+     "e": "45",
+     "d": "25",
+     "o": 37
+    },
+    "r038": {
+     "n": "APÓSITOS VIA INFANTIL",
+     "e": "",
+     "d": "25",
+     "o": 38
+    },
+    "r039": {
+     "n": "AZUL TRIPAN",
+     "e": "",
+     "d": "200",
+     "o": 39
+    },
+    "r040": {
+     "n": "BALÓN HONNAN",
+     "e": "",
+     "d": "",
+     "o": 40
+    },
+    "r041": {
+     "n": "BATAS DESECHABLES",
+     "e": "74",
+     "d": "500",
+     "o": 41
+    },
+    "r042": {
+     "n": "BATAS ESTERILES",
+     "e": "9",
+     "d": "200",
+     "o": 42
+    },
+    "r043": {
+     "n": "BBS 500",
+     "e": "",
+     "d": "",
+     "o": 43
+    },
+    "r044": {
+     "n": "BETADINE 10 ML",
+     "e": "",
+     "d": "24",
+     "o": 44
+    },
+    "r045": {
+     "n": "BETADINE AMARILLO",
+     "e": "24",
+     "d": "15",
+     "o": 45
+    },
+    "r046": {
+     "n": "BETADINE JABONOSO",
+     "e": "30",
+     "d": "15",
+     "o": 46
+    },
+    "r047": {
+     "n": "BETATUL",
+     "e": "",
+     "d": "10",
+     "o": 47
+    },
+    "r048": {
+     "n": "BLEFAROSTATO ESTÉRIL",
+     "e": "",
+     "d": "35",
+     "o": 48
+    },
+    "r049": {
+     "n": "BODYMILK",
+     "e": "",
+     "d": "1",
+     "o": 49
+    },
+    "r050": {
+     "n": "BOLAS ENUCLEACIÓN",
+     "e": "",
+     "d": "3",
+     "o": 50
+    },
+    "r051": {
+     "n": "BOLIGRAFOS ESTERLES",
+     "e": "",
+     "d": "10",
+     "o": 51
+    },
+    "r052": {
+     "n": "BOLSAS BASURA",
+     "e": "",
+     "d": "10",
+     "o": 52
+    },
+    "r053": {
+     "n": "BOLSAS BASURA SACOS",
+     "e": "",
+     "d": "20",
+     "o": 53
+    },
+    "r054": {
+     "n": "BOLSAS DIURÉSIS",
+     "e": "",
+     "d": "10",
+     "o": 54
+    },
+    "r055": {
+     "n": "BOLSAS ESTERILIZACION CIERRA FÁCIL",
+     "e": "",
+     "d": "300",
+     "o": 55
+    },
+    "r056": {
+     "n": "BOLSAS ESTERILIZACIÓN G",
+     "e": "",
+     "d": "300",
+     "o": 56
+    },
+    "r057": {
+     "n": "BOLSAS ESTERILIZACIÓN ROLLO SELLADORA",
+     "e": "",
+     "d": "3",
+     "o": 57
+    },
+    "r058": {
+     "n": "BOLSAS ESTERILIZACIÓN SELLADORA S",
+     "e": "",
+     "d": "300",
+     "o": 58
+    },
+    "r059": {
+     "n": "BOLSAS ESTERILIZACÓN SELLADORA M",
+     "e": "",
+     "d": "300",
+     "o": 59
+    },
+    "r060": {
+     "n": "BOLSAS PEQUEÑAS PARA CONSULTA",
+     "e": "",
+     "d": "2000",
+     "o": 60
+    },
+    "r061": {
+     "n": "BOLSAS PLASTICO",
+     "e": "",
+     "d": "",
+     "o": 61
+    },
+    "r062": {
+     "n": "BOQUILLAS TERMÓMETRO",
+     "e": "",
+     "d": "2000",
+     "o": 62
+    },
+    "r063": {
+     "n": "BSS",
+     "e": "",
+     "d": "",
+     "o": 63
+    },
+    "r064": {
+     "n": "BSS 500ml CRISTAL",
+     "e": "30",
+     "d": "",
+     "o": 64
+    },
+    "r065": {
+     "n": "BSS 500ml PLÁSTICO",
+     "e": "",
+     "d": "",
+     "o": 65
+    },
+    "r066": {
+     "n": "BSS peq.",
+     "e": "",
+     "d": "",
+     "o": 66
+    },
+    "r067": {
+     "n": "CALZAS VERDES/AZULES",
+     "e": "3604",
+     "d": "1000",
+     "o": 67
+    },
+    "r068": {
+     "n": "CÁNULA OBISPO",
+     "e": "20",
+     "d": "5",
+     "o": 68
+    },
+    "r069": {
+     "n": "CÁNULA PULIDORA",
+     "e": "190+54+15+5",
+     "d": "200",
+     "o": 69
+    },
+    "r070": {
+     "n": "CÁNULAS 23G",
+     "e": "60+23+80+52",
+     "d": "200",
+     "o": 70
+    },
+    "r071": {
+     "n": "CÁNULAS 25 G",
+     "e": "60+60",
+     "d": "100",
+     "o": 71
+    },
+    "r072": {
+     "n": "CÁNULAS 27G",
+     "e": "250+30+90+92+100+30+101+24+30+20+32+112+50+20",
+     "d": "800",
+     "o": 72
+    },
+    "r073": {
+     "n": "CÁNULAS 30G",
+     "e": "",
+     "d": "100",
+     "o": 73
+    },
+    "r074": {
+     "n": "CÁNULAS DE HIDRODISECCIÓN",
+     "e": "140+30",
+     "d": "100",
+     "o": 74
+    },
+    "r075": {
+     "n": "CANULAS DE IRRIGACIÓN/ASPIRACIÓN BIMANUAL DESECHABLES",
+     "e": "",
+     "d": "",
+     "o": 75
+    },
+    "r076": {
+     "n": "CANULAS LAGRIMALES",
+     "e": "",
+     "d": "5",
+     "o": 76
+    },
+    "r077": {
+     "n": "CANULAS SUBTENONIANAS",
+     "e": "20+10+16",
+     "d": "10",
+     "o": 77
+    },
+    "r078": {
+     "n": "CÁNULAS VECTIS (ASAS)",
+     "e": "87",
+     "d": "50",
+     "o": 78
+    },
+    "r079": {
+     "n": "CAPNÓGRAFO PEDIÁTRICO",
+     "e": "",
+     "d": "1",
+     "o": 79
+    },
+    "r080": {
+     "n": "CAPUCHONES + Pta.SOUVERING 15º",
+     "e": "",
+     "d": "20",
+     "o": 80
+    },
+    "r081": {
+     "n": "CAPUCHONES + Pta.SOUVERING 30º",
+     "e": "",
+     "d": "200",
+     "o": 81
+    },
+    "r082": {
+     "n": "CAPUCHONES + PUNTAS INFINITY 2,2",
+     "e": "",
+     "d": "",
+     "o": 82
+    },
+    "r083": {
+     "n": "CAPUCHONES + PUNTAS INFINITY 2,7",
+     "e": "",
+     "d": "",
+     "o": 83
+    },
+    "r084": {
+     "n": "CAPUCHONES INFINITY 2.2 ( ROSAS)",
+     "e": "",
+     "d": "107",
+     "o": 84
+    },
+    "r085": {
+     "n": "CAPUCHONES INFINITY 2.7 (AZULES.LILAS)",
+     "e": "",
+     "d": "200",
+     "o": 85
+    },
+    "r086": {
+     "n": "CAPUCHONES SOUVERING",
+     "e": "",
+     "d": "200",
+     "o": 86
+    },
+    "r087": {
+     "n": "CARTUCHO MONARCH II (AZUL)",
+     "e": "40+60",
+     "d": "150",
+     "o": 87
+    },
+    "r088": {
+     "n": "CARTUCHO MONARCH III ( VERDE)",
+     "e": "140+60",
+     "d": "400",
+     "o": 88
+    },
+    "r089": {
+     "n": "CARTUCHO BIOLI",
+     "e": "",
+     "d": "",
+     "o": 89
+    },
+    "r090": {
+     "n": "CARTUCHOS CENTURION",
+     "e": "",
+     "d": "",
+     "o": 90
+    },
+    "r091": {
+     "n": "CARTUCHOS EMERALD",
+     "e": "",
+     "d": "300",
+     "o": 91
+    },
+    "r092": {
+     "n": "CARTUCHOS MEDICEL DESECHABLES",
+     "e": "",
+     "d": "40",
+     "o": 92
+    },
+    "r093": {
+     "n": "CARTUCHOS PLATINUM",
+     "e": "150",
+     "d": "400",
+     "o": 93
+    },
+    "r094": {
+     "n": "CARTUCHOS VISCOJECT",
+     "e": "",
+     "d": "40",
+     "o": 94
+    },
+    "r095": {
+     "n": "CASSETTE ( OPOS) FACO SOUVERING OPO 061",
+     "e": "",
+     "d": "60",
+     "o": 95
+    },
+    "r096": {
+     "n": "CASSETTE (OPOS) FACO INFINITY",
+     "e": "24",
+     "d": "351",
+     "o": 96
+    },
+    "r097": {
+     "n": "CASSETTE (OPOS) SIGNATURE OPO 70",
+     "e": "",
+     "d": "60",
+     "o": 97
+    },
+    "r098": {
+     "n": "CASSETTE(OPOS) SIGNATURE OPO71",
+     "e": "",
+     "d": "60",
+     "o": 98
+    },
+    "r099": {
+     "n": "CAUTERIO INFINITI",
+     "e": "",
+     "d": "1",
+     "o": 99
+    },
+    "r100": {
+     "n": "CAUTERIO SIGNATURE",
+     "e": "",
+     "d": "1",
+     "o": 100
+    },
+    "r101": {
+     "n": "CAUTERIO SOUVERING",
+     "e": "",
+     "d": "1",
+     "o": 101
+    },
+    "r102": {
+     "n": "CAUTERIOS",
+     "e": "114+15+3",
+     "d": "50",
+     "o": 102
+    },
+    "r103": {
+     "n": "CEPILLOS LAVADO QUIRÚRGICO",
+     "e": "160",
+     "d": "200",
+     "o": 103
+    },
+    "r104": {
+     "n": "CINTA COLORES",
+     "e": "",
+     "d": "",
+     "o": 104
+    },
+    "r105": {
+     "n": "CINTA ESTERILIZACIÓN",
+     "e": "",
+     "d": "3",
+     "o": 105
+    },
+    "r106": {
+     "n": "CIRCUITO ADULTO",
+     "e": "",
+     "d": "",
+     "o": 106
+    },
+    "r107": {
+     "n": "CIRCUITO PEDIÁTRICO",
+     "e": "",
+     "d": "2",
+     "o": 107
+    },
+    "r108": {
+     "n": "CISTITOMOS",
+     "e": "120+50+90+30",
+     "d": "400",
+     "o": 108
+    },
+    "r109": {
+     "n": "CLORHEXIDINA",
+     "e": "1",
+     "d": "",
+     "o": 109
+    },
+    "r110": {
+     "n": "CLORHEXIDINA SPRAY",
+     "e": "",
+     "d": "",
+     "o": 110
+    },
+    "r111": {
+     "n": "COMPRESAS ESTÉRILES",
+     "e": "610",
+     "d": "100",
+     "o": 111
+    },
+    "r112": {
+     "n": "COMPRESAS NO ESTERILES",
+     "e": "725+200+30",
+     "d": "200",
+     "o": 112
+    },
+    "r113": {
+     "n": "COMPRESORES",
+     "e": "10",
+     "d": "6",
+     "o": 113
+    },
+    "r114": {
+     "n": "CUCHILETE CRESCENT",
+     "e": "12+24+2+10+6+6+6",
+     "d": "100",
+     "o": 114
+    },
+    "r115": {
+     "n": "CUCHILLETE 15",
+     "e": "329+16+17+31+32+19+28+17+27+10+31+31+25+212+34+30+15+34",
+     "d": "400",
+     "o": 115
+    },
+    "r116": {
+     "n": "CUCHILLETE 1,5",
+     "e": "",
+     "d": "",
+     "o": 116
+    },
+    "r117": {
+     "n": "CUCHILLETE 1,8",
+     "e": "6",
+     "d": "",
+     "o": 117
+    },
+    "r118": {
+     "n": "CUCHILLETE 2.2",
+     "e": "13+16+29+11+2",
+     "d": "",
+     "o": 118
+    },
+    "r119": {
+     "n": "CUCHILLETE 2.4",
+     "e": "",
+     "d": "",
+     "o": 119
+    },
+    "r120": {
+     "n": "CUCHILLETE 2.65",
+     "e": "12+12",
+     "d": "6",
+     "o": 120
+    },
+    "r121": {
+     "n": "CUCHILLETE 2.8",
+     "e": "7",
+     "d": "118",
+     "o": 121
+    },
+    "r122": {
+     "n": "CUCHILLETE 2'25 CIRCULAR",
+     "e": "",
+     "d": "20",
+     "o": 122
+    },
+    "r123": {
+     "n": "CUCHILLETE 2'75",
+     "e": "30+30+66",
+     "d": "400",
+     "o": 123
+    },
+    "r124": {
+     "n": "CUCHILLETE 2'75 CON PREOTECCIÓN",
+     "e": "",
+     "d": "",
+     "o": 124
+    },
+    "r125": {
+     "n": "CUCHILLETE 3´2",
+     "e": "",
+     "d": "48",
+     "o": 125
+    },
+    "r126": {
+     "n": "CUCHILLETE 30",
+     "e": "49+18+26+30",
+     "d": "102",
+     "o": 126
+    },
+    "r127": {
+     "n": "CUCHILLETE 30 CON PRETECCIÓN",
+     "e": "",
+     "d": "",
+     "o": 127
+    },
+    "r128": {
+     "n": "CUCHILLETE 45",
+     "e": "",
+     "d": "",
+     "o": 128
+    },
+    "r129": {
+     "n": "CUCHILLETE MINICRESCENT 1`25",
+     "e": "",
+     "d": "78",
+     "o": 129
+    },
+    "r130": {
+     "n": "CUSTON PACK",
+     "e": "100",
+     "d": "400",
+     "o": 130
+    },
+    "r131": {
+     "n": "CUSTON PACK 2 SÁBANAS",
+     "e": "",
+     "d": "",
+     "o": 131
+    },
+    "r132": {
+     "n": "CUSTON PACK intravitrea",
+     "e": "",
+     "d": "",
+     "o": 132
+    },
+    "r133": {
+     "n": "CUSTON VITRECTOMÍA",
+     "e": "",
+     "d": "",
+     "o": 133
+    },
+    "r134": {
+     "n": "DIAL-AFLOW",
+     "e": "",
+     "d": "10",
+     "o": 134
+    },
+    "r135": {
+     "n": "DIATERMIA BIPOLAR",
+     "e": "",
+     "d": "",
+     "o": 135
+    },
+    "r136": {
+     "n": "ESPARADRAPO DE TELA (7,5X10)",
+     "e": "150",
+     "d": "50",
+     "o": 136
+    },
+    "r137": {
+     "n": "ESPARADRAPO PAPEL (5X10)",
+     "e": "185+150",
+     "d": "200",
+     "o": 137
+    },
+    "r138": {
+     "n": "ESPARADRAPO PLÁSTICO",
+     "e": "50+57",
+     "d": "150",
+     "o": 138
+    },
+    "r139": {
+     "n": "ESCARIFICADOR",
+     "e": "",
+     "d": "",
+     "o": 139
+    },
+    "r140": {
+     "n": "ESPÉCULOS VAGINA",
+     "e": "",
+     "d": "",
+     "o": 140
+    },
+    "r141": {
+     "n": "FILTRO PEDIÁTRICO",
+     "e": "",
+     "d": "6",
+     "o": 141
+    },
+    "r142": {
+     "n": "FILTRO STATIN",
+     "e": "",
+     "d": "",
+     "o": 142
+    },
+    "r143": {
+     "n": "FUNDAS FACO ESTÉRILES",
+     "e": "",
+     "d": "60",
+     "o": 143
+    },
+    "r144": {
+     "n": "GAFAS NASALES ADULTO",
+     "e": "",
+     "d": "10",
+     "o": 144
+    },
+    "r145": {
+     "n": "GAFAS NASALES INFANTIL",
+     "e": "",
+     "d": "10",
+     "o": 145
+    },
+    "r146": {
+     "n": "GASAS ESTÉRILES",
+     "e": "7110+500+150",
+     "d": "4500",
+     "o": 146
+    },
+    "r147": {
+     "n": "GASAS NO ESTÉRILES PARA CONSULTA",
+     "e": "5200",
+     "d": "5000",
+     "o": 147
+    },
+    "r148": {
+     "n": "GEL ECÓGRAFO",
+     "e": "",
+     "d": "2",
+     "o": 148
+    },
+    "r149": {
+     "n": "GEL ECÓGRAFO ESTÉRIL",
+     "e": "",
+     "d": "10",
+     "o": 149
+    },
+    "r150": {
+     "n": "GEL HIDROALCOHÓLICO 200ML",
+     "e": "",
+     "d": "",
+     "o": 150
+    },
+    "r151": {
+     "n": "GLOBO OCULAR ACRILICO ESTÉRIL 18MM",
+     "e": "",
+     "d": "",
+     "o": 151
+    },
+    "r152": {
+     "n": "GLOBO OCULAR ACRILICO ESTÉRIL 20MM",
+     "e": "",
+     "d": "",
+     "o": 152
+    },
+    "r153": {
+     "n": "GORROS",
+     "e": "3350",
+     "d": "500",
+     "o": 153
+    },
+    "r154": {
+     "n": "GORROS HOMBRE",
+     "e": "",
+     "d": "",
+     "o": 154
+    },
+    "r155": {
+     "n": "GRAPADORA",
+     "e": "",
+     "d": "",
+     "o": 155
+    },
+    "r156": {
+     "n": "GUANTES 6",
+     "e": "200+200",
+     "d": "400",
+     "o": 156
+    },
+    "r157": {
+     "n": "GUANTES 6'5",
+     "e": "200+70",
+     "d": "600",
+     "o": 157
+    },
+    "r158": {
+     "n": "GUANTES 7",
+     "e": "200+70",
+     "d": "650",
+     "o": 158
+    },
+    "r159": {
+     "n": "GUANTES 7'5",
+     "e": "550+80",
+     "d": "825",
+     "o": 159
+    },
+    "r160": {
+     "n": "GUANTES 8",
+     "e": "350+50",
+     "d": "280",
+     "o": 160
+    },
+    "r161": {
+     "n": "GUANTES 8.5",
+     "e": "200+50+50",
+     "d": "280",
+     "o": 161
+    },
+    "r162": {
+     "n": "GUANTES ANTICORTE",
+     "e": "",
+     "d": "4",
+     "o": 162
+    },
+    "r163": {
+     "n": "GUANTES AUTOCLAVE",
+     "e": "",
+     "d": "2",
+     "o": 163
+    },
+    "r164": {
+     "n": "GUANTES L",
+     "e": "300+800",
+     "d": "58",
+     "o": 164
+    },
+    "r165": {
+     "n": "GUANTES M",
+     "e": "100+6600",
+     "d": "48",
+     "o": 165
+    },
+    "r166": {
+     "n": "GUANTES S",
+     "e": "100+4700",
+     "d": "7",
+     "o": 166
+    },
+    "r167": {
+     "n": "GUANTES XL",
+     "e": "300",
+     "d": "2",
+     "o": 167
+    },
+    "r168": {
+     "n": "GUEDEL ADULTO",
+     "e": "",
+     "d": "10",
+     "o": 168
+    },
+    "r169": {
+     "n": "GUEDEL PEDIÁTRICO",
+     "e": "",
+     "d": "10",
+     "o": 169
+    },
+    "r170": {
+     "n": "HEMOSTETAS",
+     "e": "150",
+     "d": "250",
+     "o": 170
+    },
+    "r171": {
+     "n": "HEMOSTETAS NO ESTÉRILES",
+     "e": "",
+     "d": "200",
+     "o": 171
+    },
+    "r172": {
+     "n": "HOJAS DE BISTURI Nº 11 CON MANGO",
+     "e": "",
+     "d": "522",
+     "o": 172
+    },
+    "r173": {
+     "n": "HOJAS DE BISTURÍ Nº 15 CON MANGO",
+     "e": "",
+     "d": "20",
+     "o": 173
+    },
+    "r174": {
+     "n": "HOJAS DE BISTURÍ Nº10",
+     "e": "",
+     "d": "200",
+     "o": 174
+    },
+    "r175": {
+     "n": "HOJAS DE BISTURÍ Nº11",
+     "e": "",
+     "d": "200",
+     "o": 175
+    },
+    "r176": {
+     "n": "HOJAS DE BISTURÍ Nº15",
+     "e": "",
+     "d": "200",
+     "o": 176
+    },
+    "r177": {
+     "n": "HOJAS DE BISTURÍ Nº22",
+     "e": "",
+     "d": "",
+     "o": 177
+    },
+    "r178": {
+     "n": "HUMIDIFICADOR,RECIPIENTE O2",
+     "e": "",
+     "d": "4",
+     "o": 178
+    },
+    "r179": {
+     "n": "I/A DESECHABLE (PROBAR EN FACOS)",
+     "e": "168",
+     "d": "20",
+     "o": 179
+    },
+    "r180": {
+     "n": "I/A DONADA ALCON",
+     "e": "",
+     "d": "",
+     "o": 180
+    },
+    "r181": {
+     "n": "Inyector monarch",
+     "e": "",
+     "d": "",
+     "o": 181
+    },
+    "r182": {
+     "n": "IMPLANTE ESCLERAR",
+     "e": "",
+     "d": "",
+     "o": 182
+    },
+    "r183": {
+     "n": "JERINGA CON AGUJA DE INSULINA",
+     "e": "",
+     "d": "",
+     "o": 183
+    },
+    "r184": {
+     "n": "JERINGAS 1",
+     "e": "100",
+     "d": "400",
+     "o": 184
+    },
+    "r185": {
+     "n": "JERINGAS 10",
+     "e": "780+185+8+5",
+     "d": "600",
+     "o": 185
+    },
+    "r186": {
+     "n": "JERINGAS 2/3",
+     "e": "400+70+8",
+     "d": "400",
+     "o": 186
+    },
+    "r187": {
+     "n": "JERINGAS 20",
+     "e": "200",
+     "d": "50",
+     "o": 187
+    },
+    "r188": {
+     "n": "JERINGAS 5",
+     "e": "449+375+27+5",
+     "d": "400",
+     "o": 188
+    },
+    "r189": {
+     "n": "JERINGAS LUER LOCK 1",
+     "e": "317+75",
+     "d": "400",
+     "o": 189
+    },
+    "r190": {
+     "n": "JERINGAS LUER LOCK 10",
+     "e": "980+286",
+     "d": "400",
+     "o": 190
+    },
+    "r191": {
+     "n": "JERINGAS LUER LOCK 20",
+     "e": "50",
+     "d": "400",
+     "o": 191
+    },
+    "r192": {
+     "n": "JERINGAS LUER LOCK 3",
+     "e": "274",
+     "d": "400",
+     "o": 192
+    },
+    "r193": {
+     "n": "JERINGAS LUER LOCK 5",
+     "e": "1173+145",
+     "d": "400",
+     "o": 193
+    },
+    "r194": {
+     "n": "KIWI",
+     "e": "",
+     "d": "6",
+     "o": 194
+    },
+    "r195": {
+     "n": "LANCETAS TXUS",
+     "e": "66+64+27+5",
+     "d": "50",
+     "o": 195
+    },
+    "r196": {
+     "n": "LÁPICES DE DIATÉRMIA BIPOLAR",
+     "e": "",
+     "d": "",
+     "o": 196
+    },
+    "r197": {
+     "n": "LENTES TERAPEUTICAS",
+     "e": "144+1+16",
+     "d": "100",
+     "o": 197
+    },
+    "r198": {
+     "n": "LINITUL",
+     "e": "42+2",
+     "d": "",
+     "o": 198
+    },
+    "r199": {
+     "n": "LÍQUIDO ENZIMÁTICO ULTRASONIDO",
+     "e": "",
+     "d": "2",
+     "o": 199
+    },
+    "r200": {
+     "n": "LÍQUIDO STATIN",
+     "e": "",
+     "d": "",
+     "o": 200
+    },
+    "r201": {
+     "n": "LLAVES 3 VIAS",
+     "e": "",
+     "d": "50",
+     "o": 201
+    },
+    "r202": {
+     "n": "LLAVES CON ALARGADERA",
+     "e": "",
+     "d": "20",
+     "o": 202
+    },
+    "r203": {
+     "n": "LLAVES TIPS FACO INFINITY",
+     "e": "",
+     "d": "3",
+     "o": 203
+    },
+    "r204": {
+     "n": "LLAVES TIPS FACO SOUVERING",
+     "e": "",
+     "d": "3",
+     "o": 204
+    },
+    "r205": {
+     "n": "LUBRICANTE CORNEA GEL OP´COVER30",
+     "e": "",
+     "d": "",
+     "o": 205
+    },
+    "r206": {
+     "n": "LUBRICANTE UROLÓGICO",
+     "e": "",
+     "d": "",
+     "o": 206
+    },
+    "r207": {
+     "n": "MALLA FIX",
+     "e": "",
+     "d": "4",
+     "o": 207
+    },
+    "r208": {
+     "n": "MANGO I/A",
+     "e": "",
+     "d": "5",
+     "o": 208
+    },
+    "r209": {
+     "n": "MASCARILAS",
+     "e": "",
+     "d": "10",
+     "o": 209
+    },
+    "r210": {
+     "n": "MASCARILLA CON PROTECCIÓN",
+     "e": "",
+     "d": "10",
+     "o": 210
+    },
+    "r211": {
+     "n": "MASCARILLA FFP2",
+     "e": "",
+     "d": "3000",
+     "o": 211
+    },
+    "r212": {
+     "n": "MASCARILLA FFP3",
+     "e": "",
+     "d": "",
+     "o": 212
+    },
+    "r213": {
+     "n": "MASCARILLA LARÍNGEA NEONATAL",
+     "e": "",
+     "d": "",
+     "o": 213
+    },
+    "r214": {
+     "n": "MASCARILLA PREMATURO",
+     "e": "",
+     "d": "10",
+     "o": 214
+    },
+    "r215": {
+     "n": "MASCARILLA VENTIMAX INFANTIL",
+     "e": "",
+     "d": "10",
+     "o": 215
+    },
+    "r216": {
+     "n": "MASCARILLAS LARINGEAS",
+     "e": "",
+     "d": "4",
+     "o": 216
+    },
+    "r217": {
+     "n": "MASCARILLAS QX",
+     "e": "2000",
+     "d": "1000",
+     "o": 217
+    },
+    "r218": {
+     "n": "MASCARILLAS REFORZADAS",
+     "e": "",
+     "d": "",
+     "o": 218
+    },
+    "r219": {
+     "n": "MONOFILAMENTOS 4/0",
+     "e": "",
+     "d": "1",
+     "o": 219
+    },
+    "r220": {
+     "n": "MONOFILAMENTOS 5/0",
+     "e": "",
+     "d": "1",
+     "o": 220
+    },
+    "r221": {
+     "n": "MONOFILAMENTOS 6/0",
+     "e": "",
+     "d": "1",
+     "o": 221
+    },
+    "r222": {
+     "n": "MONOFILAMENTOS 7/0",
+     "e": "",
+     "d": "1",
+     "o": 222
+    },
+    "r223": {
+     "n": "MONOFILAMENTOS 9/0",
+     "e": "",
+     "d": "1",
+     "o": 223
+    },
+    "r224": {
+     "n": "NOBECUTAN",
+     "e": "",
+     "d": "2",
+     "o": 224
+    },
+    "r225": {
+     "n": "PAÑO DE OJO CON BOLSA",
+     "e": "",
+     "d": "",
+     "o": 225
+    },
+    "r226": {
+     "n": "PAÑOS FENESTRADOS",
+     "e": "354",
+     "d": "200",
+     "o": 226
+    },
+    "r227": {
+     "n": "PAÑOS PEQUEÑOS",
+     "e": "32+226",
+     "d": "200",
+     "o": 227
+    },
+    "r228": {
+     "n": "PAÑOS PEQUEÑOS C/A",
+     "e": "",
+     "d": "",
+     "o": 228
+    },
+    "r229": {
+     "n": "PARCHE OCLUSOR",
+     "e": "",
+     "d": "80",
+     "o": 229
+    },
+    "r230": {
+     "n": "PEGAMENTO CUTÁNEO",
+     "e": "",
+     "d": "10",
+     "o": 230
+    },
+    "r231": {
+     "n": "PIEZA DE MANO INFINITI",
+     "e": "",
+     "d": "2",
+     "o": 231
+    },
+    "r232": {
+     "n": "PINZA VITRECTOMIA POSTERIOR",
+     "e": "",
+     "d": "",
+     "o": 232
+    },
+    "r233": {
+     "n": "PINZAS CAPSULORRESIS MICROINCISIÓN DESECHABLES",
+     "e": "",
+     "d": "",
+     "o": 233
+    },
+    "r234": {
+     "n": "PINZAS CAPSULORRESIS RECTA",
+     "e": "",
+     "d": "",
+     "o": 234
+    },
+    "r235": {
+     "n": "PINZAS DESECHABLES",
+     "e": "",
+     "d": "83",
+     "o": 235
+    },
+    "r236": {
+     "n": "PULSIOXÍMETRO",
+     "e": "",
+     "d": "",
+     "o": 236
+    },
+    "r237": {
+     "n": "PUNTAS AMO AMARILLAS 30º 20G",
+     "e": "",
+     "d": "",
+     "o": 237
+    },
+    "r238": {
+     "n": "PUNTAS INFINITY ALCON",
+     "e": "",
+     "d": "425",
+     "o": 238
+    },
+    "r239": {
+     "n": "PUNTAS INFINITY ALCON 2,2",
+     "e": "",
+     "d": "",
+     "o": 239
+    },
+    "r240": {
+     "n": "PUNTAS INFINITY ALCON 2,7",
+     "e": "",
+     "d": "",
+     "o": 240
+    },
+    "r241": {
+     "n": "PUNTAS INFINITY ALCON ESPECIALES",
+     "e": "",
+     "d": "50",
+     "o": 241
+    },
+    "r242": {
+     "n": "PUNTAS SOVERING AMO 30º 19G",
+     "e": "",
+     "d": "60",
+     "o": 242
+    },
+    "r243": {
+     "n": "PUNTAS SOVERING AMO( ABOTT) 15º(19G)",
+     "e": "",
+     "d": "100",
+     "o": 243
+    },
+    "r244": {
+     "n": "PUNTAS SOVERING AMO( ABOTT) 30º 20G",
+     "e": "",
+     "d": "",
+     "o": 244
+    },
+    "r245": {
+     "n": "PUNTAS SOVERING AMO( ABOTT) 15º 20G",
+     "e": "",
+     "d": "",
+     "o": 245
+    },
+    "r246": {
+     "n": "QUITAGRAPAS",
+     "e": "",
+     "d": "4",
+     "o": 246
+    },
+    "r247": {
+     "n": "RETRACTORES IRIS",
+     "e": "10+3",
+     "d": "50",
+     "o": 247
+    },
+    "r248": {
+     "n": "ROTULADOR",
+     "e": "",
+     "d": "5",
+     "o": 248
+    },
+    "r249": {
+     "n": "ROTULADOR ESTÉRIL",
+     "e": "140",
+     "d": "10",
+     "o": 249
+    },
+    "r250": {
+     "n": "RULO CABEZA",
+     "e": "",
+     "d": "3",
+     "o": 250
+    },
+    "r251": {
+     "n": "S.RINGER",
+     "e": "90",
+     "d": "300",
+     "o": 251
+    },
+    "r252": {
+     "n": "SABANAS ESTÉRILES",
+     "e": "",
+     "d": "",
+     "o": 252
+    },
+    "r253": {
+     "n": "SF 10",
+     "e": "",
+     "d": "200",
+     "o": 253
+    },
+    "r254": {
+     "n": "SF 100",
+     "e": "",
+     "d": "100",
+     "o": 254
+    },
+    "r255": {
+     "n": "SF 1000",
+     "e": "",
+     "d": "",
+     "o": 255
+    },
+    "r256": {
+     "n": "SF 500",
+     "e": "",
+     "d": "20",
+     "o": 256
+    },
+    "r257": {
+     "n": "SINCOE",
+     "e": "35+3",
+     "d": "20",
+     "o": 257
+    },
+    "r258": {
+     "n": "SISTEMA DE SUERO",
+     "e": "",
+     "d": "100",
+     "o": 258
+    },
+    "r259": {
+     "n": "SONDA ASPIRACIÓN",
+     "e": "",
+     "d": "20",
+     "o": 259
+    },
+    "r260": {
+     "n": "SONDA CHANDELIER 25G(vitrectomía posterior)",
+     "e": "",
+     "d": "",
+     "o": 260
+    },
+    "r261": {
+     "n": "SONDA NASOGÁSTRICA",
+     "e": "",
+     "d": "4",
+     "o": 261
+    },
+    "r262": {
+     "n": "SONDA VESICAL ADULTO",
+     "e": "",
+     "d": "10",
+     "o": 262
+    },
+    "r263": {
+     "n": "SONDA VESICAL INFANTIL",
+     "e": "",
+     "d": "10",
+     "o": 263
+    },
+    "r264": {
+     "n": "SONDAJE LAGRIMAL",
+     "e": "",
+     "d": "",
+     "o": 264
+    },
+    "r265": {
+     "n": "SPRAY DESINFECTANTE",
+     "e": "",
+     "d": "10",
+     "o": 265
+    },
+    "r266": {
+     "n": "STERIDRAPE GRANDE",
+     "e": "",
+     "d": "4",
+     "o": 266
+    },
+    "r267": {
+     "n": "STERILIUM",
+     "e": "",
+     "d": "22",
+     "o": 267
+    },
+    "r268": {
+     "n": "STERI-STRIP",
+     "e": "31+20",
+     "d": "231",
+     "o": 268
+    },
+    "r269": {
+     "n": "SUTURA MONOCRIL 5/0 AMORFA",
+     "e": "",
+     "d": "12",
+     "o": 269
+    },
+    "r270": {
+     "n": "SUTURA MONOCRIL 6/0 AMORFA",
+     "e": "",
+     "d": "12",
+     "o": 270
+    },
+    "r271": {
+     "n": "SUTURA NYLON 10/0",
+     "e": "24+12+12+12+36+8+4+12",
+     "d": "200",
+     "o": 271
+    },
+    "r272": {
+     "n": "SUTURA NYLON 5/0",
+     "e": "",
+     "d": "12",
+     "o": 272
+    },
+    "r273": {
+     "n": "SUTURA NYLON 8/0",
+     "e": "",
+     "d": "10",
+     "o": 273
+    },
+    "r274": {
+     "n": "SUTURA PDS 3/0 AMORFA",
+     "e": "",
+     "d": "12",
+     "o": 274
+    },
+    "r275": {
+     "n": "SUTURA PDS 4/0 AMORFA",
+     "e": "",
+     "d": "12",
+     "o": 275
+    },
+    "r276": {
+     "n": "SUTURA PDS 6/0 AMORFA",
+     "e": "",
+     "d": "12",
+     "o": 276
+    },
+    "r277": {
+     "n": "SUTURA PROLENE 10/0",
+     "e": "",
+     "d": "24",
+     "o": 277
+    },
+    "r278": {
+     "n": "SUTURA PROLENE 3/0",
+     "e": "",
+     "d": "12",
+     "o": 278
+    },
+    "r279": {
+     "n": "SUTURA PROLENE 4/0",
+     "e": "",
+     "d": "12",
+     "o": 279
+    },
+    "r280": {
+     "n": "SUTURA PROLENE 5/0",
+     "e": "12",
+     "d": "12",
+     "o": 280
+    },
+    "r281": {
+     "n": "SUTURA PROLENE 6/0",
+     "e": "",
+     "d": "12",
+     "o": 281
+    },
+    "r282": {
+     "n": "SUTURA PROLENE 7/0",
+     "e": "",
+     "d": "12",
+     "o": 282
+    },
+    "r283": {
+     "n": "SUTURA PROLENE 9/0",
+     "e": "",
+     "d": "",
+     "o": 283
+    },
+    "r284": {
+     "n": "SUTURA SEDA 0 TRIANGULAR",
+     "e": "",
+     "d": "12",
+     "o": 284
+    },
+    "r285": {
+     "n": "SUTURA SEDA 2/0",
+     "e": "",
+     "d": "",
+     "o": 285
+    },
+    "r286": {
+     "n": "SUTURA SEDA 3/0",
+     "e": "12+22",
+     "d": "",
+     "o": 286
+    },
+    "r287": {
+     "n": "SUTURA SEDA 4/0",
+     "e": "96",
+     "d": "35",
+     "o": 287
+    },
+    "r288": {
+     "n": "SUTURA SEDA 4/0 (CILINDRICA)",
+     "e": "",
+     "d": "12",
+     "o": 288
+    },
+    "r289": {
+     "n": "SUTURA SEDA 4/0 (TRIANGULAR)",
+     "e": "",
+     "d": "36",
+     "o": 289
+    },
+    "r290": {
+     "n": "SUTURA SEDA 5/0",
+     "e": "",
+     "d": "24",
+     "o": 290
+    },
+    "r291": {
+     "n": "SUTURA SEDA 5/0 (CILINDRICA)",
+     "e": "",
+     "d": "",
+     "o": 291
+    },
+    "r292": {
+     "n": "SUTURA SEDA 5/0 (TRIANGULAR)",
+     "e": "",
+     "d": "",
+     "o": 292
+    },
+    "r293": {
+     "n": "SUTURA SEDA 6/0 (TRIANGULAR)",
+     "e": "21",
+     "d": "12",
+     "o": 293
+    },
+    "r294": {
+     "n": "SUTURA SEDA 7/0",
+     "e": "",
+     "d": "12",
+     "o": 294
+    },
+    "r295": {
+     "n": "SUTURA SEDA 8/0",
+     "e": "",
+     "d": "36",
+     "o": 295
+    },
+    "r296": {
+     "n": "SUTURA VICRYL 10/0",
+     "e": "",
+     "d": "24",
+     "o": 296
+    },
+    "r297": {
+     "n": "SUTURA VICRYL 3/0",
+     "e": "",
+     "d": "12",
+     "o": 297
+    },
+    "r298": {
+     "n": "SUTURA VICRYL 4/0",
+     "e": "",
+     "d": "12",
+     "o": 298
+    },
+    "r299": {
+     "n": "SUTURA VICRYL 5/0",
+     "e": "",
+     "d": "12",
+     "o": 299
+    },
+    "r300": {
+     "n": "SUTURA VICRYL 6/0",
+     "e": "",
+     "d": "12",
+     "o": 300
+    },
+    "r301": {
+     "n": "SUTURA VICRYL 7/0",
+     "e": "48+12+12+4+24+12",
+     "d": "12",
+     "o": 301
+    },
+    "r302": {
+     "n": "SUTURA VICRYL 7/0 RAPID",
+     "e": "24",
+     "d": "",
+     "o": 302
+    },
+    "r303": {
+     "n": "SUTURA VICRYL 8/0",
+     "e": "",
+     "d": "12",
+     "o": 303
+    },
+    "r304": {
+     "n": "SUTURA VICRYL 9/0",
+     "e": "",
+     "d": "12",
+     "o": 304
+    },
+    "r305": {
+     "n": "SUTURA VICRYL 0 RAPID",
+     "e": "12",
+     "d": "",
+     "o": 305
+    },
+    "r306": {
+     "n": "SUTURA VICRYL RAPID 3/0",
+     "e": "",
+     "d": "12",
+     "o": 306
+    },
+    "r307": {
+     "n": "TAPONES HEPARINIZADO",
+     "e": "",
+     "d": "10",
+     "o": 307
+    },
+    "r308": {
+     "n": "TERMÓMETRO",
+     "e": "",
+     "d": "3",
+     "o": 308
+    },
+    "r309": {
+     "n": "TEST ANTÍGENO",
+     "e": "",
+     "d": "4000",
+     "o": 309
+    },
+    "r310": {
+     "n": "TEST PCR",
+     "e": "",
+     "d": "450",
+     "o": 310
+    },
+    "r311": {
+     "n": "TESTIGOS VAPOR",
+     "e": "",
+     "d": "200",
+     "o": 311
+    },
+    "r312": {
+     "n": "TIJERAS RETINA",
+     "e": "",
+     "d": "",
+     "o": 312
+    },
+    "r313": {
+     "n": "TIJERAS",
+     "e": "",
+     "d": "5",
+     "o": 313
+    },
+    "r314": {
+     "n": "TIRITAS",
+     "e": "",
+     "d": "200",
+     "o": 314
+    },
+    "r315": {
+     "n": "TOALLITAS DESINFECTANTES 200",
+     "e": "",
+     "d": "10",
+     "o": 315
+    },
+    "r316": {
+     "n": "TOMA O2",
+     "e": "",
+     "d": "",
+     "o": 316
+    },
+    "r317": {
+     "n": "TRASVASADORES",
+     "e": "",
+     "d": "20",
+     "o": 317
+    },
+    "r318": {
+     "n": "TUBOS ENDOTRAQUEALES 6,5 -7- 7,5 -8,5",
+     "e": "",
+     "d": "20",
+     "o": 318
+    },
+    "r319": {
+     "n": "TUBOS ENDOTRAQUEALES INFANTIL",
+     "e": "",
+     "d": "20",
+     "o": 319
+    },
+    "r320": {
+     "n": "VENDA ALGODÓN 10",
+     "e": "",
+     "d": "20",
+     "o": 320
+    },
+    "r321": {
+     "n": "VENDA COHESIVA",
+     "e": "",
+     "d": "20",
+     "o": 321
+    },
+    "r322": {
+     "n": "VENDA DE CREPÉ",
+     "e": "",
+     "d": "20",
+     "o": 322
+    },
+    "r323": {
+     "n": "VENDA TENSOPLAST",
+     "e": "",
+     "d": "20",
+     "o": 323
+    },
+    "r324": {
+     "n": "VENTOSAS",
+     "e": "",
+     "d": "3",
+     "o": 324
+    },
+    "r325": {
+     "n": "vico viscoat",
+     "e": "",
+     "d": "10",
+     "o": 325
+    },
+    "r326": {
+     "n": "VISCO AJL 3%",
+     "e": "2",
+     "d": "",
+     "o": 326
+    },
+    "r327": {
+     "n": "VISCO ALTA",
+     "e": "",
+     "d": "305",
+     "o": 327
+    },
+    "r328": {
+     "n": "VISCO BAJA",
+     "e": "",
+     "d": "305",
+     "o": 328
+    },
+    "r329": {
+     "n": "VISCO BIOLON 10 mg",
+     "e": "",
+     "d": "",
+     "o": 329
+    },
+    "r330": {
+     "n": "VISCO CELUGEL ( METILCELULOSA) CORNEA",
+     "e": "",
+     "d": "",
+     "o": 330
+    },
+    "r331": {
+     "n": "VISCO EYEFIL 14mg",
+     "e": "",
+     "d": "",
+     "o": 331
+    },
+    "r332": {
+     "n": "VISCO HEALON 1% ( GRIS) BAJA",
+     "e": "319",
+     "d": "305",
+     "o": 332
+    },
+    "r333": {
+     "n": "VISCO HEALON 18mg",
+     "e": "",
+     "d": "",
+     "o": 333
+    },
+    "r334": {
+     "n": "VISCO HEALON 23 ( AZUL) ALTA",
+     "e": "",
+     "d": "",
+     "o": 334
+    },
+    "r335": {
+     "n": "VISCO HEALON 30 ( VERDE) ALTA",
+     "e": "58+62",
+     "d": "305",
+     "o": 335
+    },
+    "r336": {
+     "n": "visco provisc",
+     "e": "",
+     "d": "10",
+     "o": 336
+    },
+    "r337": {
+     "n": "VISION BLUE",
+     "e": "5+146",
+     "d": "",
+     "o": 337
+    },
+    "r338": {
+     "n": "VITREOTOMO INFINITY DESECHABLE",
+     "e": "",
+     "d": "52",
+     "o": 338
+    },
+    "r339": {
+     "n": "VITREOTOMO SIGNATURE",
+     "e": "52+17+1+3",
+     "d": "25",
+     "o": 339
+    },
+    "r340": {
+     "n": "YANKAUER",
+     "e": "",
+     "d": "20",
+     "o": 340
+    }
+   }
+  }
+ }
+}
