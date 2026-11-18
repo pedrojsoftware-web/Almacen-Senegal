@@ -12,22 +12,28 @@ Todo vive en **Netlify**: la página, una función que hace de API y los datos e
 | `data/datos-iniciales.json` | Datos del Excel NECESIDADES_SENEGAL_26 (7 hojas, 876 artículos). Se cargan solos la primera vez |
 | `netlify.toml`, `package.json` | Configuración de Netlify y dependencias |
 
-## Puesta en marcha (una sola vez)
+## Usuarios
 
-1. En Netlify: **almacensenegal → Site configuration → Environment variables → Add a variable**
-   - Key: `EDIT_PASSWORD`
-   - Value: la contraseña que usará el equipo para editar
-   - Scopes: deja marcado **Functions** (o "All scopes")
-2. **Deploys → Trigger deploy → Deploy site** (las variables solo se aplican en despliegues nuevos).
+Al abrir la app se pide usuario y contraseña. Sin sesión no se ve ningún dato.
 
-Para cambiar la contraseña más adelante: edita `EDIT_PASSWORD` y vuelve a desplegar. A todo el que tuviera la antigua se le pedirá la nueva.
+| Usuario | Puede | Contraseña inicial |
+|---|---|---|
+| **Administrador** | Consultar, editar y cambiar las contraseñas | La de la variable `EDIT_PASSWORD` de Netlify |
+| **Invitado** | Solo consultar y descargar el Excel | `INVITADO` (o la variable `GUEST_PASSWORD`, si existe) |
+
+Las contraseñas iniciales solo se usan la primera vez. Después se cambian desde la app: botón con el nombre del usuario (arriba a la derecha) → **Cambiar contraseña**. Se guardan cifradas en Blobs (`meta/auth`). Al cambiar una contraseña se cierran las sesiones abiertas con la anterior.
+
+Las sesiones duran 180 días en cada dispositivo, o hasta pulsar **Cerrar sesión**.
 
 ## Cómo funciona
 
-- Cualquiera con el enlace puede **consultar**. Para **editar** hay que pulsar «Entrar para editar» y poner la contraseña. La comprueba el servidor, no la página.
 - La app consulta cambios cada 6 segundos y al volver a abrirla, así que lo que edita otra persona aparece enseguida.
 - Cada cambio se guarda campo a campo y con control de versión, así que dos personas pueden editar a la vez sin pisarse.
-- Los datos se ven en Netlify en **Data & Storage → Blobs → almacen** (una entrada por hoja: `sheet/qx`, `sheet/consulta`…).
+- Los datos se ven en Netlify en **Data & Storage → Blobs → almacen**: `sheet/<hoja>` (una entrada por hoja), `meta/auth` (usuarios) y `backup/…` (copias de seguridad).
+
+## Copias de seguridad
+
+- `backup/2026-11-18-existencias-a-0`: todas las hojas tal y como estaban antes de poner las existencias a 0 (18-11-2026).
 
 ## Formato de una hoja
 
