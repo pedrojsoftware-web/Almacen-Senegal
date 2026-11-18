@@ -189,7 +189,7 @@ label.f input,label.f select,label.f textarea{border:1px solid var(--line);backg
       <button type="button" data-user="admin" aria-pressed="true">Administrador</button>
       <button type="button" data-user="invitado" aria-pressed="false">Invitado</button>
     </div>
-    <label class="f">Contraseña<input id="g_pw" type="password" autocomplete="current-password" required></label>
+    <label class="f" id="g_pwl">Contraseña<input id="g_pw" type="password" autocomplete="current-password"></label>
     <span class="calc" id="g_err"></span>
     <button class="btn primary" type="submit">Entrar</button>
     <p class="hint" id="g_hint" style="margin:0;text-align:center">El Administrador puede consultar y editar.</p>
@@ -663,15 +663,17 @@ document.addEventListener("click",e=>{
   const b=e.target.closest("[data-user]"); if(!b) return;
   gateUser=b.dataset.user;
   document.querySelectorAll("[data-user]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
-  $("#g_hint").textContent= gateUser==="admin"?"El Administrador puede consultar y editar.":"El Invitado solo puede consultar, sin hacer cambios.";
-  $("#g_pw").focus();
+  $("#g_hint").textContent= gateUser==="admin"?"El Administrador puede consultar y editar.":"El Invitado entra sin contraseña y solo puede consultar, sin hacer cambios.";
+  $("#g_pwl").hidden= gateUser!=="admin"; $("#g_err").textContent="";
+  if(gateUser==="admin") $("#g_pw").focus();
 });
 $("#gateform").addEventListener("submit",async e=>{
   e.preventDefault();
-  const pw=$("#g_pw").value; if(!pw) return;
-  $("#g_err").textContent="Comprobando…";
+  const pw=$("#g_pw").value;
+  if(gateUser==="admin"&&!pw){ $("#g_err").innerHTML=`<span class="err">Escribe la contraseña</span>`; $("#g_pw").focus(); return; }
+  $("#g_err").textContent="Entrando…";
   try{
-    const r=await fetch("/api/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({user:gateUser,password:pw})});
+    const r=await fetch("/api/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(gateUser==="admin"?{user:"admin",password:pw}:{user:"invitado"})});
     const j=await r.json().catch(()=>({}));
     if(!r.ok){ $("#g_err").innerHTML=`<span class="err">${esc(j.error||"No se pudo entrar")}</span>`; return; }
     token=j.token; try{ localStorage.setItem("alm_"+TOKEN_LS,token); }catch(err){}
@@ -688,31 +690,30 @@ function openAccount(){
     <p style="margin:0">${admin?"Puedes consultar y editar. Los cambios se guardan al momento y los ve todo el equipo.":"Puedes consultar y descargar el Excel. Para hacer cambios hay que entrar como Administrador."}</p>
     ${admin?`<section class="quick" style="background:var(--bg)">
       <h3 style="margin:0;font-family:var(--display);text-transform:uppercase;font-size:18px">Cambiar contraseña</h3>
-      <label class="f">¿De qué usuario?<select id="p_t"><option value="admin">Administrador (la mía)</option><option value="invitado">Invitado</option></select></label>
       <label class="f">Tu contraseña actual de Administrador<input id="p_cur" type="password" autocomplete="current-password"></label>
       <label class="f">Nueva contraseña (mínimo 6 caracteres)<input id="p_new" type="password" autocomplete="new-password"></label>
       <label class="f">Repite la nueva contraseña<input id="p_rep" type="password" autocomplete="new-password"></label>
       <span class="calc" id="p_err"></span>
       <div><button class="btn primary" data-act="savepw">Guardar contraseña</button></div>
-      <p class="hint" style="margin:0">Al cambiarla se cierra la sesión de quien estuviera usando la contraseña anterior de ese usuario.</p>
+      <p class="hint" style="margin:0">Al cambiarla se cierra la sesión de Administrador en los demás dispositivos.</p>
     </section>`:""}
     <div class="dfoot"><button class="btn" data-act="logout">Cerrar sesión</button></div>
    </div></aside>`;
 }
 async function savePassword(){
-  const target=$("#p_t").value, current=$("#p_cur").value, pw=$("#p_new").value, rep=$("#p_rep").value;
+  const current=$("#p_cur").value, pw=$("#p_new").value, rep=$("#p_rep").value;
   const err=m=>{$("#p_err").innerHTML=`<span class="err">${esc(m)}</span>`;};
   if(!current) return err("Escribe tu contraseña actual de Administrador");
   if(pw.length<6) return err("La nueva contraseña debe tener al menos 6 caracteres");
   if(pw!==rep) return err("Las dos contraseñas nuevas no coinciden");
   $("#p_err").textContent="Guardando…";
   try{
-    const r=await fetch("/api/password",{method:"POST",headers:authHeaders(),body:JSON.stringify({target,current,password:pw})});
+    const r=await fetch("/api/password",{method:"POST",headers:authHeaders(),body:JSON.stringify({current,password:pw})});
     const j=await r.json().catch(()=>({}));
     if(r.status===401) return signOut("La sesión ha caducado. Vuelve a entrar");
     if(!r.ok) return err(j.error||"No se pudo cambiar la contraseña");
     if(j.token){ token=j.token; try{ localStorage.setItem("alm_"+TOKEN_LS,token); }catch(e){} }
-    closeLayer(); toast("Contraseña de "+ROLE_NAME[target]+" cambiada");
+    closeLayer(); toast("Contraseña de Administrador cambiada");
   }catch(e){ err("Sin conexión. Inténtalo de nuevo."); }
 }
 

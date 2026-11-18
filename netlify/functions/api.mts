@@ -1,15 +1,15 @@
 // API del Almacén Senegal: guarda las hojas y los usuarios en Netlify Blobs.
 //
-//   POST /api/login     {user: "admin"|"invitado", password}  → {token, user}
+//   POST /api/login     {user: "admin", password} | {user: "invitado"}  → {token, user}
 //   GET  /api/me        → usuario de la sesión
 //   GET  /api/data      → todas las hojas (o {same:true} si no han cambiado desde ?v=)   [cualquier usuario]
 //   POST /api/write     → aplica cambios                                                  [solo Administrador]
-//   POST /api/password  {target, current, password} → cambia una contraseña              [solo Administrador]
+//   POST /api/password  {current, password} → cambia la contraseña del Administrador      [solo Administrador]
 //
 // Las sesiones van en la cabecera "Authorization: Bearer <token>".
-// Contraseñas iniciales (solo se usan la primera vez; luego se cambian desde la app):
-//   Administrador → variable de entorno EDIT_PASSWORD
-//   Invitado      → variable de entorno GUEST_PASSWORD, o "INVITADO" si no existe
+// El Invitado entra sin contraseña y solo puede consultar.
+// La contraseña inicial del Administrador es la variable de entorno EDIT_PASSWORD
+// (solo se usa la primera vez; luego se cambia desde la app).
 import { getStore } from "@netlify/blobs";
 import type { Config } from "@netlify/functions";
 import { createHash, createHmac, randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
@@ -173,7 +173,8 @@ async function login(req: Request, auth: Auth) {
   try { body = await req.json(); } catch { /* vacío */ }
   const u = String(body.user ?? "") as Role;
   const pw = String(body.password ?? "");
-  if (!ROLES.includes(u) || !pw || !checkPw(pw, auth.users[u])) {
+  if (u === "invitado") return json({ token: makeToken(auth, "invitado"), user: u });
+  if (u !== "admin" || !pw || !checkPw(pw, auth.users.admin)) {
     await sleep(800);
     return json({ error: "Usuario o contraseña incorrectos" }, 401);
   }
@@ -183,17 +184,16 @@ async function login(req: Request, auth: Auth) {
 async function changePassword(req: Request, st: Store, auth: Auth) {
   let body: Obj = {};
   try { body = await req.json(); } catch { /* vacío */ }
-  const target = String(body.target ?? "") as Role;
+  const target: Role = "admin";
   const current = String(body.current ?? "");
   const next = String(body.password ?? "");
-  if (!ROLES.includes(target)) return json({ error: "Usuario no válido" }, 400);
   if (!checkPw(current, auth.users.admin)) { await sleep(800); return json({ error: "La contraseña actual del Administrador no es correcta" }, 403); }
   if (next.length < 6) return json({ error: "La nueva contraseña debe tener al menos 6 caracteres" }, 400);
   const rec = hashPw(next);
   rec.ver = auth.users[target].ver + 1; // cierra las sesiones abiertas con la contraseña anterior
   const updated: Auth = { ...auth, users: { ...auth.users, [target]: rec } };
   await st.setJSON(AUTH_KEY, updated);
-  return json({ ok: true, token: target === "admin" ? makeToken(updated, "admin") : undefined });
+  return json({ ok: true, token: makeToken(updated, "admin") });
 }
 
 export default async (req: Request) => {

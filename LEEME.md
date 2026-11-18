@@ -8,7 +8,7 @@ Todo vive en **Netlify**: la página, una función que hace de API y los datos e
 | Ruta | Qué es |
 |---|---|
 | `public/` | La web que se publica: `index.html`, iconos, `manifest.webmanifest`, `sw.js` |
-| `netlify/functions/api.mts` | API: `GET /api/data`, `POST /api/login`, `POST /api/write` |
+| `netlify/functions/api.mts` | API: `/api/login`, `/api/me`, `/api/data`, `/api/write`, `/api/password` |
 | `data/datos-iniciales.json` | Datos del Excel NECESIDADES_SENEGAL_26 (7 hojas, 876 artículos). Se cargan solos la primera vez |
 | `netlify.toml`, `package.json` | Configuración de Netlify y dependencias |
 
@@ -19,9 +19,9 @@ Al abrir la app se pide usuario y contraseña. Sin sesión no se ve ningún dato
 | Usuario | Puede | Contraseña inicial |
 |---|---|---|
 | **Administrador** | Consultar, editar y cambiar las contraseñas | La de la variable `EDIT_PASSWORD` de Netlify |
-| **Invitado** | Solo consultar y descargar el Excel | `INVITADO` (o la variable `GUEST_PASSWORD`, si existe) |
+| **Invitado** | Solo consultar y descargar el Excel | No necesita: elige Invitado y pulsa Entrar |
 
-Las contraseñas iniciales solo se usan la primera vez. Después se cambian desde la app: botón con el nombre del usuario (arriba a la derecha) → **Cambiar contraseña**. Se guardan cifradas en Blobs (`meta/auth`). Al cambiar una contraseña se cierran las sesiones abiertas con la anterior.
+La contraseña inicial del Administrador solo se usa la primera vez. Después se cambia desde la app: botón «✓ Administrador» (arriba a la derecha) → **Cambiar contraseña**. Se guarda cifrada en Blobs (`meta/auth`), y al cambiarla se cierran las sesiones de Administrador abiertas en otros dispositivos.
 
 Las sesiones duran 180 días en cada dispositivo, o hasta pulsar **Cerrar sesión**.
 
