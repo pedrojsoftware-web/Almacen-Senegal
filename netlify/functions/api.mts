@@ -1,15 +1,17 @@
 // API del Almacén Senegal: guarda las hojas y los usuarios en Netlify Blobs.
 //
-//   POST /api/login     {user: "admin", password} | {user: "invitado"}  → {token, user}
+//   POST /api/login     {user: "admin"|"invitado", password}  → {token, user}
 //   GET  /api/me        → usuario de la sesión
 //   GET  /api/data      → todas las hojas (o {same:true} si no han cambiado desde ?v=)   [cualquier usuario]
 //   POST /api/write     → aplica cambios                                                  [solo Administrador]
-//   POST /api/password  {current, password} → cambia la contraseña del Administrador      [solo Administrador]
+//   POST /api/password  {target, current, password} → cambia una contraseña              [solo Administrador]
 //
 // Las sesiones van en la cabecera "Authorization: Bearer <token>".
-// El Invitado entra sin contraseña y solo puede consultar.
-// La contraseña inicial del Administrador es la variable de entorno EDIT_PASSWORD
-// (solo se usa la primera vez; luego se cambia desde la app).
+// Contraseñas:
+//   Administrador → la inicial es la variable de entorno EDIT_PASSWORD (solo se usa la primera vez).
+//   Invitado      → la variable de entorno GUEST_PASSWORD. Se aplica cada vez que esa variable
+//                   cambia de valor en Netlify (y se vuelve a desplegar).
+//   Las dos se pueden cambiar también desde la app, entrando como Administrador.
 import { getStore } from "@netlify/blobs";
 import type { Config } from "@netlify/functions";
 import { createHash, createHmac, randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
@@ -19,7 +21,7 @@ type Obj = Record<string, unknown>;
 type Store = ReturnType<typeof store>;
 type Role = "admin" | "invitado";
 type UserRec = { salt: string; hash: string; ver: number };
-type Auth = { secret: string; users: Record<Role, UserRec> };
+type Auth = { secret: string; users: Record<Role, UserRec>; guestEnv?: string };
 
 const SHEET = "sheet/";
 const AUTH_KEY = "meta/auth";
@@ -63,6 +65,18 @@ async function getAuth(st: Store): Promise<Auth | null> {
   };
   await st.setJSON(AUTH_KEY, fresh, { onlyIfNew: true });
   return (await st.get(AUTH_KEY, { type: "json" })) as Auth;
+}
+// Si GUEST_PASSWORD tiene un valor nuevo, pasa a ser la contraseña del Invitado.
+async function applyGuestEnv(st: Store, auth: Auth): Promise<Auth> {
+  const pw = Netlify.env.get("GUEST_PASSWORD");
+  if (!pw) return auth;
+  const tag = createHash("sha256").update("guest:" + pw).digest("hex").slice(0, 16);
+  if (auth.guestEnv === tag) return auth;
+  const rec = hashPw(pw);
+  rec.ver = auth.users.invitado.ver + 1; // cierra las sesiones de Invitado anteriores
+  const updated: Auth = { ...auth, guestEnv: tag, users: { ...auth.users, invitado: rec } };
+  await st.setJSON(AUTH_KEY, updated);
+  return updated;
 }
 const b64 = (s: string) => Buffer.from(s).toString("base64url");
 function sign(auth: Auth, payload: string) {
@@ -173,8 +187,7 @@ async function login(req: Request, auth: Auth) {
   try { body = await req.json(); } catch { /* vacío */ }
   const u = String(body.user ?? "") as Role;
   const pw = String(body.password ?? "");
-  if (u === "invitado") return json({ token: makeToken(auth, "invitado"), user: u });
-  if (u !== "admin" || !pw || !checkPw(pw, auth.users.admin)) {
+  if (!ROLES.includes(u) || !pw || !checkPw(pw, auth.users[u])) {
     await sleep(800);
     return json({ error: "Usuario o contraseña incorrectos" }, 401);
   }
@@ -184,7 +197,8 @@ async function login(req: Request, auth: Auth) {
 async function changePassword(req: Request, st: Store, auth: Auth) {
   let body: Obj = {};
   try { body = await req.json(); } catch { /* vacío */ }
-  const target: Role = "admin";
+  const target = String(body.target ?? "admin") as Role;
+  if (!ROLES.includes(target)) return json({ error: "Usuario no válido" }, 400);
   const current = String(body.current ?? "");
   const next = String(body.password ?? "");
   if (!checkPw(current, auth.users.admin)) { await sleep(800); return json({ error: "La contraseña actual del Administrador no es correcta" }, 403); }
@@ -193,15 +207,16 @@ async function changePassword(req: Request, st: Store, auth: Auth) {
   rec.ver = auth.users[target].ver + 1; // cierra las sesiones abiertas con la contraseña anterior
   const updated: Auth = { ...auth, users: { ...auth.users, [target]: rec } };
   await st.setJSON(AUTH_KEY, updated);
-  return json({ ok: true, token: makeToken(updated, "admin") });
+  return json({ ok: true, token: target === "admin" ? makeToken(updated, "admin") : undefined });
 }
 
 export default async (req: Request) => {
   const path = new URL(req.url).pathname;
   try {
     const st = store();
-    const auth = await getAuth(st);
-    if (!auth) return json({ error: "Falta configurar EDIT_PASSWORD en Netlify" }, 503);
+    const base = await getAuth(st);
+    if (!base) return json({ error: "Falta configurar EDIT_PASSWORD en Netlify" }, 503);
+    const auth = await applyGuestEnv(st, base);
     if (path === "/api/login" && req.method === "POST") return await login(req, auth);
 
     const user = readToken(auth, req);

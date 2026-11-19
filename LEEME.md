@@ -19,9 +19,12 @@ Al abrir la app se pide usuario y contraseña. Sin sesión no se ve ningún dato
 | Usuario | Puede | Contraseña inicial |
 |---|---|---|
 | **Administrador** | Consultar, editar y cambiar las contraseñas | La de la variable `EDIT_PASSWORD` de Netlify |
-| **Invitado** | Solo consultar y descargar el Excel | No necesita: elige Invitado y pulsa Entrar |
+| **Invitado** | Solo consultar y descargar el Excel | La de la variable `GUEST_PASSWORD` de Netlify |
 
-La contraseña inicial del Administrador solo se usa la primera vez. Después se cambia desde la app: botón «✓ Administrador» (arriba a la derecha) → **Cambiar contraseña**. Se guarda cifrada en Blobs (`meta/auth`), y al cambiarla se cierran las sesiones de Administrador abiertas en otros dispositivos.
+Las dos contraseñas se pueden cambiar desde la app entrando como Administrador: botón «✓ Administrador» (arriba a la derecha) → **Cambiar contraseña**. Se guardan cifradas en Blobs (`meta/auth`), y al cambiar una se cierran las sesiones abiertas con la anterior.
+
+- `EDIT_PASSWORD` solo se usa la primera vez, para crear al Administrador.
+- `GUEST_PASSWORD` se vuelve a aplicar cada vez que cambias su valor en Netlify y despliegas de nuevo.
 
 Las sesiones duran 180 días en cada dispositivo, o hasta pulsar **Cerrar sesión**.
 
